@@ -1,0 +1,2 @@
+class HiTagsController < ApplicationController
+end
