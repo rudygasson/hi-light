@@ -6,7 +6,7 @@ class CreateHighlights < ActiveRecord::Migration[7.0]
       t.integer :location_start
       t.integer :location_end
       t.datetime :highlight_date
-      t.boolean :public
+      t.boolean :public, default: false
       t.text :comment
       t.references :user, null: false, foreign_key: true
       t.references :book, null: false, foreign_key: true
