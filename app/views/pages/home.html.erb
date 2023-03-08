@@ -4,18 +4,11 @@
     <div class="cards">
       <% @books.each do |book| %>
         <div class="card-book">
-
-          <% if book.photos.attached? %>
-            <%= cl_image_tag book.photos.key %>
-          <% else %>
             <img src="https://source.unsplash.com/collection/8761640/"/>
-          <% end %>
-
           <div class="">
-            <h4> Book Name </h4>
-            <p> Author Name </p>
+            <h4> <%= book.title %> </h4>
+            <p> <%= book.author.name %> </p>
           </div>
-
         </div>
       <% end %>
     </div>
