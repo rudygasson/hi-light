@@ -43,7 +43,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_162343) do
     t.integer "location_start"
     t.integer "location_end"
     t.datetime "highlight_date"
-    t.boolean "public"
+    t.boolean "public", default: false
     t.text "comment"
     t.bigint "user_id", null: false
     t.bigint "book_id", null: false
