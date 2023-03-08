@@ -1,4 +1,10 @@
 <div class="container">
+
+  <%# <div class="searchbar-container"><%= render "shared/searchbar" %>
+  <div class="container-sm">
+    <div class="cards">
+      <% @books.each do |book| %>
+        <%= link_to book_path(book), class:"text-decoration-none cards-clickable" do  %>
   <%= render "shared/search" %></div><br>
     <div class="container-sm">
       <div class="cards">
@@ -11,6 +17,7 @@
             </div>
           </div>
         <% end %>
+      <% end %>
       </div>
     </div>
   </div>

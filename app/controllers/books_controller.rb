@@ -1,4 +1,10 @@
 class BooksController < ApplicationController
+  skip_before_action :authenticate_user!, only: [ :index ]
+
+  def show
+    @book = Book.find(params[:id])
+  end
+  
   def index
     if params[:query].present?
       sql_query = <<~SQL
@@ -9,5 +15,4 @@ class BooksController < ApplicationController
     else
       @books = Book.all
     end
-  end
 end
