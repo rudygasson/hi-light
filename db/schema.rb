@@ -43,7 +43,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_162343) do
     t.integer "location_start"
     t.integer "location_end"
     t.datetime "highlight_date"
-    t.boolean "public"
+    t.boolean "public", default: false
     t.text "comment"
     t.bigint "user_id", null: false
     t.bigint "book_id", null: false
@@ -67,6 +67,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_162343) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "first_name"
+    t.string "last_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
