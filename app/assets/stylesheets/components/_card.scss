@@ -1,0 +1,55 @@
+.cards {
+  margin-top: 61px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 62px;
+  flex-grow: 1;
+  padding: 0px;
+  border-radius: 10%;
+}
+
+.card-book {
+  overflow: hidden;
+  // box-shadow: 0 0 15px $hi-light-light;
+  height: 251px;
+  background-position: center;
+  justify-content: space-around;
+  border-radius: 10%;
+  width: 80%;
+  background-color: white;
+}
+
+.card-book:hover {
+  transition: 0.5s;
+  transform: translate3D(0,-1px,0) scale(1.01);
+  overflow: hidden;
+  box-shadow: 0 0 1px $hi-light-dark;
+  background-position: center;
+  justify-content: space-around;
+  border-radius: 10%;
+}
+
+.card-book > img {
+  height: 205px;
+  width: 100%;
+  border-radius: 10%;
+  object-fit: cover;
+}
+
+.card-book h4 {
+  margin: auto;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0;
+  line-height: 25px;
+}
+
+.card-book p {
+  margin: auto;
+  text-align: center;
+  font-size: 9px;
+  font-weight: lighter;
+  opacity: .8;
+  margin: 0;
+}
