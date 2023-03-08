@@ -1,0 +1,46 @@
+.search-by-buttons {
+  padding: 7px;
+  margin-right: 10px;
+}
+
+.search-by-buttons i {
+  margin-left: 7px;
+  color: $gray;
+  border: 1px solid black;
+  border-radius: 25px;
+  padding: 8px;
+  opacity: 30%;
+  font-size: 20px;
+}
+
+.search-by-buttons i:hover {
+  opacity: 1;
+}
+
+.container-searchbar {
+  margin-top: 50px;
+}
+
+.search-form-control {
+  position: relative;
+}
+
+.search-form-control .submit-btn {
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  right: 8px;
+  border-radius: 25px;
+  border: transparent 0px solid;
+  background-color: $orange;
+  color: white;
+}
+
+.search-form-control .form-control {
+  height: 3rem;
+  border-radius: 50px;
+  width: 600px;
+  background-color: white;
+  font-style: italic;
+  font-size: 12px;
+}
