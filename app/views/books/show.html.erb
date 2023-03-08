@@ -1,5 +1,5 @@
 <div class="container-main">
-  <div class="d-flex justify-content-center align-items-center mt-4">
+  <div class="d-flex justify-content-center align-items-center mt-5">
       <div class="">
         <img id="book-cover-show" src="https:/source.unsplash.com/collection/50580326/">
       </div>
@@ -14,17 +14,33 @@
   </div>
 
   <div class="container-quotes">
-    <div class="cards-quotes">
-      <% current_user.highlights.each do |highlight| %>
+    <% current_user.highlights.each do |highlight| %>
+      <div class="cards-quotes">
         <i class="quotes fa-solid fa-quote-left"></i>
         <div class="card-quote-content">
           <p> <%= highlight.quote %> </p>
+          <i class="fe fe-heart"></i>
         </div>
-      <% end %>
-
-
+        <div class="cards-quotes-actions d-flex justify-content-between">
+          <div class="tags">
+            <span> <%= "highlights" %> </span> <span><%= "highlights" %></span>
+          </div>
+          <div class="icons">
+            <i class="icon fa-solid fa-tag"></i>
+            <i class="icon fa-regular fa-heart"></i>
+            <i class="icon fa-regular fa-comment"></i>
+            <i class="icon fa-regular fa-trash-can"></i>
+            <i class="icon fa-regular fa-clone"></i>
+          </div>
         </div>
-    </div>
+      </div>
+    <% end %>
+
   </div>
   <div id="highlight-no"> <%= current_user.highlights.count %> highlights</div>
 </div>
+
+<script>
+const randomColor = "#"+((1<<24)*Math.random()|0).toString(16);
+document.documentElement.style.setProperty('--main-bg-color', randomColor);
+</script>
