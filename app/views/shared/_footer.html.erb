@@ -1,0 +1,10 @@
+<div class="footer">
+  <div class="footer-links">
+    <a href="#"><i class="fa-solid fa-heart"></i><small> &nbsp;&nbsp;Lucas, Leo & Soline</small></a>
+  </div>
+  <%= link_to destroy_user_session_path, data: {turbo_method: :delete} do %>
+    <div class="footer-copyright">
+      <small>hi-light&nbsp; <i class="fa-solid fa-user-group"></i></small>
+    </div>
+  <% end %>
+</div>
