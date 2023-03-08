@@ -1,14 +1,11 @@
 <div class="container">
+  <%= render "shared/search" %></div><br>
 
   <%# <div class="searchbar-container"><%= render "shared/searchbar" %>
   <div class="container-sm">
     <div class="cards">
       <% @books.each do |book| %>
         <%= link_to book_path(book), class:"text-decoration-none cards-clickable" do  %>
-  <%= render "shared/search" %></div><br>
-    <div class="container-sm">
-      <div class="cards">
-        <% @books.each do |book| %>
           <div class="card-book">
               <img src="https://source.unsplash.com/collection/8761640/"/>
             <div class="">
