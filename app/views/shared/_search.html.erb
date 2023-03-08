@@ -1,0 +1,16 @@
+<div class="container-searchbar d-flex justify-content-center">
+  <div class="d-row w-50">
+    <div class="">
+      <div class="search">
+        <%= form_with url: books_path, method: :get, class: "d-flex" do %>
+              <%= text_field_tag :query,
+              params[:query],
+              class: "form-control",
+              placeholder: "Find a book"
+            %>
+            <%= submit_tag "Search", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
