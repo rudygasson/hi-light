@@ -12,22 +12,15 @@ class HighlightsController < ApplicationController
   end
 
   def import
-    # @highlights = Highlight.all
   end
 
-  # TODO: Refactor and simplify
   def upload
-    raise
     @text = params[:file].tempfile.read
     @highlights = generate_highlights(@text)
 
     @highlights.each do |item|
-
       # Check if author exists, otherwise create
       # TODO: use find_by
-      author = Author.new(name: item[:author])
-
-
       author = Author.where(name: item[:author])
       if author.present?
         author = author.first
@@ -36,29 +29,27 @@ class HighlightsController < ApplicationController
       end
 
       # Check if book exists, otherwise create
-      # TODO: Check only for books by same author!
-      book = Book.where(title: item[:title], author: author)
+      book = Book.where(title: item[:title], author: author, user: current_user)
       if book.present?
         book = book.first
       else
-        book = Book.create(title: item[:title], author: author)
+        book = Book.create(title: item[:title], author: author, user: current_user)
       end
 
       # Create highlight
       # TODO: Check for duplicates
       # TODO: Check "Your Bookmark/Note/Highlight"
       # TODO: Fix bug where author can be empty
-      highlight = Highlight.create(
+      Highlight.create(
         user: current_user,
         book: book,
         quote: item[:quote],
         page: item[:page],
         location_start: item[:location_start],
         location_end: item[:location_end],
-        highlight_date: item[:date]
+        highlight_date: item[:highlight_date]
       )
     end
-
   end
 
   private
@@ -66,12 +57,6 @@ class HighlightsController < ApplicationController
   def set_highlight
     @highlight = Highlight.find(params[:id])
   end
-
-  # def save_uploaded_file(uploaded_file)
-  #   File.open(Rails.root.join('public', 'uploads', uploaded_file.original_filename), 'wb') do |file|
-  #     file.write(uploaded_file.read)
-  #   end
-  # end
 
   def generate_highlights(source)
     highlights = []
@@ -85,13 +70,9 @@ class HighlightsController < ApplicationController
     highlights
   end
 
-  # TODO: Create hash in one go
   def parse_clipping(clipping)
-    highlight = {}
-
     # Separate lines of the clipping
     lines = clipping.split("\n")
-
     # First line contains book title and author
     regex_title_author = /(?<title>[\S ]+) \((?<author>[^(]+)\)/
     title_author = lines[0].match(regex_title_author)
@@ -99,16 +80,16 @@ class HighlightsController < ApplicationController
     regex_metadata = /Your (?<type>\w+) on page (?<page>\d*) \| location (?<location_start>\d+)-?(?<location_end>\d*) \| Added on (?<date>[\S ]*)/
     metadata = lines[1].match(regex_metadata)
     # Third line is empty, fourth line contains the text highlight
-    highlight[:quote] = lines[3].strip unless lines[3].nil?
-
     # Return a hash representing the highlight
-    highlight[:title] = title_author[:title]
-    highlight[:author] = title_author[:author]
-    highlight[:type] = metadata[:type]
-    highlight[:page] = metadata[:page]
-    highlight[:location_start] = metadata[:location_start]
-    highlight[:location_end] = metadata[:location_end]
-    highlight[:date] = metadata[:date]
-    return highlight
+    {
+      title: title_author[:title],
+      author: title_author[:author],
+      type: metadata[:type],
+      page: metadata[:page],
+      location_start: metadata[:location_start],
+      location_end: metadata[:location_end],
+      highlight_date: metadata[:date],
+      quote: lines[3]&.strip
+    }
   end
 end
