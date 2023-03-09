@@ -1,0 +1,21 @@
+<div class="container-searchbar d-flex justify-content-center">
+  <div class="search-by-buttons">
+    <a href="/books"><i class="fa-solid fa-book active"></i></a>
+    <a href="/tags"><i class="fa-solid fa-tag"></i></a>
+    <a href="/highlights"><i class="fa-solid fa-quote-left"></i></a>
+  </div>
+  <div class="d-row">
+      <div class="search">
+        <%= form_with url: books_path, method: :get, class: "d-flex" do %>
+          <div class="search-form-control form-group">
+            <%= text_field_tag :query,
+              params[:query],
+              class: "form-control",
+              placeholder: "Search by book"
+            %>
+            <button type="submit" class= "submit-btn"><i class="fas fa-search"></i></button>
+          </div>
+        <% end %>
+      </div>
+  </div>
+</div>
