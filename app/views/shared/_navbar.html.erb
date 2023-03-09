@@ -15,7 +15,7 @@
             <a href="/books"><i class="fa-regular fa-bookmark"></i> My Library</a>
           </li>
           <li class="nav-item active">
-            <a href="#"><i class="fa-solid fa-upload"></i> Import</a>
+            <a href="/import"><i class="fa-solid fa-upload"></i> Import</a>
           </li>
           <li class="nav-item active">
             <a href="#"><i class="fa-solid fa-wand-magic-sparkles"></i> Rediscover</a>
@@ -23,14 +23,14 @@
           <li class="nav-item active">
             <a href="#"><i class="fa-regular fa-face-smile-beam"></i></i> Friends</a>
           </li>
-          <li class="nav-item active">
+          <%# <li class="nav-item active">
             <a href="#"><i class="fa-regular fa-user"></i> Me</a>
-          </li>
+          </li> %>
           <li class="nav-item dropdown">
             <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Action", "#", class: "dropdown-item" %>
-              <%= link_to "Another action", "#", class: "dropdown-item" %>
+              <%= link_to "My Profile", "#", class: "dropdown-item" %>
+              <%# <%= link_to "Another action", "#", class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>
           </li>
