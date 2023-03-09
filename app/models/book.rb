@@ -9,7 +9,8 @@ class Book < ApplicationRecord
   pg_search_scope :global_search,
     against: [ :title ],
     associated_against: {
-      author: [ :name, ]
+      author: [ :name ],
+      highlight: [ :quote ]
     },
     using: {
       tsearch: { prefix: true }
