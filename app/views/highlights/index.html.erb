@@ -1,0 +1,26 @@
+<div class="container">
+  <%= render "shared/search" %></div><br>
+  <div class="container-quotes">
+    <% current_user.highlights.each do |highlight| %>
+      <div class="cards-quotes">
+        <i class="quotes fa-solid fa-quote-left"></i>
+        <div class="card-quote-content">
+          <p> <%= highlight.quote %> </p>
+          <i class="fe fe-heart"></i>
+        </div>
+        <div class="cards-quotes-actions d-flex justify-content-between">
+          <div class="tags">
+            <span> <%= "highlights" %> </span> <span><%= "highlights" %></span>
+          </div>
+          <div class="icons">
+            <i class="icon fa-solid fa-tag"></i>
+            <i class="icon fa-regular fa-heart"></i>
+            <i class="icon fa-regular fa-comment"></i>
+            <i class="icon fa-regular fa-trash-can"></i>
+            <i class="icon fa-regular fa-clone"></i>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
