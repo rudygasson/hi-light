@@ -32,17 +32,24 @@ User.create!(
 puts "---> #{User.count} users in database."
 
 puts "Creating authors…"
-authors = ["Victor Hugo", "Hermann Hesse", "Boris Vian", "J.R.R. Tolkien", "Robertson Davies"]
+authors = [
+  "Victor Hugo", "Hermann Hesse", "Boris Vian", "J.R.R. Tolkien", "Robertson Davies", "Emmanuel Carrère",
+  "Delphine de Vigan", "Leila Slimani", "Roald Dahl", "Jesus", "Michael Pollan"
+]
 10.times do
   Author.create!(name: authors.sample)
 end
 puts "---> #{Author.count} authors in database."
 
 puts "Creating books…"
-books = ["Capital", "The Steppenwolf", "L'herbe rouge", "The Lord of the Rings", "The Manticore", "Madame Bovary"]
-20.times do
+books = [
+  "Capital", "The Steppenwolf", "L'herbe rouge", "The Lord of the Rings", "The Manticore", "Madame Bovary",
+  "Sapiens", "L'adversaire", "Rien ne s'oppose à la nuit", "The Ogre's Garden", "Matilda", "The Bible",
+  "How To Change Your Mind", "The Giver", "Peter Pan", "House on Mango Street"
+]
+books.each do |book|
   Book.create!(
-    title: books.sample,
+    title: book,
     author: Author.all.sample
   )
 end
@@ -83,9 +90,17 @@ tags = [
   "project management", "self-development", "manifesting", "meditation", "agriculture", "homesteading", "best friends",
   "animals", "cooking", "mergers & acquisitions", "best horror", "favourite", "research", "novel", "movie"
 ]
+colors = [
+  "#B6ACC3", #"#67597A" purple
+  "#A1F7F7", #"#9CF6F6" blue
+  "#AFD5C7", #"#4E937A" green
+  "#FFD485", #"#FFBC42" yellow
+  "#E2A2BC", #"#8F2D56" red
+  "#F9B38A" #"#F79256" orange
+]
 User.all.each do |user|
   tags.sample(rand(1..tags.length)).each do |tag|
-    Tag.create!(name: tag, user: user)
+    Tag.create!(name: tag, user: user, color: colors.sample)
   end
 end
 puts "---> #{Tag.count} highlights in database."
