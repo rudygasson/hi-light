@@ -1,6 +1,6 @@
 class Tag < ApplicationRecord
   belongs_to :user
-  has_many :hi_tags
+  has_many :hi_tags, dependent: :destroy
   validates :name, presence: true
 
   include PgSearch::Model
