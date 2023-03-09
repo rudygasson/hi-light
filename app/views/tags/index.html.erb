@@ -1,0 +1,10 @@
+<div class="container">
+  <%= render "shared/search" %><br>
+  <div class="container d-inline tags">
+      <% @tags.each do |tag| %>
+        <%# <div class="user-tag"> %>
+          <button class="user-tag tag-color"><%= tag.name %></button>
+        <%# </div> %>
+      <% end %>
+  </div>
+</div>
