@@ -91,12 +91,12 @@ tags = [
   "animals", "cooking", "mergers & acquisitions", "best horror", "favourite", "research", "novel", "movie"
 ]
 colors = [
-  "#B6ACC3", #"#67597A" purple
-  "#A1F7F7", #"#9CF6F6" blue
-  "#AFD5C7", #"#4E937A" green
-  "#FFD485", #"#FFBC42" yellow
-  "#E2A2BC", #"#8F2D56" red
-  "#F9B38A" #"#F79256" orange
+  "purple", #"#B6ACC3", "#67597A"
+  "blue", #"#A1F7F7", "#9CF6F6"
+  "green", #"#AFD5C7", "#4E937A"
+  "yellow", #"#FFD485", "#FFBC42"
+  "red", #"#E2A2BC", "#8F2D56"
+  "orange", #"#F9B38A" "#F79256"
 ]
 User.all.each do |user|
   tags.sample(rand(1..tags.length)).each do |tag|
