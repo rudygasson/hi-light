@@ -14,6 +14,15 @@
   margin-left: 200px;
 }
 
+.navbar-logo .navbar-brand img:hover {
+  padding: 10px;
+  width: 180px;
+  margin-left: 200px;
+  transition: 0.3s;
+  opacity: 0.7;
+}
+
+
 .navbar-collapse {
   margin-right: 200px;
 }
@@ -27,4 +36,18 @@
 .navbar {
   background-color: white;
   border-bottom: solid 3px $light-gray;
+}
+
+.navbar i {
+  background-color: white;
+  border-bottom: solid 3px $light-gray;
+  margin-right: 6px;
+  margin-top: 10px;
+
+}
+
+.nav-item a:hover {
+  background-color: white;
+  transition: 0.4s;
+  color: rgb(125, 124, 124);
 }
