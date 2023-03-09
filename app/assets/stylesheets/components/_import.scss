@@ -1,0 +1,33 @@
+.import-form {
+  margin: 50px 0;
+}
+
+.import-drag-drop {
+  display: flex;
+  justify-content: center;
+  width: 700px;
+  text-align: center;
+  background-color: #FDDCD4;
+  border-radius: 20px;
+  padding: 100px 0;
+  background: radial-gradient(circle, #F9A08A 0%, #FDDCD4 100%);
+}
+
+.import-label {
+  display: flex;
+  justify-content: center;
+}
+
+.import-submit {
+  display: flex;
+  justify-content: center;
+}
+
+.import-form .import-submit input {
+  background-color: #F65026;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 30px;
+  margin: 30px 0;
+  color: white;
+}

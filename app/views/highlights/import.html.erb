@@ -1,13 +1,12 @@
-<div class="container d-flex justify-content-center m-5">
+<div class="import-form">
   <%= form_with url: "/upload", multipart: true do |form| %>
-    <%= file_field_tag :file %>
-    <%= form.submit "Import highlights" %>
+  <div class="import-drag-drop">
+    <div class="">
+      <%= file_field_tag :file, class: "form-control" %>
+    </div>
+  </div>
+    <div class="import-submit">
+      <%= form.submit "Import highlights" %>
+    </div>
   <% end %>
 </div>
-
-
-<%# @highlights.each do |highlight| %>
-  <p>
-    <%#= highlight.quote %>
-  </p>
-<%# end %>
