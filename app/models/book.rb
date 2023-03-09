@@ -4,6 +4,7 @@ class Book < ApplicationRecord
   has_many :highlights, dependent: :destroy
   validates :title, presence: true
   validates :title, uniqueness: { scope: :author }
+
   # has_one_attached :cover # NEED TO ACTIVATE ACTIVE STORAGE FIRST
 
   include PgSearch::Model
