@@ -9,6 +9,7 @@ class HighlightsController < ApplicationController
   def destroy
     @highlight.destroy
     redirect_to book_path(book)
+  end
 
   def import
   end
@@ -51,7 +52,7 @@ class HighlightsController < ApplicationController
         highlight_date: item[:date]
       )
     end
-    
+
   end
 
   private
@@ -59,6 +60,7 @@ class HighlightsController < ApplicationController
 
   def set_highlight
     @highlight = Highlight.find(params[:id])
+  end
 
   # def save_uploaded_file(uploaded_file)
   #   File.open(Rails.root.join('public', 'uploads', uploaded_file.original_filename), 'wb') do |file|
