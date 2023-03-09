@@ -1,6 +1,7 @@
 # Simple seeding with random string
 puts "Deleting previous records"
 
+HiTag.destroy_all
 Tag.destroy_all
 Highlight.destroy_all
 User.destroy_all
