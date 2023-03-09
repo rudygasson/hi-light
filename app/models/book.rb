@@ -1,5 +1,6 @@
 class Book < ApplicationRecord
   belongs_to :author
+  belongs_to :user
   has_many :highlights, dependent: :destroy
   validates :title, presence: true
   validates :title, uniqueness: { scope: :author }
