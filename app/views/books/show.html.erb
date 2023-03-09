@@ -24,7 +24,11 @@
         <div class="cards-quotes-actions d-flex justify-content-between">
           <div class="tags">
             <% highlight.tags.each do |tag| %>
-              <span> <%= tag.name %> </span>
+            <div class="tag-card">
+              <div class="<%=tag.color%>">
+              <p><%= tag.name %> </p>
+              </div>
+            </div>
             <% end %>
           </div>
           <div class="icons">

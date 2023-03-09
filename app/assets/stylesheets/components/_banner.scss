@@ -1,0 +1,16 @@
+.banner {
+  background-size: cover;
+  background-position: center;
+  background-color: $light-orange;
+  height: 150px;
+}
+
+.dashboard {
+  align-items: center;
+  margin-bottom: 100px;
+  padding: 50px;
+}
+
+.dashboard .avatar-profile {
+  border-radius: 50%;
+}

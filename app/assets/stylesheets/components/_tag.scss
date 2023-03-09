@@ -1,14 +1,16 @@
-.tags {
-  font-size: 15px;
-  margin-left: 15px;
-  border-radius: 7px;
-  padding-right: 7px;
-  padding-left: 10px;
+.tag-card {
+  margin-left: 16px;
+}
+
+.tag-card p {
+  font-size: 14px;
+  text-align: center;
+  padding-right: 14px;
+  padding-left: 14px;
 }
 
 .tag-index button {
   font-size: 14px;
-  border-radius: 10px;
   padding-right: 2px;
   padding-left: 14px;
   text-align: center;
@@ -29,24 +31,30 @@
 
 .blue {
   background-color: #A1F7F7;
+  border-radius: 10px;
 }
 
 .purple {
   background-color: #B6ACC3;
+  border-radius: 10px;
 }
 
 .orange {
   background-color: #F9B38A;
+  border-radius: 10px;
 }
 
 .yellow {
   background-color: #FFD485;
+  border-radius: 10px;
 }
 
 .red {
   background-color: #E2A2BC;
+  border-radius: 10px;
 }
 
 .green {
   background-color: #AFD5C7;
+  border-radius: 10px;
 }

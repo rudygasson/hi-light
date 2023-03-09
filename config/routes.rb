@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :books
   resources :highlights, only: ['index', 'destroy']
   resources :tags, only: ['index']
+  resources :users, only: ['show']
   get "import", to: "highlights#import"
   post "upload", to: "highlights#upload"
 end
