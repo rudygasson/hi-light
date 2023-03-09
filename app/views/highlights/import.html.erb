@@ -1,0 +1,6 @@
+<div class="container d-flex justify-content-center m-5">
+  <%= form_with url: "/upload", multipart: true do |form| %>
+    <%= file_field_tag :file %>
+    <%= form.submit "Import highlights" %>
+  <% end %>
+</div>
