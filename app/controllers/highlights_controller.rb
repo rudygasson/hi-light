@@ -1,7 +1,7 @@
 class HighlightsController < ApplicationController
 
   before_action :set_highlight, only: ['destroy']
-
+  
   def index
     @highlights = Highlight.all
   end
