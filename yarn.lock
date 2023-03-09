@@ -418,6 +418,11 @@ fastest-levenshtein@^1.0.12:
   resolved "https://registry.yarnpkg.com/fastest-levenshtein/-/fastest-levenshtein-1.0.16.tgz#210e61b6ff181de91ea9b3d1b84fdedd47e034e5"
   integrity sha512-eRnCtTTtGZFpQCwhJiUOuxPQWRXVKYDn0b2PeHfXL6/Zi53SLAzAHfVhVWK2AryC/WH05kGfxhFIPvTF0SXQzg==
 
+feathericon@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/feathericon/-/feathericon-1.0.2.tgz#1d7e27c0bea7f5e2e1349cce927c37c025a632e7"
+  integrity sha512-Y/aubbrxxmZDlzVIdnpu3FjHopzB1ADIDj6NLyYKdClmiH5KlILFAhsP8wcnkR2WKNg33y4k9OBmoF5B1IIINg==
+
 find-up@^4.0.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/find-up/-/find-up-4.1.0.tgz#97afe7d6cdc0bc5928584b7c8d7b16e8a9aa5d19"

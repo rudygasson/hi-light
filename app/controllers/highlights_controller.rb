@@ -1,5 +1,15 @@
 class HighlightsController < ApplicationController
 
+  before_action :set_highlight, only: ['destroy']
+
+  def index
+    @highlights = Highlight.all
+  end
+
+  def destroy
+    @highlight.destroy
+    redirect_to book_path(book)
+
   def import
   end
 
@@ -41,9 +51,14 @@ class HighlightsController < ApplicationController
         highlight_date: item[:date]
       )
     end
+    
   end
 
   private
+
+
+  def set_highlight
+    @highlight = Highlight.find(params[:id])
 
   # def save_uploaded_file(uploaded_file)
   #   File.open(Rails.root.join('public', 'uploads', uploaded_file.original_filename), 'wb') do |file|
@@ -86,5 +101,6 @@ class HighlightsController < ApplicationController
 
     # Return a hash representing the highlight
     highlight
+
   end
 end
