@@ -2,7 +2,7 @@
   <%= render "shared/searchbooks" %></div><br>
 
   <%# <div class="searchbar-container"><%= render "shared/searchbar" %>
-  <div class="container-sm">
+  <div class="container-sm mb-5">
     <div class="cards">
       <% @books.each do |book| %>
         <%= link_to book_path(book), class:"text-decoration-none cards-clickable" do  %>

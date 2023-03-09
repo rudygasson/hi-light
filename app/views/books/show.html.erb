@@ -13,7 +13,7 @@
       </div>
   </div>
 
-  <div class="container-quotes">
+  <div class="container-quotes mb-5">
     <% current_user.highlights.each do |highlight| %>
       <div class="cards-quotes">
         <i class="quotes fa-solid fa-quote-left"></i>
@@ -23,13 +23,15 @@
         </div>
         <div class="cards-quotes-actions d-flex justify-content-between">
           <div class="tags">
-            <span> <%= "highlights" %> </span> <span><%= "highlights" %></span>
+            <% highlight.tags.each do |tag| %>
+              <span> <%= tag.name %> </span>
+            <% end %>
           </div>
           <div class="icons">
             <i class="icon fa-solid fa-tag"></i>
             <i class="icon fa-regular fa-heart"></i>
             <i class="icon fa-regular fa-comment"></i>
-            <%= link_to @highlight, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+            <%= link_to @highlight, data: {turbo_method: :delete, turbo_confirm: "Are you sure?", id:"delete"} do %>
               <i class="icon fa-regular fa-trash-can"> </i>
             <% end %>
             <i class="icon fa-regular fa-clone"></i>

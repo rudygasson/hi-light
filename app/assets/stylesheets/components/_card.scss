@@ -107,8 +107,8 @@
   border-radius: 10px;
   background-color: $light-gray;
   border-radius: 15px;
-  margin-top: 48px;
-  padding-top: 14px;
+  margin-top: 25px;
+  padding-top: 10px;
   padding-bottom: 1px;
 }
 
@@ -117,9 +117,9 @@
   background-color: white;
   margin-right: 15px;
   margin-left: 15px;
-  margin-top: 19px;
-  padding-top: 50px;
-  padding-bottom: 40px;
+  margin-top: 0px;
+  padding-top: 25px;
+  padding-bottom: 30px;
   padding-right: 40px;
   padding-left: 60px;
   border-radius: 15px;
@@ -127,8 +127,8 @@
 .cards-quotes-actions {
   line-height: 20px;
   background-color: transparent;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 8px;
+  margin-bottom: 8px;
 
 }
 
@@ -137,7 +137,7 @@
   color: $gray;
   position: absolute;
   padding-left: 30px;
-  padding-top: 37px;
+  padding-top: 20px;
 }
 
 .icon {
@@ -147,10 +147,14 @@
   text-decoration: none !important;
 }
 
+.icons a {
+  text-decoration: none !important;
+}
+
 .icon:hover {
   margin-right: 15px;
   margin-left: 3px;
-  transition: 0.6s;
+  transition: 0.3s;
   transform: translate3D(0,-1px,0) scale(1.01);
   color: rgb(125, 124, 124);
   cursor: pointer;
@@ -168,7 +172,7 @@
   font-size: 15px;
   margin-left: 15px;
   background-color: $light-orange;
-  border-radius: 10px;
+  border-radius: 7px;
   padding-right: 7px;
   padding-left: 10px;
 }

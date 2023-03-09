@@ -10,7 +10,9 @@
         </div>
         <div class="cards-quotes-actions d-flex justify-content-between">
           <div class="tags">
-            <span> <%= "highlights" %> </span> <span><%= "highlights" %></span>
+            <% highlight.tags.each do |tag| %>
+              <span> <%= tag.name %> </span>
+            <% end %>
           </div>
           <div class="icons">
             <i class="icon fa-solid fa-tag"></i>
