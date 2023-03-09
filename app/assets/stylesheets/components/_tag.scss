@@ -1,0 +1,11 @@
+.user-tag {
+  border: 0.5px solid $gray;
+  border-radius: 20px;
+  text-align: center;
+  background-color: white;
+  margin: 2px;
+}
+
+.user-tag:hover {
+  background-color: rgb(184, 184, 184);
+}

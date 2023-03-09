@@ -1,14 +1,8 @@
 <div class="container-searchbar d-flex justify-content-center">
   <div class="search-by-buttons">
-    <%= link_to books_path do %>
-      <i class="fa-solid fa-book"></i>
-    <% end %>
-    <%= link_to tags_path do %>
-      <i class="fa-solid fa-tag"></i>
-    <% end %>
-    <%= link_to highlights_path do %>
-      <i class="fa-solid fa-quote-left"></i>
-    <% end %>
+    <a href="/books"><i class="fa-solid fa-book"></i></a>
+    <a href="/tags"><i class="fa-solid fa-tag"></i></a>
+    <a href="/highlights"><i class="fa-solid fa-quote-left"></i></a>
   </div>
   <div class="d-row">
       <div class="search">
