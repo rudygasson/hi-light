@@ -1,10 +1,23 @@
 <div class="container">
-  <%= render "shared/searchtags" %></div><br>
+  <%= render "shared/searchtags" %><br>
   <div class="container-tags">
     <div class="container">
         <% current_user.tags.each do |tag| %>
             <span class="tag-index"> <%= tag.name %> &nbsp;&nbsp;</span>
         <% end %>
     </div>
+  </div>
+  <div class="tag-search-results">
+    <% current_user.highlights.each do |highlight| %>
+      <% these_tags = highlight.tags %>
+      <% these_tags.each do |this_tag| %>
+        <% @tags.each do |tag| %>
+          <% if tag.name == this_tag.name %>
+              <%= highlight.quote %>
+              <%= tag.name %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
   </div>
 </div>
