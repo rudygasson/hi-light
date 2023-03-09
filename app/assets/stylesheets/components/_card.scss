@@ -1,11 +1,11 @@
 .cards {
-  margin-top: 61px;
+  margin-top: 50px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-gap: 62px;
-  flex-grow: 1;
+  grid-gap: 37px;
   padding: 0px;
   border-radius: 10%;
+  
 }
 
 .card-book {
@@ -16,12 +16,13 @@
   justify-content: space-around;
   border-radius: 10%;
   width: 80%;
+  text-align: center;
   background-color: white;
 }
 
 .card-book:hover {
   transition: 0.7s;
-  transform: translate3D(0,-2px,0) scale(1.03);
+  transform: translate3D(0,-2px,0) scale(1.02);
   overflow: hidden;
   background-position: center;
   justify-content: space-around;
@@ -33,6 +34,7 @@
   width: 100%;
   border-radius: 10%;
   object-fit: cover;
+  background-position: center;
 }
 
 .card-book h4 {
@@ -55,11 +57,12 @@
 
 .cards-clickable {
  color: $black;
+ background-position: center;
 }
 
 .cards-clickable:hover {
   color: $gray;
-  transition: 0.7s;
+  transition: 0.6s;
  }
 
 #book-cover-show {
@@ -67,6 +70,7 @@
   width: 155px;
   border-radius: 10px;
   object-fit: cover;
+  background-position: center;
 }
 
 .book-info {
