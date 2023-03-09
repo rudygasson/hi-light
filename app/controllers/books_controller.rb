@@ -3,6 +3,14 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
+    if params[:query].present?
+      sql_query = <<~SQL
+        highlights.quote @@ :query
+      SQL
+      @highlights = @book.highlights.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @highlights = @book.highlights
+    end
   end
 
   def index
