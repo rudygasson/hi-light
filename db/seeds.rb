@@ -36,8 +36,8 @@ authors = [
   "Victor Hugo", "Hermann Hesse", "Boris Vian", "J.R.R. Tolkien", "Robertson Davies", "Emmanuel Carrère",
   "Delphine de Vigan", "Leila Slimani", "Roald Dahl", "Jesus", "Michael Pollan"
 ]
-10.times do
-  Author.create!(name: authors.sample)
+authors.each do |author|
+  Author.create!(name: author)
 end
 puts "---> #{Author.count} authors in database."
 
@@ -50,7 +50,8 @@ books = [
 books.each do |book|
   Book.create!(
     title: book,
-    author: Author.all.sample
+    author: Author.all.sample,
+    user: User.all.sample
   )
 end
 puts "---> #{Book.count} books in database."
