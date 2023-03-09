@@ -143,6 +143,8 @@
 .icon {
   margin-right: 15px;
   margin-left: 3px;
+  color: #3a3939;
+  text-decoration: none !important;
 }
 
 .icon:hover {
@@ -152,7 +154,15 @@
   transform: translate3D(0,-1px,0) scale(1.01);
   color: rgb(125, 124, 124);
   cursor: pointer;
+  text-decoration: none !important;
 }
+
+// .icon::before {
+//   margin-right: 15px;
+//   margin-left: 3px;
+//   color: #3a3939;
+//   text-decoration: none !important;
+// }
 
 .tags span {
   font-size: 15px;
@@ -161,4 +171,33 @@
   border-radius: 10px;
   padding-right: 7px;
   padding-left: 10px;
+}
+
+.collapsible {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  font-size: 15px;
+
+}
+
+.content {
+  display: none;
+  overflow: hidden;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out;
+}
+
+.tag-index {
+  font-size: 16px;
+  background-color: $light-orange;
+  border-radius: 10px;
+  padding-right: 7px;
+  padding-left: 7px;
+  text-align: center;
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  line-height: 39px;
 }

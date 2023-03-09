@@ -1,0 +1,11 @@
+<div class="container">
+  <%= render "shared/search" %></div><br>
+  <div class="container-tags">
+    <div class="container">
+        <% current_user.tags.each do |tag| %>
+            <span class="tag-index"> <%= tag.name %> &nbsp;&nbsp;</span>
+        <% end %>
+    </div>
+
+  </div>
+</div>
