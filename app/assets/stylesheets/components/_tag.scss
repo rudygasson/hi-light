@@ -1,11 +1,52 @@
-.user-tag {
-  border: 0.5px solid $gray;
-  border-radius: 20px;
-  text-align: center;
-  background-color: white;
-  margin: 2px;
+.tags {
+  font-size: 15px;
+  margin-left: 15px;
+  border-radius: 7px;
+  padding-right: 7px;
+  padding-left: 10px;
 }
 
-.user-tag:hover {
-  background-color: rgb(184, 184, 184);
+.tag-index button {
+  font-size: 14px;
+  border-radius: 10px;
+  padding-right: 2px;
+  padding-left: 14px;
+  text-align: center;
+  margin-left: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  line-height: 20px;
+  border: transparent 0px solid;
+}
+
+.tag-index button:hover {
+  transition: 0.7s;
+  transform: translate3D(0,-1px,0) scale(1.01);
+  overflow: hidden;
+  background-position: center;
+  justify-content: space-around;
+}
+
+.blue {
+  background-color: #A1F7F7;
+}
+
+.purple {
+  background-color: #B6ACC3;
+}
+
+.orange {
+  background-color: #F9B38A;
+}
+
+.yellow {
+  background-color: #FFD485;
+}
+
+.red {
+  background-color: #E2A2BC;
+}
+
+.green {
+  background-color: #AFD5C7;
 }
