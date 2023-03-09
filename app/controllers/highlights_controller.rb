@@ -1,14 +1,14 @@
 class HighlightsController < ApplicationController
 
   before_action :set_highlight, only: ['destroy']
-  
+
   def index
     @highlights = Highlight.all
   end
 
   def destroy
     @highlight.destroy
-    redirect_to book_path(book)
+    redirect_to book_path(@highlight.book)
   end
 
   def import
