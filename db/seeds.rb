@@ -4,8 +4,8 @@ puts "Deleting previous records"
 HiTag.destroy_all
 Tag.destroy_all
 Highlight.destroy_all
-User.destroy_all
 Book.destroy_all
+User.destroy_all
 Author.destroy_all
 
 puts "Seeding database…"
@@ -69,10 +69,11 @@ quotes = [
 dates = ["Tuesday, 3 May 2022 19:24:53", "Saturday, 7 May 2022 19:48:03", "Monday, 9 May 2022 23:05:13"]
 30.times do
   location = (1..3000).to_a.sample
+  book = Book.all.sample
 
   Highlight.create(
-    user: User.all.sample,
-    book: Book.all.sample,
+    user: book.user,
+    book: book,
     quote: quotes.sample,
     page: (1..100).to_a.sample,
     location_start: location,
