@@ -10,7 +10,8 @@
   background-color: #FDDCD4;
   border-radius: 20px;
   padding: 100px 0;
-  background: radial-gradient(circle, #F9A08A 0%, #FDDCD4 100%);
+  background: radial-gradient(circle, #faf0ef 0%, #f9c0b2 100%);
+  border: dashed 1px $orange;
 }
 
 .import-label {
@@ -24,10 +25,14 @@
 }
 
 .import-form .import-submit input {
-  background-color: #F65026;
-  border: none;
+  background-color: $orange;
+  border: rgb(224, 224, 224) 3px solid;
   border-radius: 12px;
   padding: 10px 30px;
   margin: 30px 0;
   color: white;
+}
+
+.import-form .import-submit input:hover {
+  background-color: #dd4822;
 }
