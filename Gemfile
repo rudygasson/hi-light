@@ -80,3 +80,4 @@ end
 gem "pg_search"
 gem "feathericon-rails"
 gem "feathericon-sass"
+gem "cloudinary"
