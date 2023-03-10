@@ -6,4 +6,5 @@ class User < ApplicationRecord
   has_many :tags
   has_many :highlights
   has_many :books
+  has_one_attached :photo
 end
