@@ -1,11 +1,21 @@
 // Import Google fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Lato&family=Manrope&family=Playfair+Display&family=Public+Sans&family=Quicksand&family=Source+Sans+Pro&display=swap');
 
 // Define fonts for body and headers
-$body-font: "Work Sans", "Helvetica", "sans-serif";
-$headers-font: "Nunito", "Helvetica", "sans-serif";
+$body-font: "Source Sans Pro", "Helvetica", "sans-serif";
+$headers-font: "Source Sans Pro", "Helvetica", "sans-serif";
+
+// font-family: 'Inter', sans-serif;
+// font-family: 'Lato', sans-serif;
+// font-family: 'Manrope', sans-serif;
+// font-family: 'Playfair Display', serif;
+// font-family: 'Public Sans', sans-serif;
+// font-family: 'Quicksand', sans-serif;
+// font-family: 'Source Sans Pro', sans-serif;
 
 // To use a font file (.woff) uncomment following lines
+
 // @font-face {
 //   font-family: "Font Name";
 //   src: font-url('FontFile.eot');
