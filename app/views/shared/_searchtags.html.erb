@@ -7,10 +7,10 @@
   <div class="d-row">
       <div class="search">
         <%= form_with url: tags_path, method: :get, class: "d-flex" do %>
-          <div class="search-form-control form-group">
+          <div class="search-form-control">
             <%= text_field_tag :query,
               params[:query],
-              class: "form-control",
+              class: "form-control tag-card",
               placeholder: "Search by tag"
             %>
             <button type="submit" class= "submit-btn"><i class="fas fa-search"></i></button>

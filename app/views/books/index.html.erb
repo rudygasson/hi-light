@@ -1,23 +1,23 @@
 <div class="container">
   <div data-controller="scroll-progress" class="h-2 bg-indigo-400 fixed top-0"></div>
-  <%= render "shared/searchbooks" %></div><br>
-
-  <%# <div class="searchbar-container"><%= render "shared/searchbar" %>
+    <%= render "shared/searchbooks" %></div><br>
     <div class="container-sm mb-5">
       <div class="cards">
-        <% @books.each do |book| %>
-          <%= link_to book_path(book), class:"text-decoration-none cards-clickable d-flex justify-content-center" do  %>
+        <% current_user.books.each do |my_book| %>
+        <% @books.each do |s_book| %>
+          <% if s_book.title == my_book.title %>
+            <%= link_to book_path(my_book), class:"text-decoration-none cards-clickable d-flex justify-content-center" do  %>
             <div class="card-book">
-                <img src="https://source.unsplash.com/collection/8761640/"/>
+              <img src="https://source.unsplash.com/collection/8761640/"/>
               <div class="">
-                <h4> <%= book.title %> </h4>
-                <p> <%= book.author.name %> </p>
+                <h4> <%= my_book.title %> </h4>
+                <p> <%= my_book.author.name %> </p>
               </div>
             </div>
+            <% end %>
           <% end %>
         <% end %>
-        </div>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>

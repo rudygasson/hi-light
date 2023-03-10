@@ -4,44 +4,48 @@
     <div class="container">
         <% current_user.tags.each do |tag| %>
             <span class="tag-index">
-            <button class="<%=tag.color %>">
-              <%= tag.name %> &nbsp;&nbsp;</span>
-            </button>
+            <a href="?query=<%=tag.name %>">
+              <button class="<%=tag.color %>">
+                <%= tag.name %> &nbsp;&nbsp;</span>
+              </button>
+            </a>
         <% end %>
     </div>
   </div>
   <div class="tag-search-results">
     <div class="container-quotes mb-5">
-      <% current_user.highlights.each do |highlight| %>
-        <% these_tags = highlight.tags %>
-        <% these_tags.each do |this_tag| %>
-          <% @tags.each do |tag| %>
-            <% if tag.name == this_tag.name %>
-              <div class="cards-quotes">
-                  <i class="quotes fa-solid fa-quote-left"></i>
-                  <div class="card-quote-content">
-                    <%= highlight.quote %>
-                    <i class="fe fe-heart"></i>
-                  </div>
-                  <div class="cards-quotes-actions d-flex justify-content-between">
-                      <% highlight.tags.each do |tag| %>
-                      <div class="tag-card">
-                        <div class="<%=tag.color%>">
-                        <p><%= tag.name %></p>
-                        </div>
-                      </div>
-                      <% end %>
-                    <div class="icons">
-                      <i class="icon fa-solid fa-tag"></i>
-                      <i class="icon fa-regular fa-heart"></i>
-                      <i class="icon fa-regular fa-comment"></i>
-                      <%= link_to @highlight, data: {turbo_method: :delete, turbo_confirm: "Are you sure?", id:"delete"} do %>
-                        <i class="icon fa-regular fa-trash-can"> </i>
-                      <% end %>
-                      <i class="icon fa-regular fa-clone"></i>
+      <% if !@tags.nil? %>
+        <% current_user.highlights.each do |highlight| %>
+          <% these_tags = highlight.tags %>
+          <% these_tags.each do |this_tag| %>
+            <% @tags.each do |tag| %>
+              <% if tag.name == this_tag.name %>
+                <div class="cards-quotes">
+                    <i class="quotes fa-solid fa-quote-left"></i>
+                    <div class="card-quote-content">
+                      <%= highlight.quote %>
+                      <i class="fe fe-heart"></i>
                     </div>
-                  </div>
-              </div>
+                    <div class="cards-quotes-actions d-flex justify-content-between">
+                        <% highlight.tags.each do |tag| %>
+                        <div class="tag-card">
+                          <div class="<%=tag.color%>">
+                          <p><%= tag.name %></p>
+                          </div>
+                        </div>
+                        <% end %>
+                      <div class="icons">
+                        <i class="icon fa-solid fa-tag"></i>
+                        <i class="icon fa-regular fa-heart"></i>
+                        <i class="icon fa-regular fa-comment"></i>
+                        <%= link_to @highlight, data: {turbo_method: :delete, turbo_confirm: "Are you sure?", id:"delete"} do %>
+                          <i class="icon fa-regular fa-trash-can"> </i>
+                        <% end %>
+                        <i class="icon fa-regular fa-clone"></i>
+                      </div>
+                    </div>
+                </div>
+              <% end %>
             <% end %>
           <% end %>
         <% end %>
