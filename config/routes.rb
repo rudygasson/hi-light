@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: "books#index"
+  root to: "pages#home"
   resources :books
   resources :highlights, only: ['index', 'destroy']
   resources :tags, only: ['index']
