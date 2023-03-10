@@ -27,6 +27,7 @@
                       <i class="fe fe-heart"></i>
                     </div>
                     <div class="cards-quotes-actions d-flex justify-content-between">
+                      <div class="tags d-inline-flex">
                         <% highlight.tags.each do |tag| %>
                         <div class="tag-card">
                           <div class="<%=tag.color%>">
@@ -34,6 +35,7 @@
                           </div>
                         </div>
                         <% end %>
+                      </div>
                       <div class="icons">
                         <i class="icon fa-solid fa-tag"></i>
                         <i class="icon fa-regular fa-heart"></i>
