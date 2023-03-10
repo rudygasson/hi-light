@@ -6,19 +6,19 @@
         <i class="quotes fa-solid fa-quote-left"></i>
         <div class="card-quote-content">
           <p> <%= highlight.quote %> </p>
-          <h5> page n. <%= highlight.page %> - </h5>
-          <h5> location: <%= highlight.location_start %> </h5>
+          <h5 class="d-flex justify-content-end"> page n. <%= highlight.page %> </h5>
         </div>
         <div class="cards-quotes-actions d-flex justify-content-between">
-          <div class="tags">
+          <div class="tags d-inline-flex">
             <% highlight.tags.each do |tag| %>
-              <span> <%= tag.name %> </span>
+            <div class="tag-card">
+              <div class="<%=tag.color%>">
+              <p><%= tag.name %></p>
+              </div>
+            </div>
             <% end %>
           </div>
-          <div class="cards-quotes-location">
-          </div>
           <div class="icons">
-            <p> page n. <%= highlight.page %> - location: <%= highlight.location_start %> </p>
             <i class="icon fa-solid fa-tag"></i>
             <i class="icon fa-regular fa-heart"></i>
             <i class="icon fa-regular fa-comment"></i>
