@@ -14,10 +14,10 @@
   </div>
   <%= render "shared/searchinbook" %></div><br>
   <div class="container-quotes mb-5">
-    <% current_user.highlights.each do |highlight| %>
+    <% @book.highlights.each do |highlight| %>
       <div class="cards-quotes">
         <i class="quotes fa-solid fa-quote-left"></i>
-        <div class="card-quote-content">
+        <div class="card-quote-content" data-controller="clipboard" data-clipboard-success-content="Copied!">
           <p> <%= highlight.quote %> </p>
           <i class="fe fe-heart"></i>
         </div>
@@ -37,19 +37,12 @@
             <i class="icon fa-regular fa-comment"></i>
             <%= link_to highlight_path(highlight, book: @book), data: {turbo_method: :delete, turbo_confirm: "Are you sure?", id:"delete"} do %>
               <i class="icon fa-regular fa-trash-can"> </i>
-
             <% end %>
             <i class="icon fa-regular fa-clone"></i>
           </div>
         </div>
       </div>
     <% end %>
-
   </div>
-  <div id="highlight-no"> <%= current_user.highlights.count %> highlights</div>
+  <div id="highlight-no"> <%= pluralize(@book.highlights.count, 'highlight') %></div>
 </div>
-
-<script>
-const randomColor = "#"+((1<<24)*Math.random()|0).toString(16);
-document.documentElement.style.setProperty('--main-bg-color', randomColor);
-</script>
