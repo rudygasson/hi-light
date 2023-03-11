@@ -2,12 +2,33 @@
   <div class="container">
     <div class="dashboard d-flex">
       <div class="avatar-img">
-        <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar-profile" %>
+        <% if current_user.photo.attached? %>
+          <%= cl_image_tag current_user.photo.key, class: "avatar-profile" %>
+        <% else %>
+          <%= image_tag "avatar.png", class: "avatar-profile" %>
+        <% end %>
       </div>
-    <div class="profile-information">
+      <div class="profile-information">
       <h4><%= current_user.first_name %> <%= current_user.last_name %></h4>
-      <p>Books: <%= current_user.books.count %> <br>
-      Highlights: <%= current_user.highlights.count %>
+      <p>Books in <span class="bolded">My Library </span>: <%= current_user.books.count %> <br>
+      My Highlights: <%= current_user.highlights.count %><br>
+      My Favourite Highlights: </p>
+      </div>
     </div>
-  </div>
+    <div class="recently-added">
+      <h5>Books recently added to my library: </h5>
+      <div class="cards added">
+        <% current_user.books.last(5).each do |my_book| %>
+          <%= link_to book_path(my_book), class:"text-decoration-none cards-clickable d-flex justify-content-center" do  %>
+            <div class="card-book recent">
+              <img src="https://source.unsplash.com/collection/8761640/"/>
+              <div class="card-book-recently-added">
+                <h4> <%= my_book.title %> </h4>
+                <p> <%= my_book.author.name %> </p>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
 </div>
