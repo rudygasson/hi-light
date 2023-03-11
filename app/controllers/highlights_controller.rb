@@ -20,21 +20,12 @@ class HighlightsController < ApplicationController
     @highlights = generate_highlights(source)
     @highlights.each do |highlight|
       # Check if author exists, otherwise create
-      # TODO: use find_by
-      author = Author.where(name: highlight[:author])
-      if author.present?
-        author = author.first
-      else
-        author = Author.create(name: highlight[:author])
-      end
+      author = Author.find_by(name: highlight[:author])
+      author = Author.create(name: highlight[:author]) if author.blank?
 
       # Check if book exists, otherwise create
-      book = Book.where(title: highlight[:title], author: author, user: current_user)
-      if book.present?
-        book = book.first
-      else
-        book = Book.create(title: highlight[:title], author: author, user: current_user)
-      end
+      book = Book.find_by(title: highlight[:title], author: author, user: current_user)
+      book = Book.create(title: highlight[:title], author: author, user: current_user) if book.blank?
 
       # Create highlight
       # TODO: Check for duplicates
