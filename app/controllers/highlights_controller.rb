@@ -1,5 +1,6 @@
-class HighlightsController < ApplicationController
+# encoding: utf-8
 
+class HighlightsController < ApplicationController
   before_action :set_highlight, only: ['destroy']
 
   def index
@@ -15,9 +16,8 @@ class HighlightsController < ApplicationController
   end
 
   def upload
-    @text = params[:file].tempfile.read
-    @highlights = generate_highlights(@text)
-
+    source = File.read(params[:file].tempfile, encoding: "utf-8")
+    @highlights = generate_highlights(source)
     @highlights.each do |item|
       # Check if author exists, otherwise create
       # TODO: use find_by
@@ -60,8 +60,7 @@ class HighlightsController < ApplicationController
 
   def generate_highlights(source)
     highlights = []
-    clippings = source.split('==========')
-    clippings.each do |clipping|
+    source.split('==========').each do |clipping|
       clipping.strip!
       next if clipping == ""
 
@@ -74,7 +73,8 @@ class HighlightsController < ApplicationController
     # Separate lines of the clipping
     lines = clipping.split("\n")
     # First line contains book title and author
-    regex_title_author = /(?<title>[\S ]+) \((?<author>[^(]+)\)/
+    regex_title_author = /(?<title>[\S ]+) (- (?<author_alt>[\w ]+)|\((?<author>[^(]+)\))/
+    # regex_title_author = /(?<title>[\S ]+) \((?<author>[^(]+)\)/
     title_author = lines[0].match(regex_title_author)
     # Second line contains metadata (page number, character location, highlighting date)
     regex_metadata = /Your (?<type>\w+) on page (?<page>\d*) \| location (?<location_start>\d+)-?(?<location_end>\d*) \| Added on (?<date>[\S ]*)/
@@ -82,8 +82,8 @@ class HighlightsController < ApplicationController
     # Third line is empty, fourth line contains the text highlight
     # Return a hash representing the highlight
     {
-      title: title_author[:title],
-      author: title_author[:author],
+      title: title_author[:title].gsub(/[\ufeff\u200b\u200d]/, ""),
+      author: (title_author[:author]||title_author[:author_alt]).gsub(/[\ufeff\u200b\u200d]/, ""),
       type: metadata[:type],
       page: metadata[:page],
       location_start: metadata[:location_start],
