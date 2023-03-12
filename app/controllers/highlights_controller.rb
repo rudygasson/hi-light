@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 class HighlightsController < ApplicationController
   before_action :set_highlight, only: ['destroy']
 
@@ -20,8 +18,15 @@ class HighlightsController < ApplicationController
       @message = "Please select a file to import."
     else
       source = File.read(params[:file].tempfile, encoding: "utf-8")
+
+      # Initialise tracking of duplicates and imported records
+      @imported = []
+      @duplicates = []
+
+      # Generate highlights from source
       @highlights = generate_highlights(source)
       @highlights.each do |highlight|
+
         # Check if author exists, otherwise create
         author = Author.find_by(name: highlight[:author])
         author = Author.create(name: highlight[:author]) if author.blank?
@@ -30,9 +35,13 @@ class HighlightsController < ApplicationController
         book = Book.find_by(title: highlight[:title], author: author, user: current_user)
         book = Book.create(title: highlight[:title], author: author, user: current_user) if book.blank?
 
-        next if Highlight.exists?(user: current_user, book: book, quote: highlight[:quote])
+        # Check if highlight exists, otherwise create, track duplicates
+        if Highlight.exists?(user: current_user, book: book, quote: highlight[:quote])
+          @duplicates << highlight
+          next
+        end
 
-        Highlight.create(
+        Highlight.new(
           user: current_user,
           book: book,
           quote: highlight[:quote],
@@ -70,7 +79,7 @@ class HighlightsController < ApplicationController
   end
 
   def strip_whitespace!(string)
-    # Strip non-width whitespaces
+    # Strip non-width whitespaces, requires utf-8 encoding
     string.gsub(/[\ufeff\u200b\u200d]/, "")
   end
 
@@ -96,5 +105,11 @@ class HighlightsController < ApplicationController
       highlight_date: metadata[:date]&.strip,
       quote: lines[3]&.strip
     }
+  end
+
+  def assign_random_cover
+    num = ('%02d' % (1..16).to_a.sample)
+    color = "orange"
+    "cover-#{num}-#{color}.png"
   end
 end
