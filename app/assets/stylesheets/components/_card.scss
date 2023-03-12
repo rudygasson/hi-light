@@ -400,3 +400,29 @@ svg:hover {
 .cards-social-avatar {
 margin: auto 10px;
 }
+
+.cards-social-follow {
+  text-align: right;
+
+}
+.cards-social-follow input {
+  background-color: #f65026;
+  border: #e0e0e0 2px solid;
+  border-radius: 12px;
+  padding: 5px 10px;
+  margin: 35px 0;
+  color: white;
+  text-align: right;
+}
+
+.cards-social-follow input:hover {
+  background-color: #f65026;
+  border: #e0e0e0 2px solid;
+  border-radius: 12px;
+  padding: 5px 10px;
+  margin: 35px 0;
+  color: white;
+  opacity: 0.8;
+  transition: 0.5s;
+  text-align: right;
+}
