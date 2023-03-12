@@ -16,30 +16,32 @@ class HighlightsController < ApplicationController
   end
 
   def upload
-    source = File.read(params[:file].tempfile, encoding: "utf-8")
-    @highlights = generate_highlights(source)
-    @highlights.each do |highlight|
-      # Check if author exists, otherwise create
-      author = Author.find_by(name: highlight[:author])
-      author = Author.create(name: highlight[:author]) if author.blank?
+    if params[:file].nil?
+      @message = "Please select a file to import."
+    else
+      source = File.read(params[:file].tempfile, encoding: "utf-8")
+      @highlights = generate_highlights(source)
+      @highlights.each do |highlight|
+        # Check if author exists, otherwise create
+        author = Author.find_by(name: highlight[:author])
+        author = Author.create(name: highlight[:author]) if author.blank?
 
-      # Check if book exists, otherwise create
-      book = Book.find_by(title: highlight[:title], author: author, user: current_user)
-      book = Book.create(title: highlight[:title], author: author, user: current_user) if book.blank?
+        # Check if book exists, otherwise create
+        book = Book.find_by(title: highlight[:title], author: author, user: current_user)
+        book = Book.create(title: highlight[:title], author: author, user: current_user) if book.blank?
 
-      # Create highlight
-      # TODO: Check for duplicates
-      # TODO: Check "Your Bookmark/Note/Highlight"
-      # TODO: Fix bug where author can be empty
-      Highlight.create(
-        user: current_user,
-        book: book,
-        quote: highlight[:quote],
-        page: highlight[:page],
-        location_start: highlight[:location_start],
-        location_end: highlight[:location_end],
-        highlight_date: highlight[:highlight_date]
-      )
+        next if Highlight.exists?(user: current_user, book: book, quote: highlight[:quote])
+
+        Highlight.create(
+          user: current_user,
+          book: book,
+          quote: highlight[:quote],
+          page: highlight[:page],
+          location_start: highlight[:location_start],
+          location_end: highlight[:location_end],
+          highlight_date: highlight[:highlight_date]
+        )
+      end
     end
   end
 
@@ -51,7 +53,7 @@ class HighlightsController < ApplicationController
 
   def generate_highlights(source)
     highlights = []
-    # Split source text into individual clippings
+    # Remove whitespace and split source text into individual clippings
     strip_whitespace!(source).split('==========').each do |clipping|
       clipping.strip!
       # Ignore empty clippings
@@ -63,6 +65,7 @@ class HighlightsController < ApplicationController
 
       highlights << highlight
     end
+    # Return an array of highlight hashes
     highlights
   end
 
