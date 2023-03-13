@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index ]
-  before_action :set_book, only: ['update']
+  before_action :set_book, only: ['destroy', 'edit', 'update']
 
   def index
     if params[:query].present?
@@ -26,8 +26,17 @@ class BooksController < ApplicationController
     end
   end
 
+  def edit
+  end
+
   def update
-    @book.update(books_params)
+    @book.update(book_params)
+    redirect_to user_path(current_user)
+  end
+
+  def destroy
+    @book.destroy
+    redirect_to user_path(current_user)
   end
 
   private
@@ -42,5 +51,9 @@ class BooksController < ApplicationController
 
   def books_params
     params.require(:books).permit(:position)
+  end
+
+  def book_params
+    params.require(:book).permit(:cover)
   end
 end

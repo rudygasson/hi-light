@@ -15,52 +15,50 @@
 }
 
 .tag-index button {
-  font-size: 14px;
-  padding-right: 2px;
-  padding-left: 14px;
+  font-size: 16px;
   text-align: center;
-  margin-left: 5px;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 3px;
   line-height: 20px;
   border: transparent 0px solid;
 }
 
 .tag-index button:hover {
   transition: 0.7s;
-  transform: translate3D(0,-1px,0) scale(1.01);
+  transform: translate3D(0,-1.5px,0) scale(1.02);
   overflow: hidden;
   background-position: center;
   justify-content: space-around;
 }
 
 .blue {
-  background-color: #A1F7F7;
+  background-color: $tag-blue;
   border-radius: 10px;
 }
 
 .purple {
-  background-color: #B6ACC3;
+  background-color: $tag-purple;
   border-radius: 10px;
 }
 
 .orange {
-  background-color: #F9B38A;
+  background-color: $tag-orange;
   border-radius: 10px;
 }
 
 .yellow {
-  background-color: #FFD485;
+  background-color: $tag-yellow;
   border-radius: 10px;
 }
 
 .red {
-  background-color: #E2A2BC;
+  background-color: $tag-red;
   border-radius: 10px;
 }
 
 .green {
-  background-color: #AFD5C7;
+  background-color: $tag-green;
   border-radius: 10px;
 }
 
