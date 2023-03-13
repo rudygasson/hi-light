@@ -14,14 +14,13 @@
         <a href="/highlights" class="text-decoration-none">My Highlights: <%= current_user.highlights.count %></a><br>
         My Favourite Highlights: </p>
       </div>
+      <hr class="hr m-4" />
       <div class="profile-information-actions">
-
-
-
-
+      
       </div>
     </div>
     <div class="recently-added">
+    <hr class="hr m-4" />
       <h5>Books recently added to my library: </h5>
       <div class="cards added">
         <% current_user.books.last(5).each do |my_book| %>

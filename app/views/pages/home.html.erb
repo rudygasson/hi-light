@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="cards">
+    <% all_books = Book.first(5) %>
+    <% all_books.each do |book| %>
+      <div class="card-book">
+        <img src="https://source.unsplash.com/collection/8761640/"/>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="container justify-content-center">
+    <div class="call-to-action">
+      <button><a href="/users/sign_in">Log-in or Sign-Up !</a></button>
+    </div>
+  </div>
+
+  <div class="cards">
+    <% all_books = Book.last(5) %>
+    <% all_books.each do |book| %>
+      <div class="card-book">
+        <img src="https://source.unsplash.com/collection/8761640/"/>
+      </div>
+    <% end %>
+  </div>
+</div>
