@@ -8,9 +8,9 @@ class BooksController < ApplicationController
       books.title @@ :query
       OR authors.name @@ :query
       SQL
-      @books = Book.joins(:author).where(sql_query, query: "%#{params[:query]}%")
+      @books = Book.joins(:author).where(sql_query, query: "%#{params[:query]}%", user: current_user)
     else
-      @books = Book.all
+      @books = Book.includes(:author).where(user: current_user)
     end
   end
 

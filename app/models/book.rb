@@ -20,8 +20,6 @@ class Book < ApplicationRecord
       tsearch: { prefix: true }
     }
 
-  private
-
   def set_default_cover
     self.default_cover = (1..96).to_a.sample
   end
