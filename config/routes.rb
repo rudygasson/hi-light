@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
   resources :books
   resources :highlights, only: ['index', 'destroy']
-  resources :tags, only: ['index']
+  resources :tags, only: ['index', 'new', 'create', 'edit', 'update', 'destroy']
   resources :users, only: ['show', 'index']
   get "import", to: "highlights#import"
   post "upload", to: "highlights#upload"
