@@ -2,7 +2,16 @@ class HighlightsController < ApplicationController
   before_action :set_highlight, only: ['destroy']
 
   def index
-    @highlights = Highlight.all
+    if params[:query].present?
+      sql_query = <<~SQL
+        highlights.quote @@ :query
+      SQL
+      @highlights = Highlight
+        .where(sql_query, query: "%#{params[:query]}%")
+        .and(Highlight.where(user: current_user))
+    else
+      @highlights = Highlight.where(user: current_user)
+    end
   end
 
   def destroy
