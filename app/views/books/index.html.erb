@@ -3,21 +3,17 @@
     <%= render "shared/searchbooks" %></div><br>
     <div class="container-sm mb-5">
       <div class="cards">
-        <% current_user.books.each do |my_book| %>
-        <% @books.each do |s_book| %>
-          <% if s_book.title == my_book.title %>
-            <%= link_to book_path(my_book), class:"text-decoration-none cards-clickable d-flex justify-content-center" do  %>
-            <div class="card-book">
-              <%= image_tag "covers/cover-#{my_book.default_cover}.png" %>
-              <div class="">
-                <h4> <%= my_book.title %> </h4>
-                <p> <%= my_book.author.name %> </p>
-              </div>
+        <% @books.each do |book| %>
+          <%= link_to book_path(book), class:"text-decoration-none cards-clickable d-flex justify-content-center" do  %>
+          <div class="card-book">
+            <%= image_tag "covers/cover-#{book.default_cover}.png" %>
+            <div class="">
+              <h4> <%= book.title %> </h4>
+              <p> <%= book.author.name %> </p>
             </div>
-            <% end %>
+          </div>
           <% end %>
         <% end %>
-      <% end %>
     </div>
   </div>
 </div>
