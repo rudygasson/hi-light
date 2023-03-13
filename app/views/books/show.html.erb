@@ -15,12 +15,12 @@
 
   <%= render "shared/searchinbook" %></div><br>
   <div class="container-quotes mb-5">
-    <% @book.highlights.each do |highlight| %>
+    <% @highlights.each do |highlight| %>
       <div class="cards-quotes">
         <i class="quotes fa-solid fa-quote-left"></i>
         <div class="card-quote-content" data-controller="clipboard" data-clipboard-success-content="Copied!">
           <p> <%= highlight.quote %> </p>
-          <h5 class="d-flex justify-content-end"> page n. <%= highlight.page %> </h5>
+          <h5 class="d-flex justify-content-end"> p. <%= highlight.page %> </h5>
           <i class="fe fe-heart"></i>
         </div>
         <div class="cards-quotes-actions d-flex justify-content-between">

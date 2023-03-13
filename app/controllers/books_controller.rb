@@ -20,7 +20,8 @@ class BooksController < ApplicationController
       sql_query = <<~SQL
         highlights.quote @@ :query
       SQL
-      @highlights = @book.highlights.where(sql_query, query: "%#{params[:query]}%")
+      @highlights = @book.highlights
+        .where(sql_query, query: "%#{params[:query]}%")
     else
       @highlights = @book.highlights
     end
