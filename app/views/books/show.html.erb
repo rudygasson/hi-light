@@ -1,7 +1,7 @@
 <div class="container-main">
   <div class="d-flex justify-content-center align-items-center mt-5">
       <div class="">
-        <img id="book-cover-show" src="https://eloquentjavascript.net/img/cover.jpg">
+        <%= image_tag "covers/cover-#{@book.default_cover}.png", id: "book-cover-show" %>
       </div>
       <div class="book-info">
         <h2> <%= @book.title %></h2>

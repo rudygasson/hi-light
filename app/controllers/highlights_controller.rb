@@ -124,10 +124,4 @@ class HighlightsController < ApplicationController
       quote: lines[3]&.strip
     }
   end
-
-  def assign_random_cover
-    num = ('%02d' % (1..16).to_a.sample)
-    color = "orange"
-    "cover-#{num}-#{color}.png"
-  end
 end
