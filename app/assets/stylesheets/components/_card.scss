@@ -117,7 +117,7 @@
   padding-top: 10px;
   padding-bottom: 1px;
   background: #f1f1f1;
-  box-shadow:  10px 10px 5px #e7e7e7,
+  box-shadow:  7px 7px 5px #e7e7e7,
               //  -20px -20px 40px #f4f3f3;
 }
 
@@ -132,16 +132,20 @@
   padding-right: 40px;
   padding-left: 60px;
   border-radius: 15px;
-
+  font-size: 17px;
 }
 
 .card-quote-content h5 {
   text-align: right;
   align-items: right;
-  font-size: 10px;
+  font-size: 11px;
   display: inline;
   justify-content: flex-end;
+  font-style: italic;
+}
 
+.cards-quotes .fa-quote-left {
+  color: $light-gray;
 }
 
 
