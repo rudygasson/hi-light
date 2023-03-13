@@ -21,7 +21,14 @@
                 <% end %>
             </div>
             <div class="cards-social-follow d-flex justify-content-end">
-              <input type="submit" name="commit" value="+ Follow">
+              <%= link_to follow_path(user), data: {turbo_method: :patch } do %>
+                <% if current_user.favorited?(user) %>
+                  <input type="submit" name="commit" value="Unfollow">
+                <% else %>
+                  <input type="submit" name="commit" value="+ Follow">
+
+                <% end %>
+              <% end %>
             </div>
           </div>
         </div>

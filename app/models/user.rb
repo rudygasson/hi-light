@@ -8,4 +8,5 @@ class User < ApplicationRecord
   has_many :books
   has_one_attached :photo
   acts_as_favoritor
+  acts_as_favoritable
 end
