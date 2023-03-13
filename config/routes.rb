@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   get "import", to: "highlights#import"
   post "upload", to: "highlights#upload"
   get "dashboard", to: "users#dashboard"
+  get "manage", to: "books#manage"
 end

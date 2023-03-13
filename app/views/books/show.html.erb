@@ -37,7 +37,7 @@
             <i class="icon fa-solid fa-tag"></i>
             <%= link_to highlight_path(highlight, book: @book), data: {turbo_method: :patch } do %>
               <% if current_user.favorited?(highlight) %>
-                <i class="icon fa-solid fa-heart"></i>
+                <i class="icon fa-solid fa-heart" id="favorite-heart"></i>
               <% else %>
                 <i class="icon fa-regular fa-heart"></i>
               <% end %>

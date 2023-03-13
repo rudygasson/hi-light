@@ -1,0 +1,22 @@
+<div class="container justify-content-center">
+  <table>
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Author</th>
+      <th class="table-number">Highlights</th>
+      <th class="table-number">Created</th>
+      <th class="table-number">Updated</th>
+    </tr>
+    <% current_user.books.each do |book| %>
+      <tr>
+        <td><%= book.default_cover %></td>
+        <td id="title"><%= book.title %></td>
+        <td><%= book.author.name %></td>
+        <td class="table-number"><%= book.highlights.count %></td>
+        <td class="table-number"><%= book.updated_at.strftime("%m/%d/%Y") %></td>
+        <td class="table-number"><%= book.created_at.strftime("%m/%d/%Y") %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
