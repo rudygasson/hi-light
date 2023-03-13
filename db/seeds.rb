@@ -49,9 +49,9 @@ books = [
 ]
 books.each do |book|
   Book.create!(
-    title: book,
+    user: User.all.sample,
     author: Author.all.sample,
-    user: User.all.sample
+    title: book
   )
 end
 puts "---> #{Book.count} books in database."

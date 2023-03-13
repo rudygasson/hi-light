@@ -50,6 +50,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_10_110644) do
 
   create_table "books", force: :cascade do |t|
     t.string "title"
+    t.integer "default_cover"
     t.bigint "author_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false

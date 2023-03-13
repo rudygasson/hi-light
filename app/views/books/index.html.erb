@@ -8,7 +8,7 @@
           <% if s_book.title == my_book.title %>
             <%= link_to book_path(my_book), class:"text-decoration-none cards-clickable d-flex justify-content-center" do  %>
             <div class="card-book">
-              <img src="https://source.unsplash.com/collection/8761640/"/>
+              <%= image_tag "covers/cover-#{my_book.default_cover}.png" %>
               <div class="">
                 <h4> <%= my_book.title %> </h4>
                 <p> <%= my_book.author.name %> </p>
