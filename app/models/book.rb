@@ -6,6 +6,9 @@ class Book < ApplicationRecord
   validates :title, uniqueness: { scope: :author }
   has_one_attached :cover
 
+  # Set default cover before creation of new book
+  before_create :set_default_cover
+
   include PgSearch::Model
   pg_search_scope :global_search,
     against: [ :title ],
@@ -16,4 +19,10 @@ class Book < ApplicationRecord
     using: {
       tsearch: { prefix: true }
     }
+
+  private
+
+  def set_default_cover
+    self.default_cover = (1..96).to_a.sample
+  end
 end
