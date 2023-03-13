@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
   before_action :set_highlight, only: ['destroy', 'update']
-  before_action :set_user, only: ['follow']
+  before_action :set_user, only: ['follow', 'show', 'friends_profile']
 
   def show
-    @user = current_user
+  end
+
+  def friends_profile
   end
 
   def index
