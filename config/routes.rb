@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :users, only: ['show', 'index']
   get "import", to: "highlights#import"
   post "upload", to: "highlights#upload"
+  get "dashboard", to: "users#dashboard"
 end

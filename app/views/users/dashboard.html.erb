@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="container d-flex justify-content-center">
+    <div class="avatar-img">
+      <% if current_user.photo.attached? %>
+        <%= cl_image_tag current_user.photo.key, class: "avatar-profile" %>
+      <% else %>
+        <%= image_tag "avatar.png", class: "avatar-profile" %>
+      <% end %>
+    </div>
+    <div class="profile-information">
+      <%= current_user.first_name %> <%= current_user.last_name %><br>
+      <%= current_user.email %>
+      <br>
+      <a href="/users/edit">Update Profile Information</a>
+    </div>
+  </div>
+  <div class="container d-flex justify-content-center">
+    <div class="other-information">
+        <div class="asset-count" id="book">
+          <i class="fa-solid fa-book"></i>
+          <h4>Number of books:</h4>
+          <p><%= current_user.books.count %></p>
+          <a href="#">Manage Books</a>
+        </div>
+        <div class="asset-count" id="highlight">
+          <i class="fa-regular fa-bookmark"></i>
+          <h4>Number of highlights:</h4>
+          <p><%= current_user.highlights.count %></p>
+          <a href="#">Manage Highlights</a>
+        </div>
+        <div class="asset-count" id="tag">
+          <i class="fa-solid fa-tag"></i>
+          <h4>Number of tags:</h4>
+          <p><%= current_user.tags.count %></p>
+          <a href="#">Manage Tags</a>
+        </div>
+    </div>
+    <div class="recent-activity">
+      <h4>Your Recent Activity</h4>
+      <ul><% current_user.books.last(5).each do |book| %>
+        <li><strong><%= book.title %></strong>, <%= book.author.name %><br>
+        Updated: <em><%= book.updated_at.month %>/<%= book.updated_at.day %>/<%= book.updated_at.year %> at <%= book.updated_at.hour %>:<%= book.updated_at.min %></em></li>
+      <% end %></ul>
+    </div>
+  </div>
+</div>
