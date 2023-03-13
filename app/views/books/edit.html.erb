@@ -1,0 +1,8 @@
+<div class="container p-5 m-5">
+  <h3>Update Book Cover :</h3>
+  <%= simple_form_for(@book) do |f| %>
+    <br>
+    <%= f.input :cover, as: :file %>
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+  <% end %>
+</div>
