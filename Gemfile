@@ -81,3 +81,4 @@ gem "pg_search"
 gem "feathericon-rails"
 gem "feathericon-sass"
 gem "cloudinary"
+gem 'acts_as_favoritor'

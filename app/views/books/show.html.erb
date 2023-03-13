@@ -35,7 +35,13 @@
           </div>
           <div class="icons">
             <i class="icon fa-solid fa-tag"></i>
-            <i class="icon fa-regular fa-heart"></i>
+            <%= link_to highlight_path(highlight, book: @book), data: {turbo_method: :patch } do %>
+              <% if current_user.favorited?(highlight) %>
+                <i class="icon fa-solid fa-heart"></i>
+              <% else %>
+                <i class="icon fa-regular fa-heart"></i>
+              <% end %>
+            <% end %>
             <i class="icon fa-regular fa-comment"></i>
             <%= link_to highlight_path(highlight, book: @book), data: {turbo_method: :delete, turbo_confirm: "Are you sure?", id:"delete"} do %>
               <i class="icon fa-regular fa-trash-can"> </i>

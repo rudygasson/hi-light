@@ -1,5 +1,5 @@
 class HighlightsController < ApplicationController
-  before_action :set_highlight, only: ['destroy']
+  before_action :set_highlight, only: ['destroy', 'update']
 
   def index
     if params[:query].present?
@@ -16,6 +16,15 @@ class HighlightsController < ApplicationController
 
   def destroy
     @highlight.destroy
+    redirect_to book_path(@highlight.book)
+  end
+
+  def update
+    if current_user.favorited?(@highlight)
+      current_user.unfavorite(@highlight)
+    else
+      current_user.favorite(@highlight)
+    end
     redirect_to book_path(@highlight.book)
   end
 
