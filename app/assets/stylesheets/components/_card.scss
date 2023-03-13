@@ -400,3 +400,110 @@ svg:hover {
 .cards-social-avatar {
 margin: auto 10px;
 }
+
+.cards-social-follow {
+  text-align: right;
+
+}
+.cards-social-follow input {
+  background-color: #f65026;
+  border: #e0e0e0 2px solid;
+  border-radius: 12px;
+  padding: 5px 10px;
+  margin: 35px 0;
+  color: white;
+  text-align: right;
+}
+
+.cards-social-follow input:hover {
+  background-color: #f65026;
+  border: #e0e0e0 2px solid;
+  border-radius: 12px;
+  padding: 5px 10px;
+  margin: 35px 0;
+  color: white;
+  opacity: 0.8;
+  transition: 0.5s;
+  text-align: right;
+}
+
+
+.form-actions a {
+  background-color: #f65026;
+  border: #e0e0e0 2px solid;
+  border-radius: 12px;
+  padding: 5px 10px;
+  margin: 35px 0;
+  color: white;
+  text-align: right;
+}
+
+.form-actions a:hover {
+  background-color: #f65026;
+  border: #e0e0e0 2px solid;
+  border-radius: 12px;
+  padding: 5px 10px;
+  margin: 35px 0;
+  color: white;
+  opacity: 0.8;
+  transition: 0.5s;
+  text-align: right;
+}
+
+.cancel-account {
+  margin: 10px 0;
+  line-height: 30px;
+}
+
+.btn-cancel {
+  background-color: white;
+  border: #e0e0e0 2px solid;
+  border-radius: 12px;
+  padding: 5px 10px;
+  color: #f65026;
+  text-align: right;
+}
+
+.btn-cancel:hover {
+  background-color: white;
+  border: #e0e0e0 2px solid;
+  border-radius: 12px;
+  padding: 5px 10px;
+  color: #f65026;
+  text-align: right;
+  opacity: 0.6;
+  transition: 0.3s;
+}
+
+.back {
+  background-color: #f65026;
+  border: #e0e0e0 2px solid;
+  border-radius: 12px;
+  padding: 5px 10px;
+  margin: 50px 0;
+  color: white;
+  text-align: right;
+  margin-top: 10px;
+}
+
+.back:hover {
+  background-color: #f65026;
+  border: #e0e0e0 2px solid;
+  border-radius: 12px;
+  padding: 5px 10px;
+  margin: 50px 0;
+  color: white;
+  opacity: 0.8;
+  transition: 0.5s;
+  text-align: right;
+}
+
+.new {
+  color: #f65026;
+}
+
+.new:hover {
+  color: #f65026;
+  transition: 0.4s;
+  opacity: 0.6;
+}

@@ -2,8 +2,8 @@
   <%= render "shared/searchbooks" %></div><br>
   <div class="container-social mb-5">
     <% @users.each do |user| %>
-      <div class="d-flex justify-content-start">
-        <div class="cards-social d-flex justify-content-start">
+      <div class="d-flex">
+        <div class="cards-social d-flex">
           <div class="cards-social-avatar">
             <% if current_user.photo.attached? %>
               <%= cl_image_tag user.photo.key, class: "avatar-social" %>
@@ -11,7 +11,7 @@
               <%= image_tag "avatar.png", class: "avatar-social" %>
             <% end %>
           </div>
-          <div class="cards-social-content d-flex justify-content-start">
+          <div class="cards-social-content d-flex">
             <div class="cards-social-user-info">
               <h4> <%= user.first_name %> <%= user.last_name %> </h4>
               <p> Books: <%= user.books.count %> </p>
@@ -20,8 +20,10 @@
                   <p class="user-books"> <%= book.title %> -  </p>
                 <% end %>
             </div>
+            <div class="cards-social-follow d-flex justify-content-end">
+              <input type="submit" name="commit" value="+ Follow">
+            </div>
           </div>
-
         </div>
       </div>
     <% end %>
