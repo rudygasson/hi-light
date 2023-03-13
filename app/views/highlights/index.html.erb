@@ -1,7 +1,7 @@
 <div class="container">
   <%= render "shared/searchquotes" %></div><br>
   <div class="container-quotes">
-    <% current_user.highlights.each do |highlight| %>
+    <% @highlights.each do |highlight| %>
       <div class="cards-quotes">
         <i class="quotes fa-solid fa-quote-left"></i>
         <div class="card-quote-content">
