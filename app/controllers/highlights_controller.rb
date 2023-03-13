@@ -41,7 +41,7 @@ class HighlightsController < ApplicationController
           next
         end
 
-        Highlight.new(
+        Highlight.create(
           user: current_user,
           book: book,
           quote: highlight[:quote],
