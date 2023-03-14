@@ -520,3 +520,17 @@ svg:hover {
   transition: 0.4s;
   opacity: 0.6;
 }
+
+#x-icon {
+  padding-top: 2px;
+  padding-right: 2px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: none;
+
+}
+
+#x-icon:hover {
+  display: block;
+}
