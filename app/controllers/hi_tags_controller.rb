@@ -16,4 +16,10 @@ class HiTagsController < ApplicationController
     #   render :new, status: :unprocessable_entity
     # end
   end
+
+  def destroy
+    @tag = Tag.find(params[:hi_tag][:tag])
+    @hi_tag = Highlight.find(params[:id])
+    @hi_tag.destroy
+  end
 end

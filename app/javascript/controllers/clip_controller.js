@@ -10,5 +10,6 @@ export default class extends Controller {
   copy() {
     console.log(this.element)
     navigator.clipboard.writeText(this.itemTarget.innerHTML)
+    alert("Copied to clipboard!");
   }
 }

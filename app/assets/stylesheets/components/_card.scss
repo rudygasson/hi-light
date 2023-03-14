@@ -521,6 +521,7 @@ svg:hover {
   opacity: 0.6;
 }
 
+
 .friend-book-info h2 {
   font-size: 27px;
   font-weight: bolder;
@@ -529,4 +530,19 @@ svg:hover {
 .friend-book-info h5 {
   font-size: 20px;
   font-weight: bolder;
+}
+
+#x-icon {
+  padding-top: 2px;
+  padding-right: 2px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: none;
+
+}
+
+#x-icon:hover {
+  display: block;
+
 }

@@ -11,20 +11,20 @@
         <div class="cards-quotes-actions d-flex justify-content-between" data-controller="edit-tag">
           <div class="tags d-inline-flex">
             <% highlight.tags.each do |tag| %>
-            <div class="tag-card">
-              <div class="<%=tag.color%>">
-              <p><%= tag.name %></p>
-              </div>
-            </div>
+              <%= link_to tag_path(tag), data: {turbo_method: :delete, turbo_confirm: "Are you sure?", id:"delete", class:"text-decoration-none"} do %>
+                <div class="tag-card text-decoration-none">
+                  <div class="<%=tag.color%>">
+                    <p ><%= tag.name %></p>
+                  </div>
+                </div>
+              <% end %>
             <% end %>
           </div>
-
           <%= simple_form_for [highlight, HiTag.new], class: "form", html: {class: "d-none", data: {edit_tag_target:"form"}} do |f| %>
             <%= f.input :tag, collection: current_user.tags, include_hidden: false  %><%= f.submit "Add", class: 'btn btn-primary' %>
           <% end %>
-
           <div class="icons">
-            <i class="icon fa-solid fa-tag" data-action="click->edit-tag#displayForm"></i> 
+            <i class="icon fa-solid fa-tag" data-action="click->edit-tag#displayForm"></i>
             <%= link_to highlight_path(highlight, book: @book), data: {turbo_method: :patch } do %>
               <% if current_user.favorited?(highlight) %>
                 <i class="icon fa-solid fa-heart" id="favorite-heart"></i>
@@ -32,8 +32,24 @@
                 <i class="icon fa-regular fa-heart"></i>
               <% end %>
             <% end %>
-            <i class="icon fa-regular fa-comment"></i>
-            <%= link_to highlight_path(highlight, book: @book), data: {turbo_method: :delete, turbo_confirm: "Are you sure?", id:"delete"} do %>
+            <div
+              class="alert fade"
+              id="alert-secondary"
+              role="alert"
+              data-mdb-color="secondary"
+              data-mdb-position="top-right"
+              data-mdb-stacking="true"
+              data-mdb-width="535px"
+              data-mdb-append-to-body="true"
+              data-mdb-hidden="true"
+              data-mdb-autohide="true"
+              data-mdb-delay="2000"
+            >
+              A simple secondary alert with
+              <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+            </div>
+
+            <%= link_to highlight_path(highlight), data: {turbo_method: :delete, turbo_confirm: "Are you sure?", id:"delete"} do %>
               <i class="icon fa-regular fa-trash-can"> </i>
             <% end %>
             <i data-action="click->clip#copy" class="icon fa-regular fa-clone"></i>
