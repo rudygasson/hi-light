@@ -6,8 +6,12 @@
         <% @books.each do |book| %>
           <%= link_to book_path(book), class:"text-decoration-none cards-clickable d-flex justify-content-center" do  %>
           <div class="card-book">
-            <%= image_tag "covers/cover-#{book.default_cover}.png" %>
-            <div class="">
+            <% if book.cover.attached? %>
+              <%= cl_image_tag book.cover.key, crop: :fill %>
+            <% else %>
+              <%= image_tag "covers/cover-#{book.default_cover}.png" %>
+            <% end %>
+          <div class="">
               <h4> <%= book.title %> </h4>
               <p> <%= book.author.name %> </p>
             </div>

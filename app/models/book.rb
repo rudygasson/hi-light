@@ -10,7 +10,7 @@ class Book < ApplicationRecord
   has_one_attached :cover
 
   # Set default cover before creation of new book
-  after_create :set_default_cover
+  before_create :set_default_cover
 
   include PgSearch::Model
   pg_search_scope :global_search,
@@ -27,12 +27,28 @@ class Book < ApplicationRecord
     self.default_cover = (1..96).to_a.sample
   end
 
-  def parse_cover(query)
-    # key=AIzaSyBeIiOB3DaJflSRXWsB78kA6byzGydC_Vk
-
+  def parse_cover
+    search = "#{self.title} #{self.author.name}"
+    query = search.match(/(?<query>[\S ]+)[.:;?|]*/)[:query].parameterize
     url = "https://www.googleapis.com/books/v1/volumes?q=#{query}"
     data = JSON.parse(URI.open(url).read)
-    image = URI.open(data["items"][0]["volumeInfo"]["imageLinks"]["thumbnail"])
-    self.cover.attach(io: image, filename: "cover.jpeg", content_type: "image/jpeg")
+    if data
+      return unless data["items"]
+      return unless data["items"][0]["volumeInfo"]
+
+      description = data["items"][0]["volumeInfo"]["description"]
+      self.description = description[0,500] + "…" if description
+
+      published_date = data["items"][0]["volumeInfo"]["publishedDate"]
+      self.published_date = published_date.match(/^[\d]{4}/)[0] if published_date
+      self.save
+
+      return unless data["items"][0]["volumeInfo"]["imageLinks"]
+
+      image_url = data["items"][0]["volumeInfo"]["imageLinks"]["thumbnail"]
+      return unless image_url
+
+      self.cover.attach(io: URI.open(image_url), filename: "cover.jpeg", content_type: "image/jpeg")
+    end
   end
 end
