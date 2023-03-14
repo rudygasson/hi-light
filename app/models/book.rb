@@ -10,7 +10,7 @@ class Book < ApplicationRecord
   has_one_attached :cover
 
   # Set default cover before creation of new book
-  before_create :set_default_cover
+  after_create :set_default_cover
 
   include PgSearch::Model
   pg_search_scope :global_search,
