@@ -9,8 +9,10 @@
     </div>
     <div class="profile-information">
       <%= current_user.first_name %> <%= current_user.last_name %><br>
-      <%= current_user.email %>
-      <br>
+      <%= current_user.email %><br><br>
+      Following : <%= Favorite.for_favoritor(current_user).count%><br>
+      Followers : <%= Favorite.for_favoritable(current_user).count%>
+      <br><br>
       <a href="/users/edit">Update Profile Information</a>
     </div>
   </div>
@@ -35,12 +37,12 @@
           <a href="/tags/manage">Manage Tags</a>
         </div>
     </div>
-    <div class="recent-activity">
-      <h4>Your Recent Activity</h4>
-      <ul><% current_user.books.last(5).each do |book| %>
-        <li><strong><%= book.title %></strong>, <%= book.author.name %><br>
-        Updated: <em><%=book.updated_at.strftime("%m/%d/%Y")%> at <%= book.updated_at.strftime("%I:%M%p")%></em></li>
-      <% end %></ul>
-    </div>
+      <div class="recent-activity">
+        <h4>Your Recent Activity</h4>
+        <ul><% current_user.books.last(5).each do |book| %>
+          <li><strong><%= book.title %></strong>, <%= book.author.name %><br>
+          Updated: <em><%=book.updated_at.strftime("%m/%d/%Y")%> at <%= book.updated_at.strftime("%I:%M%p")%></em></li>
+        <% end %></ul>
+      </div>
   </div>
 </div>

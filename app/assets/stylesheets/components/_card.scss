@@ -400,19 +400,26 @@ svg:hover {
   line-height: 14px;
 }
 
+.cards-social-content a {
+  text-decoration: none;
+  color: black;
+}
+
 .user-books {
   display: inline-block;
   font-size: 12px;
 }
 
 .cards-social-avatar {
-margin: auto 10px;
+  margin: auto 10px;
+  padding-top: 35px;
 }
 
 .cards-social-follow {
   text-align: right;
-
+  padding-left: 350px;
 }
+
 .cards-social-follow input {
   background-color: #f65026;
   border: #e0e0e0 2px solid;
@@ -434,7 +441,6 @@ margin: auto 10px;
   transition: 0.5s;
   text-align: right;
 }
-
 
 .form-actions a {
   background-color: #f65026;
