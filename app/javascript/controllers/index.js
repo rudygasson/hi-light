@@ -7,5 +7,8 @@ import { application } from "./application"
 import ClipController from "./clip_controller"
 application.register("clip", ClipController)
 
+import EditTagController from "./edit_tag_controller"
+application.register("edit-tag", EditTagController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
