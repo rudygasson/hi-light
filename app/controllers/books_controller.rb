@@ -42,7 +42,7 @@ class BooksController < ApplicationController
   end
 
   def set_parsed_cover
-    @book.parse_cover("#{@book.title} #{@book.author.name}")
+    @book.parse_cover
     @book.save
     redirect_to book_path(@book)
   end

@@ -8,13 +8,10 @@
         <% end %>
       </div>
       <div class="book-info">
-        <h2> <%= @book.title %></h2>
-        <h5> <%= @book.author.name %> <%= 2007 %> </h5>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <%= link_to "Cover API", parse_cover_path(@book), data: {turbo_method: :patch} %>
+        <h2><%= @book.title %></h2>
+        <h5><%= @book.author.name %><%= @book.published_date ? " (#{@book.published_date})" : ""%></h5>
+        <p><%= @book.description ? @book.description : "" %></p>
+        <%= link_to "API cover+metadata", parse_cover_path(@book), data: {turbo_method: :patch} %> |
         <%= link_to "Random cover", random_cover_path(@book), data: {turbo_method: :patch } %>
         <p><%= @book.cover.attached? %></p>
       </div>
