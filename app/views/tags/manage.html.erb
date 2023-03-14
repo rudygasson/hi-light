@@ -1,21 +1,53 @@
+<div class="container">
+  <div class="tags-index-manage"></div>
+  <br>
+  <h4> All your tags:</h4>
+    <% current_user.tags.each do |tag| %>
+      <span class="tag-index">
+      <a href=""><button class="<%= tag.highlights.empty? ? 'none' : tag.color %>">
+        <%= tag.name %></span>
+      </button></a>
+    <% end %>
+  </div>
+</div>
+
+<div class="container d-flex justify-content-center">
+  <div class="tags-stats">
+    <div class="n-tags">
+      Tags: <%= current_user.tags.count %>
+    </div>
+    <div class="empty-tags">
+      <% i = 0 %>
+      Empty tags :<% current_user.tags.each do |tag| %>
+        <% if tag.highlights.empty? %>
+          <% i += 1 %>
+        <% end %>
+      <% end %>
+      <%= i %><br>
+      <%= link_to "(delete all empty tags)", @tags, class: "delete-tags", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+    </div>
+  </div>
+</div>
+
 <div class="container justify-content-center">
   <table>
     <tr>
-      <th>Tag ID</th>
       <th>Tag</th>
-      <th>Color</th>
-      <th class="table-number">Highlights</th>
-      <th class="table-number">Created</th>
-      <th class="table-number">Updated</th>
+      <th class="table-number">Highlight Count</th>
+      <th class="table-number">Edit</th>
+      <th class="table-number">Delete</th>
     </tr>
     <% current_user.tags.each do |tag| %>
       <tr>
-        <td><%= tag.id %></td>
-        <td><a class="text-decoration-none" href="/tags/?query=<%=tag.name %>"><%= tag.name %></span></a></td>
-        <td><%= tag.color %></td>
+        <td><span class="tag-index">
+            <a href="/tags?query=<%=tag.name %>">
+              <button class="<%= tag.highlights.empty? ? 'none' : tag.color %>">
+                <%= tag.name %></span>
+              </button>
+            </a></td>
         <td class="table-number"><%= tag.highlights.count %></td>
-        <td class="table-number"><%= tag.updated_at.strftime("%m/%d/%Y") %></td>
-        <td class="table-number"><%= tag.created_at.strftime("%m/%d/%Y") %></td>
+        <td class="table-number"><%= link_to "Edit", edit_tag_path(tag) %></td>
+        <td class="table-number"><%= link_to "Delete", tag, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></td>
       </tr>
     <% end %>
   </table>

@@ -78,3 +78,16 @@
   padding-left: 14px;
   color: $orange;
 }
+
+.tags-stats {
+  border: $gray 1px solid;
+  border-radius: 25px;
+  padding: 20px;
+  text-align: center;
+}
+
+.delete-tags {
+  text-decoration: none;
+  font-style: italic;
+  color: $orange;
+}
