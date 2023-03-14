@@ -3,15 +3,35 @@ class TagsController < ApplicationController
   before_action :set_tag, only: [:edit, :update, :destroy]
 
   def index
+    @tags = Tag.where(user: current_user)
     if params[:query].present?
       sql_query = <<~SQL
         tags.name @@ :query
+        OR tags.name ILIKE :query
       SQL
-      @tags = Tag.where(sql_query, query: "%#{params[:query]}%")
+      @search_tags = Tag.where(sql_query, query: "%#{params[:query]}%")
+        .and(Tag.where(user: current_user)).map { |tag| tag.id }
+
+        @highlights = HiTag.all.select { |hitag| @search_tags.include?(hitag.tag_id) }.map { |hitag| hitag.highlight }
+
+      # @highlights = Highlight.all.select { |highlight| highlight.id ==  }
+      #@search_tags.first.highlights
     else
-      @tags = nil
+      @highlights = nil
     end
   end
+
+  # def index
+  #   if params[:query].present?
+  #     sql_query = <<~SQL
+  #     books.title @@ :query
+  #     OR authors.name @@ :query
+  #     SQL
+  #     @books = Book.joins(:author).where(sql_query, query: "%#{params[:query]}%", user: current_user)
+  #   else
+  #     @books = Book.includes(:author).where(user: current_user)
+  #   end
+  # end
 
   def new
     @tag = Tag.new

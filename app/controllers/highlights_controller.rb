@@ -5,6 +5,7 @@ class HighlightsController < ApplicationController
     if params[:query].present?
       sql_query = <<~SQL
         highlights.quote @@ :query
+        OR highlights.quote ILIKE :query
       SQL
       @highlights = Highlight
         .where(sql_query, query: "%#{params[:query]}%")
