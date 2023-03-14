@@ -6,7 +6,7 @@
       <%= link_to friend_path(user) do %>
         <div class="cards-social d-flex">
           <div class="cards-social-avatar">
-              <% if current_user.photo.attached? %>
+              <% if user.photo.attached? %>
                 <%= cl_image_tag user.photo.key, class: "avatar-social" %>
               <% else %>
                 <%= image_tag "avatar.png", class: "avatar-social" %>

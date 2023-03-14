@@ -8,7 +8,7 @@
       <% end %>
     </div>
     <div class="profile-information">
-      <%= current_user.first_name %> <%= current_user.last_name %><br>
+      <div id="dashboard-name"><%= current_user.first_name %> <%= current_user.last_name %></div>
       <%= current_user.email %><br><br>
       Following : <%= Favorite.for_favoritor(current_user).count%><br>
       Followers : <%= Favorite.for_favoritable(current_user).count%>
