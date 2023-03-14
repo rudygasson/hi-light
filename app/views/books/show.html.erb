@@ -16,10 +16,10 @@
   <%= render "shared/searchinbook" %></div><br>
   <div class="container-quotes mb-5">
     <% @highlights.each do |highlight| %>
-      <div class="cards-quotes">
+      <div class="cards-quotes" data-controller="clip">
         <i class="quotes fa-solid fa-quote-left"></i>
-        <div class="card-quote-content" data-controller="clipboard" data-clipboard-success-content="Copied!">
-          <p> <%= highlight.quote %> </p>
+        <div class="card-quote-content">
+          <p class="" data-clip-target="item"><%= highlight.quote %> </p>
           <h5 class="d-flex justify-content-end"> p. <%= highlight.page %> </h5>
           <i class="fe fe-heart"></i>
         </div>
@@ -46,7 +46,7 @@
             <%= link_to highlight_path(highlight, book: @book), data: {turbo_method: :delete, turbo_confirm: "Are you sure?", id:"delete"} do %>
               <i class="icon fa-regular fa-trash-can"> </i>
             <% end %>
-            <i class="icon fa-regular fa-clone"></i>
+            <i data-action="click->clip#copy" class="icon fa-regular fa-clone"></i>
           </div>
         </div>
       </div>
