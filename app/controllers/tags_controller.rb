@@ -1,6 +1,6 @@
 class TagsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
-  before_action :set_tag, only: [:edit, :update, :destroy]
+  before_action :set_tag, only: [:edit, :update, :destroy, :destroy_all]
 
   def index
     @tags = Tag.where(user: current_user)
@@ -57,6 +57,11 @@ class TagsController < ApplicationController
 
   def destroy
     @tag.destroy
+    redirect_to tags_path, status: :see_other
+  end
+
+  def destroy_all
+    @tags = Tag.where(tag.highlights.empty?).destroy_all
     redirect_to tags_path, status: :see_other
   end
 
