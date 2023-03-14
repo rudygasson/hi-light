@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import BooksIndexController from "./books_index_controller"
+application.register("books-index", BooksIndexController)
+
 import ClipController from "./clip_controller"
 application.register("clip", ClipController)
 

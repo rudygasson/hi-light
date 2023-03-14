@@ -1,23 +1,28 @@
 <div class="container">
   <div data-controller="scroll-progress" class="h-2 bg-indigo-400 fixed top-0"></div>
     <%= render "shared/searchbooks" %></div><br>
-    <div class="container-sm mb-5">
-      <div class="cards">
-        <% @books.each do |book| %>
-          <%= link_to book_path(book), class:"text-decoration-none cards-clickable d-flex justify-content-center" do  %>
-          <div class="card-book">
-            <% if book.cover.attached? %>
-              <%= cl_image_tag book.cover.key, crop: :fill %>
-            <% else %>
-              <%= image_tag "covers/cover-#{book.default_cover}.png" %>
-            <% end %>
-          <div class="">
-              <h4> <%= book.title %> </h4>
-              <p> <%= book.author.name %> </p>
+    <div data-controller="books-index">
+      <button href="/">Sort by author (WIP)</a>
+      <button href="/">Sort by title (WIP)</a>
+      <button data-action="click->books#metadata" href="">Fetch metadata all books (WIP)</button>
+      <div class="container-sm mb-5">
+        <div class="cards">
+          <% @books.each do |book| %>
+            <%= link_to book_path(book), class:"text-decoration-none cards-clickable d-flex justify-content-center" do  %>
+            <div class="card-book">
+              <% if book.cover.attached? %>
+                <%= cl_image_tag book.cover.key, crop: :fill %>
+              <% else %>
+                <%= image_tag "covers/cover-#{book.default_cover}.png" %>
+              <% end %>
+            <div class="">
+                <h4> <%= book.title %> </h4>
+                <p> <%= book.author.name %> </p>
+              </div>
             </div>
-          </div>
+            <% end %>
           <% end %>
-        <% end %>
+      </div>
     </div>
   </div>
 </div>
