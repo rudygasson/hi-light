@@ -6,6 +6,7 @@ class HiTagsController < ApplicationController
   end
 
   def create
+    @hi_tag = HiTag.new
     @tag = Tag.find(params[:hi_tag][:tag])
     @highlight = Highlight.find(params[:highlight_id])
     @hi_tag = HiTag.new(tag: @tag, highlight: @highlight)
