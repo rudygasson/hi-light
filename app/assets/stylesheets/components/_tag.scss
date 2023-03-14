@@ -62,6 +62,12 @@
   border-radius: 10px;
 }
 
+.none {
+  background-color: $tag-none;
+  opacity: 40%;
+  border-radius: 10px;
+}
+
 .blue,.purple,.orange,.yellow,.red,.green p {
   margin-bottom: 0px;
 }

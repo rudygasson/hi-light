@@ -5,7 +5,7 @@
         <% current_user.tags.each do |tag| %>
             <span class="tag-index">
             <a href="?query=<%=tag.name %>">
-              <button class="<%=tag.color %>">
+              <button class="<%= tag.highlights.empty? ? 'none' : tag.color %>">
                 <%= tag.name %></span>
               </button>
             </a>
@@ -14,12 +14,8 @@
   </div>
   <div class="tag-search-results">
     <div class="container-quotes mb-5">
-      <% if !@tags.nil? %>
-        <% current_user.highlights.each do |highlight| %>
-          <% these_tags = highlight.tags %>
-          <% these_tags.each do |this_tag| %>
-            <% @tags.each do |tag| %>
-              <% if tag.name == this_tag.name %>
+      <% if !@highlights.nil? %>
+        <% @highlights.each do |highlight| %>
                 <div class="cards-quotes">
                     <i class="quotes fa-solid fa-quote-left"></i>
                     <div class="card-quote-content">
@@ -48,9 +44,6 @@
                       </div>
                     </div>
                 </div>
-              <% end %>
-            <% end %>
-          <% end %>
         <% end %>
       <% end %>
       <a class="top-link hide" href="" id="js-top">
