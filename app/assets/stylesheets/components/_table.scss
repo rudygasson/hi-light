@@ -7,8 +7,10 @@ table, th, td {
 th {
   background-color: rgb(228, 228, 228);
   font-weight: bolder;
-  font-size: 17px;
   border-bottom: 2px solid $gray;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
 }
 
 #title {
@@ -20,6 +22,8 @@ th {
 
 .table-number {
   text-align: center;
+  text-decoration: none;
+  color: black;
 }
 
 table {
