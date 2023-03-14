@@ -8,7 +8,8 @@ class BooksController < ApplicationController
       books.title @@ :query
       OR authors.name @@ :query
       SQL
-      @books = Book.joins(:author).where(sql_query, query: "%#{params[:query]}%", user: current_user)
+      @books = Book.joins(:author)
+        .where(sql_query, query: "%#{params[:query]}%") # TODO: REWORK AND current user
     else
       @books = Book.includes(:author).where(user: current_user)
     end
@@ -20,7 +21,8 @@ class BooksController < ApplicationController
       sql_query = <<~SQL
         highlights.quote @@ :query
       SQL
-      @highlights = @book.highlights.where(sql_query, query: "%#{params[:query]}%")
+      @highlights = @book.highlights
+        .where(sql_query, query: "%#{params[:query]}%")
     else
       @highlights = @book.highlights
     end
