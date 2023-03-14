@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
   resources :books
   resources :highlights, only: ['index', 'destroy', 'update'] do
-    resources :hi_tags, only: ['new', 'create']
+    resources :hi_tags, only: ['new', 'create', 'destroy']
   end
   resources :tags, only: ['index', 'new', 'create', 'edit', 'update', 'destroy', 'destroy_all']
   resources :users, only: ['show', 'index'] do

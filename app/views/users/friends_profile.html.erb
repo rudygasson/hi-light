@@ -24,7 +24,6 @@
       <div class="cards added">
         <% @user.books.each do |my_book| %>
           <%= link_to friend_books_path(@user, my_book), class:"text-decoration-none cards-clickable d-flex justify-content-center" do %>
-
             <div class="card-book recent">
               <img src="https://source.unsplash.com/collection/8761640/"/>
               <div class="card-book-recently-added">
