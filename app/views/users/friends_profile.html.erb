@@ -1,3 +1,38 @@
-<h2>Hi</h2>
-
-<%= @user.first_name %>
+<%= render "shared/banner" %>
+  <div class="container">
+    <div class="dashboard d-flex">
+        <div class="avatar-img">
+          <% if @user.photo.attached? %>
+            <%= cl_image_tag @user.photo.key, class: "avatar-profile" %>
+          <% else %>
+            <%= image_tag "avatar.png", class: "avatar-profile" %>
+          <% end %>
+        </div>
+        <div class="profile-information">
+          <h4><%= @user.first_name %> <%= @user.last_name %></h4>
+          <p><a href="/books" class="text-decoration-none">Books in <span class="bolded">Library </span>: <%= @user.books.count %></a> <br>
+          <a href="/highlights" class="text-decoration-none">Highlights: <%= @user.highlights.count %></a><br>
+          <a href="#" class="text-decoration-none">Favourite Highlights: <%= @user.all_favorites.count %></a></p>
+        </div>
+        <hr class="hr m-4" />
+        <div class="profile-information-actions">
+        </div>
+    </div>
+    <div class="recently-added">
+    <hr class="hr m-4" />
+      <h5>Books recently added to my library: </h5>
+      <div class="cards added">
+        <% @user.books.each do |my_book| %>
+          <%= link_to book_path(my_book), class:"text-decoration-none cards-clickable d-flex justify-content-center" do  %>
+            <div class="card-book recent">
+              <img src="https://source.unsplash.com/collection/8761640/"/>
+              <div class="card-book-recently-added">
+                <h4> <%= my_book.title %> </h4>
+                <p> <%= my_book.author.name %> </p>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+</div>

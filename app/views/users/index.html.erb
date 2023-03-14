@@ -5,7 +5,7 @@
       <div class="d-flex">
         <div class="cards-social d-flex">
           <div class="cards-social-avatar">
-            <%= link_to friend_path(user), data: {turbo_method: :patch } do %>
+            <%= link_to friend_path(user) do %>
               <% if current_user.photo.attached? %>
                 <%= cl_image_tag user.photo.key, class: "avatar-social" %>
               <% else %>
