@@ -3,15 +3,14 @@
   <div class="container-social mb-5">
     <% @users.each do |user| %>
       <div class="d-flex">
+      <%= link_to friend_path(user) do %>
         <div class="cards-social d-flex">
           <div class="cards-social-avatar">
-            <%= link_to friend_path(user) do %>
               <% if current_user.photo.attached? %>
                 <%= cl_image_tag user.photo.key, class: "avatar-social" %>
               <% else %>
                 <%= image_tag "avatar.png", class: "avatar-social" %>
               <% end %>
-            <% end %>
           </div>
           <div class="cards-social-content d-flex">
             <div class="cards-social-user-info">
@@ -28,9 +27,9 @@
                   <input type="submit" name="commit" value="Unfollow">
                 <% else %>
                   <input type="submit" name="commit" value="+ Follow">
-
                 <% end %>
               <% end %>
+            <% end %>
             </div>
           </div>
         </div>
