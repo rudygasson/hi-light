@@ -7,16 +7,21 @@
       <th class="table-number">Highlights</th>
       <th class="table-number">Created</th>
       <th class="table-number">Updated</th>
+      <th class="table-number">Remove</th>
+      <th class="table-number">Edit</th>
     </tr>
     <% current_user.books.each do |book| %>
       <tr>
         <td><%= book.default_cover %></td>
-        <td id="title"><%= book.title %></td>
+        <td id="title"><%= link_to book.title, book_path(book)%></td>
         <td><%= book.author.name %></td>
         <td class="table-number"><%= book.highlights.count %></td>
         <td class="table-number"><%= book.updated_at.strftime("%m/%d/%Y") %></td>
         <td class="table-number"><%= book.created_at.strftime("%m/%d/%Y") %></td>
+        <td class="table-number"><%= link_to "Delete Book", book, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></td>
+        <td class="table-number"><%= link_to "Change Cover", edit_book_path(book) %></td>
       </tr>
     <% end %>
   </table>
 </div>
+
