@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   get "manage", to: "books#manage"
   get "tags/manage", to: "tags#manage"
   patch "follow/:id", to: "users#follow", as: "follow"
+  patch "book/:id/cover", to: "books#set_parsed_cover", as: "parse_cover"
+  patch "book/:id/random-cover", to: "books#random_cover", as: "random_cover"
 end

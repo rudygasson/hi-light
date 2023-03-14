@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index ]
-  before_action :set_book, only: ['destroy', 'edit', 'update']
+  before_action :set_book, only: ['destroy', 'edit', 'update', 'set_parsed_cover', 'random_cover']
 
   def index
     if params[:query].present?
@@ -39,6 +39,19 @@ class BooksController < ApplicationController
   def destroy
     @book.destroy
     redirect_to user_path(current_user)
+  end
+
+  def set_parsed_cover
+    @book.parse_cover("#{@book.title} #{@book.author.name}")
+    @book.save
+    redirect_to book_path(@book)
+  end
+
+  def random_cover
+    @book.cover.purge
+    @book.set_default_cover
+    @book.save
+    redirect_to book_path(@book)
   end
 
   private
