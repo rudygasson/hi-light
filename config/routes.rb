@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
   resources :books
-  resources :highlights, only: ['index', 'destroy', 'update']
+  resources :highlights, only: ['index', 'destroy', 'update'] do
+    resources :hi_tags, only: ['new', 'create']
+  end
   resources :tags, only: ['index', 'new', 'create', 'edit', 'update', 'destroy', 'destroy_all']
   resources :users, only: ['show', 'index']
   get "friends/:id", to: "users#friends_profile", as: "friend"
