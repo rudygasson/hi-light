@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   get "dashboard", to: "users#dashboard"
   get "manage", to: "books#manage"
   patch "follow/:id", to: "users#follow", as: "follow"
+  patch "book/:id/cover", to: "books#set_parsed_cover", as: "parse_cover"
+  patch "book/:id/random-cover", to: "books#random_cover", as: "random_cover"
 end
