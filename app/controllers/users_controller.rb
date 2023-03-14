@@ -9,7 +9,15 @@ class UsersController < ApplicationController
   end
 
   def index
+    if params[:query].present?
+      sql_query = <<~SQL
+        users.first_name @@ :query
+        OR users.last_name @@ :query
+      SQL
+      @users = User.where(sql_query, query: "%#{params[:query]}%")
+    else
     @users = User.all
+    end
   end
 
   def follow

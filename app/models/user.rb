@@ -9,4 +9,11 @@ class User < ApplicationRecord
   has_one_attached :photo
   acts_as_favoritor
   acts_as_favoritable
+
+  include PgSearch::Model
+  pg_search_scope :search_by_user_name,
+    against: [ :first_name, :last_name ],
+    using: {
+      tsearch: { prefix: true }
+    }
 end
