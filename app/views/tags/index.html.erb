@@ -16,14 +16,13 @@
     <div class="container-quotes mb-5">
       <% if !@highlights.nil? %>
         <% @highlights.each do |highlight| %>
-                <div class="cards-quotes">
+                <div class="cards-quotes" data-controller="clip">
                     <i class="quotes fa-solid fa-quote-left"></i>
                     <div class="card-quote-content">
-                      <%= highlight.quote %>
+                      <p class="" data-clip-target="item"><%= highlight.quote %> </p>
                       <h5 class="d-flex justify-content-end"> p. <%= highlight.page %> </h5>
-                      <i class="fe fe-heart"></i>
                     </div>
-                    <div class="cards-quotes-actions d-flex justify-content-between">
+                    <div class="cards-quotes-actions d-flex justify-content-between" data-controller="edit-tag">
                       <div class="tags d-inline-flex">
                         <% highlight.tags.each do |tag| %>
                         <div class="tag-card">
@@ -33,14 +32,25 @@
                         </div>
                         <% end %>
                       </div>
+
+                        <%= simple_form_for [highlight, HiTag.new], class: "form", html: {class: "d-none", data: {edit_tag_target:"form"}} do |f| %>
+                          <%= f.input :tag, collection: current_user.tags, include_hidden: false  %><%= f.submit "Add", class: 'btn btn-primary' %>
+                        <% end %>
+
                       <div class="icons">
-                        <i class="icon fa-solid fa-tag"></i>
-                        <i class="icon fa-regular fa-heart"></i>
-                        <i class="icon fa-regular fa-comment"></i>
+                        <i class="icon fa-solid fa-tag" data-action="click->edit-tag#displayForm"></i>
+                        <%= link_to highlight_path(highlight, book: @book), data: {turbo_method: :patch } do %>
+                          <% if current_user.favorited?(highlight) %>
+                            <i class="icon fa-solid fa-heart" id="favorite-heart"></i>
+                          <% else %>
+                            <i class="icon fa-regular fa-heart"></i>
+                          <% end %>
+                        <% end %>
+
                         <%= link_to @highlight, data: {turbo_method: :delete, turbo_confirm: "Are you sure?", id:"delete"} do %>
                           <i class="icon fa-regular fa-trash-can"> </i>
                         <% end %>
-                        <i class="icon fa-regular fa-clone"></i>
+                        <i data-action="click->clip#copy" class="icon fa-regular fa-clone"></i>
                       </div>
                     </div>
                 </div>

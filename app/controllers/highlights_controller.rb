@@ -12,6 +12,7 @@ class HighlightsController < ApplicationController
         .and(Highlight.where(user: current_user))
     else
       @highlights = Highlight.where(user: current_user)
+      flash.now[:notice] = "You have #{@highlights.size} highlights in total."
     end
   end
 
@@ -71,6 +72,7 @@ class HighlightsController < ApplicationController
         )
       end
     end
+    flash.now[:notice] = "You have imported #{@highlights.size} to your library."
   end
 
   private
