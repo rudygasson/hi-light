@@ -2,10 +2,10 @@
   <%= render "shared/searchquotes" %></div><br>
   <div class="container-quotes">
     <% @highlights.each do |highlight| %>
-      <div class="cards-quotes">
+      <div class="cards-quotes" data-controller="clip">
         <i class="quotes fa-solid fa-quote-left"></i>
         <div class="card-quote-content">
-          <p> <%= highlight.quote %> </p>
+          <p class="" data-clip-target="item"><%= highlight.quote %> </p>
           <h5 class="d-flex justify-content-end"> p. <%= highlight.page %> </h5>
         </div>
         <div class="cards-quotes-actions d-flex justify-content-between">
@@ -20,10 +20,18 @@
           </div>
           <div class="icons">
             <i class="icon fa-solid fa-tag"></i>
-            <i class="icon fa-regular fa-heart"></i>
+            <%= link_to highlight_path(highlight, book: @book), data: {turbo_method: :patch } do %>
+              <% if current_user.favorited?(highlight) %>
+                <i class="icon fa-solid fa-heart" id="favorite-heart"></i>
+              <% else %>
+                <i class="icon fa-regular fa-heart"></i>
+              <% end %>
+            <% end %>
             <i class="icon fa-regular fa-comment"></i>
-            <i class="icon fa-regular fa-trash-can"></i>
-            <i class="icon fa-regular fa-clone"></i>
+            <%= link_to highlight_path(highlight, book: @book), data: {turbo_method: :delete, turbo_confirm: "Are you sure?", id:"delete"} do %>
+              <i class="icon fa-regular fa-trash-can"> </i>
+            <% end %>
+            <i data-action="click->clip#copy" class="icon fa-regular fa-clone"></i>
           </div>
         </div>
       </div>
