@@ -1,6 +1,4 @@
 .profile-information {
-  border: $light-gray 1px solid;
-  border-radius: 25px;
   padding: 10px 100px 0px 20px;
   margin: 10px;
 }
@@ -60,4 +58,9 @@
   width: 200px;
   height: 200px;
   border-radius: 50%;
+}
+
+#dashboard-name {
+  font-size: 25px;
+  font-weight: bold;
 }
