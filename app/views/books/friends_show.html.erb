@@ -1,1 +1,19 @@
 <h1> THIS IS THE FRIENDS BOOK SHOW PAGE WITH RESTRICTED HIGHLIGHT ACCESS</h1>
+<div class="d-flex justify-content-center align-items-center mt-5">
+      <div class="">
+        <% if @book.cover.attached? %>
+          <%= cl_image_tag @book.cover.key, crop: :fill %>
+        <% else %>
+          <%= image_tag "covers/cover-#{@book.default_cover}.png", id: "book-cover-show" %>
+        <% end %>
+      </div>
+      <div class="book-info">
+        <h2><%= @book.title %></h2>
+        <h5><%= @book.author.name %><%= @book.published_date ? " (#{@book.published_date})" : ""%></h5>
+        <p><%= @book.description ? @book.description : "" %></p>
+        <%= link_to "API cover+metadata", parse_cover_path(@book), data: {turbo_method: :patch} %> |
+        <%= link_to "Random cover", random_cover_path(@book), data: {turbo_method: :patch } %>
+        <p><%= @book.cover.attached? %></p>
+      </div>
+  </div>
+</div>
