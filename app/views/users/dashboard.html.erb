@@ -26,13 +26,13 @@
           <i class="fa-regular fa-bookmark"></i>
           <h4>Number of highlights:</h4>
           <p><%= current_user.highlights.count %></p>
-          <a href="#">Manage Highlights</a>
+          <a href="/tags/highlights">Manage Highlights</a>
         </div>
         <div class="asset-count" id="tag">
           <i class="fa-solid fa-tag"></i>
           <h4>Number of tags:</h4>
           <p><%= current_user.tags.count %></p>
-          <a href="#">Manage Tags</a>
+          <a href="/tags/manage">Manage Tags</a>
         </div>
     </div>
     <div class="recent-activity">

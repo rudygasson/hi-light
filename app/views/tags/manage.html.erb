@@ -1,0 +1,22 @@
+<div class="container justify-content-center">
+  <table>
+    <tr>
+      <th>Tag ID</th>
+      <th>Tag</th>
+      <th>Color</th>
+      <th class="table-number">Highlights</th>
+      <th class="table-number">Created</th>
+      <th class="table-number">Updated</th>
+    </tr>
+    <% current_user.tags.each do |tag| %>
+      <tr>
+        <td><%= tag.id %></td>
+        <td><a class="text-decoration-none" href="/tags/?query=<%=tag.name %>"><%= tag.name %></span></a></td>
+        <td><%= tag.color %></td>
+        <td class="table-number"><%= tag.highlights.count %></td>
+        <td class="table-number"><%= tag.updated_at.strftime("%m/%d/%Y") %></td>
+        <td class="table-number"><%= tag.created_at.strftime("%m/%d/%Y") %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
