@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index ]
-  before_action :set_book, only: ['destroy', 'edit', 'update', 'set_parsed_cover', 'random_cover']
+  before_action :set_book, only: ['destroy', 'edit', 'update', 'set_parsed_cover', 'random_cover', 'friends_show']
 
   def index
     if params[:query].present?
@@ -26,6 +26,9 @@ class BooksController < ApplicationController
     else
       @highlights = @book.highlights
     end
+  end
+
+  def friends_show
   end
 
   def edit

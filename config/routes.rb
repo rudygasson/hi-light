@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   get "dashboard", to: "users#dashboard"
   get "manage", to: "books#manage"
   get "tags/manage", to: "tags#manage"
-  get "friends/:id/books/:id", to: "books#friends_show", as: "friend_books"
+  get "friends/:user_id/books/:id", to: "books#friends_show", as: "friend_books"
 
   patch "follow/:id", to: "users#follow", as: "follow"
   patch "book/:id/cover", to: "books#set_parsed_cover", as: "parse_cover"
