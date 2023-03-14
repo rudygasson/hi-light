@@ -30,25 +30,34 @@
 </div>
 
 <div class="container justify-content-center">
-  <table>
-    <tr>
-      <th>Tag</th>
-      <th class="table-number">Highlight Count</th>
-      <th class="table-number">Edit</th>
-      <th class="table-number">Delete</th>
-    </tr>
-    <% current_user.tags.each do |tag| %>
+  <div class="tags-table" data-controller="edit-tag" data-edit-tag-target="infos">
+    <table>
       <tr>
-        <td><span class="tag-index">
+        <th>Tag</th>
+        <th class="table-number">Highlight Count</th>
+        <th class="table-number">Edit</th>
+        <th class="table-number">Delete</th>
+      </tr>
+      <% current_user.tags.each do |tag| %>
+        <tr>
+          <td><span class="tag-index">
             <a href="/tags?query=<%=tag.name %>">
               <button class="<%= tag.highlights.empty? ? 'none' : tag.color %>">
                 <%= tag.name %></span>
               </button>
             </a></td>
-        <td class="table-number"><%= tag.highlights.count %></td>
-        <td class="table-number"><%= link_to "Edit", edit_tag_path(tag) %></td>
-        <td class="table-number"><%= link_to "Delete", tag, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></td>
-      </tr>
-    <% end %>
-  </table>
+          <td class="table-number"><%= tag.highlights.count %></td>
+          <td class="table-number"><button class="edit-tag-button"><i class="fa-regular fa-pen-to-square" data-action="click->edit-tag#displayForm"></i></button></td>
+          <td class="table-number"><%= link_to  "Delete", tag, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></td>
+        </tr>
+        <tr>
+          <td><%= simple_form_for tag, html: {class: "d-none", data: {edit_tag_target:"form", id: "#{tag.id}"}} do |f| %>
+            <%= f.input :name %>
+            <%= f.input :color, collection: %w[blue purple orange yellow red green] %>
+            <%= f.submit %>
+          <% end %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
 </div>
