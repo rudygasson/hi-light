@@ -14,11 +14,11 @@
           </div>
           <div class="cards-social-content d-flex justify-content-between align-items-center">
             <div class="cards-social-user-info">
-              <h4> <%= user.first_name %> <%= user.last_name %> </h4>
-              <p> Books: <%= user.books.count %> </p>
-              <p> Highlights: <%= user.highlights.count %> </p>
+              <h4><%= user.first_name %> <%= user.last_name %></h4>
+              <p> Books: <%= user.books.count %> &nbsp;&nbsp; |
+              &nbsp;&nbsp; Highlights: <%= user.highlights.count %> </p>
                 Recent books: <% user.books.last(3).each do |book| %>
-                  <p class="user-books"> <%= book.title %> -  </p>
+                  <p class="user-books"> <%= book.title %> -</p>
                 <% end %>
             </div>
             <div class="friend-follow">
