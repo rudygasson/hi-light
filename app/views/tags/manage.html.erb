@@ -1,7 +1,6 @@
-<div class="container">
-  <div class="tags-index-manage"></div>
-  <br>
-  <h4> All your tags:</h4>
+<div class="container d-flex justify-content-center">
+  <div class="tags-index-manage">
+  <h4> All your tags <small><em> (<%=current_user.tags.count%>)</small><em></h4>
     <% current_user.tags.each do |tag| %>
       <span class="tag-index">
       <a href=""><button class="<%= tag.highlights.empty? ? 'none' : tag.color %>">
@@ -11,39 +10,21 @@
   </div>
 </div>
 
-<div class="container d-flex justify-content-center">
-  <div class="tags-stats">
-    <div class="n-tags">
-      Tags: <%= current_user.tags.count %>
-    </div>
-    <div class="empty-tags">
-      <% i = 0 %>
-      Empty tags :<% current_user.tags.each do |tag| %>
-        <% if tag.highlights.empty? %>
-          <% i += 1 %>
-        <% end %>
-      <% end %>
-      <%= i %><br>
-      <%= link_to "(delete all empty tags)", @tags, class: "delete-tags", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
-    </div>
-  </div>
-</div>
-
 <div class="container justify-content-center">
   <div class="tags-table" data-edit-tag-target="infos">
     <table>
       <tr>
         <th>Tag</th>
         <th class="table-number">Highlight Count</th>
-        <th class="table-number">Edit</th>
         <th class="table-number">Delete</th>
+        <th colspan="2" class="table-number">Edit</th>
       </tr>
       <% current_user.tags.each do |tag| %>
         <tr data-controller="edit-tag">
           <%= render "tag-infos", tag: tag %>
           <td class="table-number"><%= tag.highlights.count %></td>
-          <td class="table-number"><button class="edit-tag-button"><i class="fa-regular fa-pen-to-square" data-action="click->edit-tag#displayForm"></i></button></td>
           <td class="table-number"><%= link_to  "Delete", tag, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></td>
+          <td class="table-number"><button class="edit-tag-button"><i class="fa-regular fa-pen-to-square" data-action="click->edit-tag#displayForm"></i></button></td>
           <td><%= simple_form_for tag, html: {class: "d-none", data: {edit_tag_target:"form", action: "submit->edit-tag#update"}} do |f| %>
             <%= f.input :name %>
             <%= f.input :color, collection: %w[blue purple orange yellow red green] %>
