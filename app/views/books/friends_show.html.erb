@@ -17,7 +17,7 @@
                 <div class="col-sm">
                   <div class="user-name">
                     <%= @user.first_name %> <%= @user.last_name %><br><br>
-                    <button><i class="fa-solid fa-arrow-left"></i> <%= link_to "Back", friend_path(@user) %></button>
+                      <a href="/friends/<%=@user.id%>" class="back text-decoration-none"><i class="fa-solid fa-arrow-left"></i> Back</a>
                   </div>
                 </div>
               </div>

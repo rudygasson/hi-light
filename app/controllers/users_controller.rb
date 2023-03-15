@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_highlight, only: ['destroy', 'update']
-  before_action :set_user, only: ['follow', 'show', 'friends_profile']
+  before_action :set_user, only: ['follow', 'show', 'friends_profile', 'edit', 'update']
 
   def show
   end
@@ -20,6 +20,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    @user.update(user_params)
+    redirect_to user_path(@user)
+  end
+
   def follow
     if current_user.favorited?(@user)
       current_user.unfavorite(@user)
@@ -33,5 +41,9 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :email, :encrypted_password, :photo)
   end
 end
