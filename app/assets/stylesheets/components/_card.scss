@@ -521,16 +521,60 @@ svg:hover {
   opacity: 0.6;
 }
 
-#x-icon {
-  padding-top: 2px;
-  padding-right: 2px;
-  position: absolute;
-  right: 0;
-  top: 0;
-  display: none;
+// #x-icon {
+//   padding-top: 2px;
+//   padding-right: 2px;
+//   position: absolute;
+//   right: 0;
+//   top: 0;
+//   display: none;
 
+// }
+
+// #x-icon:hover {
+//   display: block;
+// }
+
+.x-pic {
+	position: relative;
+	display: inline-block;
 }
 
-#x-icon:hover {
-  display: block;
+.x-pic:hover .editt {
+	display: block;
+}
+
+.editt {
+	padding-bottom: 10px;
+	padding-right: 0px;
+  margin-top: -5px;
+	position: absolute;
+	right: 0;
+	top: 0;
+  font-size: 13px;
+	display: none;
+}
+
+.editt a {
+	color: $gray;
+}
+
+.add-tag {
+  background-color: #f65026;
+  border: #e0e0e0 2px solid;
+  border-radius: 12px;
+  padding: 5px 10px;
+  color: white;
+  text-align: right;
+}
+
+.add-tag:hover {
+  background-color: #f65026;
+  border: #e0e0e0 2px solid;
+  border-radius: 12px;
+  padding: 5px 10px;
+  color: white;
+  opacity: 0.8;
+  transition: 0.5s;
+  text-align: right;
 }

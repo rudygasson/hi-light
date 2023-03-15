@@ -11,7 +11,7 @@ class HiTagsController < ApplicationController
     @highlight = Highlight.find(params[:highlight_id])
     @hi_tag = HiTag.new(tag: @tag, highlight: @highlight)
     @hi_tag.save
-    #   redirect_to highlight_path(highlight, book: @book)
+    redirect_to highlights_path
     # else
     #   render :new, status: :unprocessable_entity
     # end
