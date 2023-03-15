@@ -48,7 +48,7 @@
         <div class="recent-activity">
           <h4>Your Recent Activity</h4>
           <ul><% current_user.books.last(5).each do |book| %>
-            <li><strong><%= book.title %></strong>, <%= book.author.name %><br>
+            <li class="recent-activity-spacing"><strong><%= book.title %></strong>, <%= book.author.name %><br>
             Updated: <em><%=book.updated_at.strftime("%m/%d/%Y")%> at <%= book.updated_at.strftime("%I:%M%p")%></em></li>
           <% end %></ul>
         </div>
