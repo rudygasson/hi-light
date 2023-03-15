@@ -39,6 +39,7 @@
                         <%= simple_form_for [highlight, HiTag.new], class: "form", html: {class: "d-none form-inline", data: {edit_tag_target:"form"}} do |f| %>
                           <div class="flexbox-class">
                             <%= f.input :tag, label: false, collection: current_user.tags, include_hidden: false, input_html: {style: 'width: 80px'}  %>
+                            <%= f.submit "Add tag", class: 'add-tag' %>
                           </div>
                         <% end %>
 

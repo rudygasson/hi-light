@@ -11,7 +11,7 @@ class HighlightsController < ApplicationController
         .where(sql_query, query: "%#{params[:query]}%")
         .and(Highlight.where(user: current_user))
     else
-      @highlights = Highlight.where(user: current_user)
+      @highlights = Highlight.includes(:hi_tags).includes(:tags).where(user: current_user)
     end
   end
 
