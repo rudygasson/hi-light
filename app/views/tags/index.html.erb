@@ -27,7 +27,7 @@
                         <% highlight.tags.each do |tag| %>
                         <div class="tag-card text-decoration-none">
                           <div class="<%=tag.color%> x-pic">
-                            <%= link_to hi_tag_path(tag.hi_tags.where(tag: tag, highlight: highlight)), data: {turbo_method: :delete, turbo_confirm: "Do you want to delete it?", id:"delete", class:"text-decoration-none"} do %>
+                            <%= link_to hi_tag_path(highlight.hi_tags.where(tag: tag).pluck(:id)), data: {turbo_method: :delete, turbo_confirm: "Do you want to delete it?", id:"delete", class:"text-decoration-none"} do %>
                               <div class="editt"><i class="fa-regular fa-circle-xmark"></i></div>
                             <% end %>
                           <p><%= tag.name %></p>
