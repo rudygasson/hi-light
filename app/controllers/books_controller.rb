@@ -43,7 +43,7 @@ class BooksController < ApplicationController
 
   def destroy
     @book.destroy
-    redirect_to user_path(current_user)
+    redirect_back(fallback_location: root_path)
   end
 
   def set_parsed_cover

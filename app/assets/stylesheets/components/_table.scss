@@ -1,6 +1,6 @@
 table, th, td {
   margin-top: 50px;
-  padding: 20px;
+  padding: 15px;
   border-bottom: 1px solid #ddd;
 }
 
@@ -8,16 +8,20 @@ th {
   background-color: rgb(228, 228, 228);
   font-weight: bolder;
   border-bottom: 2px solid $gray;
-  font-size: 14px;
+  font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 0.03em;
 }
 
 #title {
-  font-size: 17px;
+  font-size: 16px;
   font-weight: bolder;
   text-decoration: none;
   color: black;
+}
+
+#title:hover {
+  color: $orange
 }
 
 .table-number {
@@ -31,4 +35,18 @@ table {
   table-layout: fixed;
   width: 100%;
   border-collapse: collapse;
+}
+
+table a {
+  color: black;
+}
+
+table a:hover {
+  color: $orange;
+}
+
+#book-cover-manage {
+  height: 50px;
+  width: auto;
+  border-radius: 1px;
 }

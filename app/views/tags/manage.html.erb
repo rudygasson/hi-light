@@ -23,7 +23,7 @@
         <tr data-controller="edit-tag">
           <%= render "tag-infos", tag: tag %>
           <td class="table-number"><%= tag.highlights.count %></td>
-          <td class="table-number"><%= link_to  "Delete", tag, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></td>
+          <td class="table-number"><%= link_to  '<i class="fa-regular fa-trash-can"></i>'.html_safe, tag, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></td>
           <td class="table-number"><button class="edit-tag-button"><i class="fa-regular fa-pen-to-square" data-action="click->edit-tag#displayForm"></i></button></td>
           <td><%= simple_form_for tag, html: {class: "d-none", data: {edit_tag_target:"form", action: "submit->edit-tag#update"}} do |f| %>
             <%= f.input :name %>

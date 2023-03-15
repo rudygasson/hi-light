@@ -1,6 +1,7 @@
 <div class="container">
   <%= render "shared/searchusers" %></div><br>
   <div class="container-social mb-5">
+    <a href="/users/<%=current_user.id%>" class="back text-decoration-none"><i class="fa-regular fa-user"></i>&nbsp;&nbsp;See my social profile</a>
     <% @users.each do |user| %>
       <div class="d-flex">
       <%= link_to friend_path(user) do %>

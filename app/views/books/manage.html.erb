@@ -12,14 +12,19 @@
     </tr>
     <% current_user.books.each do |book| %>
       <tr>
-        <td><%= book.default_cover %></td>
-        <td id="title"><%= link_to book.title, book_path(book)%></td>
+        <td>
+        <% if book.cover.attached? %>
+          <%= cl_image_tag book.cover.key, crop: :fill, id: "book-cover-manage" %>
+        <% else %>
+          <%= image_tag "covers/cover-#{book.default_cover}.png", id: "book-cover-manage" %>
+        <% end %></td>
+        <td><%= link_to book.title, book_path(book), id:"title"%></td>
         <td><%= book.author.name %></td>
         <td class="table-number"><%= book.highlights.count %></td>
         <td class="table-number"><%= book.updated_at.strftime("%m/%d/%Y") %></td>
         <td class="table-number"><%= book.created_at.strftime("%m/%d/%Y") %></td>
-        <td class="table-number"><%= link_to "Delete Book", book, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></td>
-        <td class="table-number"><%= link_to "Change Cover", edit_book_path(book) %></td>
+        <td class="table-number"><%= link_to '<i class="fa-regular fa-trash-can"></i>'.html_safe, book, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></td>
+        <td class="table-number"><%= link_to '<i class="fa-regular fa-pen-to-square"></i>'.html_safe, edit_book_path(book) %></td>
       </tr>
     <% end %>
   </table>
