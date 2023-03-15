@@ -12,12 +12,12 @@
                 <%= image_tag "avatar.png", class: "avatar-social" %>
               <% end %>
           </div>
-          <div class="cards-social-content d-flex">
+          <div class="cards-social-content d-flex justify-content-between align-items-center">
             <div class="cards-social-user-info">
               <h4> <%= user.first_name %> <%= user.last_name %> </h4>
               <p> Books: <%= user.books.count %> </p>
               <p> Highlights: <%= user.highlights.count %> </p>
-                Books recently added: <% user.books.last(3).each do |book| %>
+                Recent books: <% user.books.last(3).each do |book| %>
                   <p class="user-books"> <%= book.title %> -  </p>
                 <% end %>
             </div>
