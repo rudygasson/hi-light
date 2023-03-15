@@ -1,47 +1,31 @@
 <div class="wrapper">
   <div class="sidebar">
-    <div class="row">
-      <div class="col-sm">
-        <div class="container d-flex">
-          <div class="info-user-book">
-            <div class="avatar-book-img">
-              <div class="d-flex flex-row justify-content-center">
-                <div class="col-sm">
-                  <% @user = User.find(params[:user_id]) %>
-                  <% if @user.photo.attached? %>
-                    <%= cl_image_tag @user.photo.key, class: "avatar-book" %>
-                  <% else %>
-                    <%= image_tag "avatar.png", class: "avatar-book" %>
-                  <% end %>
-                </div>
-                <div class="col-sm">
-                  <div class="user-name">
-                    <%= @user.first_name %> <%= @user.last_name %><br><br>
-                      <a href="/friends/<%=@user.id%>" class="back text-decoration-none"><i class="fa-solid fa-arrow-left"></i> Back</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="">
-              <div class="row">
-                <div class="col-sm">
-                  <% if @book.cover.attached? %>
-                    <%= cl_image_tag @book.cover.key, crop: :fill %>
-                  <% else %>
-                    <%= image_tag "covers/cover-#{@book.default_cover}.png", id: "book-cover-show" %>
-                  <% end %>
-                </div>
-                <div class="col-sm">
-                  <div class="friend-book-info">
-                    <h2><%= @book.title %></h2>
-                    <h5><%= @book.author.name %><%= @book.published_date ? " (#{@book.published_date})" : ""%></h5>
-                    <p><%= @book.description ? @book.description : "" %></p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div class="friend-profile-link" id="friend-box">
+      <div class="avatar-book-img">
+        <% @user = User.find(params[:user_id]) %>
+          <% if @user.photo.attached? %>
+            <%= cl_image_tag @user.photo.key, class: "avatar-book" %>
+          <% else %>
+            <%= image_tag "avatar.png", class: "avatar-book" %>
+          <% end %>
+      </div>
+      <div class="user-name">
+        <%= @user.first_name %> <%= @user.last_name %><br>
+        <a href="/friends/<%=@user.id%>" class="back text-decoration-none"><i class="fa-solid fa-arrow-left"></i>&nbsp;&nbsp;Back</a>
+      </div>
+    </div>
+    <div class="friend-profile-link">
+      <div class="friend-book-cover">
+        <% if @book.cover.attached? %>
+          <%= cl_image_tag @book.cover.key, crop: :fill %>
+        <% else %>
+          <%= image_tag "covers/cover-#{@book.default_cover}.png", id: "book-cover-show" %>
+        <% end %>
+      </div>
+      <div class="friend-book-info">
+        <h2><%= @book.title %></h2>
+        <h5><%= @book.author.name %><%= @book.published_date ? " (#{@book.published_date})" : ""%></h5>
+        <p><%= @book.description ? @book.description.first(200)... : "" %></p>
       </div>
     </div>
   </div>
