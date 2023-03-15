@@ -542,6 +542,7 @@ svg:hover {
 
 .x-pic:hover .editt {
 	display: block;
+  color: $black;
 }
 
 .editt {
@@ -566,6 +567,7 @@ svg:hover {
   padding: 5px 10px;
   color: white;
   text-align: right;
+  margin: 17px 10px;
 }
 
 .add-tag:hover {
@@ -581,4 +583,13 @@ svg:hover {
 
 #x-icon:hover {
   display: block;
+}
+
+.flexbox-class {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  .form-group {
+    width: 50%;
+  }
 }
