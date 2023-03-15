@@ -67,13 +67,14 @@
 .recent-activity a {
   font-size: 15px;
   text-decoration: none;
-  color: black;
+  color: $orange;
   line-height: 50px;
 }
 
 .recent-activity a:hover {
   color: $orange;
   font-weight: bold;
+  opacity: 0.6;
 }
 
 .social {
