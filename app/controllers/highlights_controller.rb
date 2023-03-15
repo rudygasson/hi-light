@@ -11,13 +11,13 @@ class HighlightsController < ApplicationController
         .where(sql_query, query: "%#{params[:query]}%")
         .and(Highlight.where(user: current_user))
     else
-      @highlights = Highlight.where(user: current_user)
+      @highlights = Highlight.includes(:hi_tags).includes(:tags).where(user: current_user)
     end
   end
 
   def destroy
     @highlight.destroy
-    redirect_to book_path(@highlight.book)
+    redirect_back_or_to book_path(@highlight.book)
   end
 
   def update
@@ -26,7 +26,7 @@ class HighlightsController < ApplicationController
     else
       current_user.favorite(@highlight)
     end
-    redirect_to book_path(@highlight.book)
+    redirect_back_or_to book_path(@highlight.book)
   end
 
   def import
@@ -71,6 +71,8 @@ class HighlightsController < ApplicationController
         )
       end
     end
+    redirect_to books_path, flash: {notice: "You have imported #{@highlights.count} highlights to your library."}
+    # flash.now[:notice] = "You have imported #{@highlights.count} to your library."
   end
 
   private

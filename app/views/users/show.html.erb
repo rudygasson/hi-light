@@ -25,7 +25,11 @@
         <% current_user.books.each do |my_book| %>
           <%= link_to book_path(my_book), class:"text-decoration-none cards-clickable d-flex justify-content-center" do  %>
             <div class="card-book recent">
-              <img src="https://source.unsplash.com/collection/8761640/"/>
+              <% if my_book.cover.attached? %>
+                <%= cl_image_tag my_book.cover.key, crop: :fill %>
+              <% else %>
+                <%= image_tag "covers/cover-#{my_book.default_cover}.png", id: "book-cover-show" %>
+              <% end %>
               <div class="card-book-recently-added">
                 <h4> <%= my_book.title %> </h4>
                 <p> <%= my_book.author.name %> </p>

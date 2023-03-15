@@ -35,15 +35,15 @@ class TagsController < ApplicationController
 
   def update
     @tag.update(tag_params)
+
+    respond_to do |format|
+      format.html { redirect_to tags_manage_path }
+      format.text { render partial: "tags/tag-infos", locals: {tag: @tag}, formats: [:html] }
+    end
   end
 
   def destroy
     @tag.destroy
-    redirect_to tags_path, status: :see_other
-  end
-
-  def destroy_all
-    @tags = Tag.where(tag.highlights.empty?).destroy_all
     redirect_to tags_path, status: :see_other
   end
 

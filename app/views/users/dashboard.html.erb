@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="container d-flex justify-content-center">
+  <div class="container d-flex justify-content-center" id="dashboard-user-info">
     <div class="avatar-img">
       <% if current_user.photo.attached? %>
         <%= cl_image_tag current_user.photo.key, class: "avatar-profile" %>
@@ -8,11 +8,11 @@
       <% end %>
     </div>
     <div class="profile-information">
-      <%= current_user.first_name %> <%= current_user.last_name %><br>
+      <div id="dashboard-name"><%= current_user.first_name %> <%= current_user.last_name %></div>
       <%= current_user.email %><br><br>
-      Following : <%= Favorite.for_favoritor(current_user).count%><br>
-      Followers : <%= Favorite.for_favoritable(current_user).count%>
+
       <br><br>
+      User since: <%= current_user.created_at.strftime("%m/%d/%Y") %><br>
       <a href="/users/edit">Update Profile Information</a>
     </div>
   </div>
@@ -20,29 +20,38 @@
     <div class="other-information">
         <div class="asset-count" id="book">
           <i class="fa-solid fa-book"></i>
-          <h4>Number of books:</h4>
+          <h4>Books</h4>
           <p><%= current_user.books.count %></p>
-          <a href="/manage">Manage Books</a>
+          <a href="/manage" class="manage">Manage Books</a>
         </div>
         <div class="asset-count" id="highlight">
           <i class="fa-regular fa-bookmark"></i>
-          <h4>Number of highlights:</h4>
+          <h4>Highlights</h4>
           <p><%= current_user.highlights.count %></p>
-          <a href="/tags/highlights">Manage Highlights</a>
+          <h4 id="fav-highlights">Favorited: <%= Favorite.for_favoritor(current_user).where(favoritable_type: "Highlight").count %></h4>
+          <a href="/tags/highlights" class="manage">See favorites</a>
         </div>
         <div class="asset-count" id="tag">
           <i class="fa-solid fa-tag"></i>
-          <h4>Number of tags:</h4>
+          <h4>Tags</h4>
           <p><%= current_user.tags.count %></p>
-          <a href="/tags/manage">Manage Tags</a>
+          <a href="/tags/manage" class="manage">Manage Tags</a>
         </div>
     </div>
-      <div class="recent-activity">
-        <h4>Your Recent Activity</h4>
-        <ul><% current_user.books.last(5).each do |book| %>
-          <li><strong><%= book.title %></strong>, <%= book.author.name %><br>
-          Updated: <em><%=book.updated_at.strftime("%m/%d/%Y")%> at <%= book.updated_at.strftime("%I:%M%p")%></em></li>
-        <% end %></ul>
+      <div class="news">
+        <div class="recent-activity" id="social">
+          <h4>Your Friends</h4>
+          Following : <%= Favorite.for_favoritor(current_user).where(favoritable_type: "User").count%><br>
+          Followers : <%= Favorite.for_favoritable(current_user).where(favoritable_type: "User").count%><br>
+          <a href="/users/<%=current_user.id%>" class="manage"><i class="fa-solid fa-arrow-right"></i>  See my social profile</a>
+        </div>
+        <div class="recent-activity">
+          <h4>Your Recent Activity</h4>
+          <ul><% current_user.books.last(5).each do |book| %>
+            <li><strong><%= book.title %></strong>, <%= book.author.name %><br>
+            Updated: <em><%=book.updated_at.strftime("%m/%d/%Y")%> at <%= book.updated_at.strftime("%I:%M%p")%></em></li>
+          <% end %></ul>
+        </div>
       </div>
   </div>
 </div>

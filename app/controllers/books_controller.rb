@@ -12,6 +12,7 @@ class BooksController < ApplicationController
         .where(sql_query, query: "%#{params[:query]}%") # TODO: REWORK AND current user
     else
       @books = Book.includes(:author).where(user: current_user)
+      # flash.now[:notice] = "You have exactly #{@books.size} books in your library."
     end
   end
 

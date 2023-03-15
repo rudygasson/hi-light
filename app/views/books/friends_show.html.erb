@@ -1,19 +1,72 @@
-<h1> THIS IS THE FRIENDS BOOK SHOW PAGE WITH RESTRICTED HIGHLIGHT ACCESS</h1>
-<div class="d-flex justify-content-center align-items-center mt-5">
-      <div class="">
-        <% if @book.cover.attached? %>
-          <%= cl_image_tag @book.cover.key, crop: :fill %>
-        <% else %>
-          <%= image_tag "covers/cover-#{@book.default_cover}.png", id: "book-cover-show" %>
+<div class="wrapper">
+  <div class="sidebar">
+    <div class="row">
+      <div class="col-sm">
+        <div class="container d-flex">
+          <div class="info-user-book">
+            <div class="avatar-book-img">
+              <div class="d-flex flex-row justify-content-center">
+                <div class="col-sm">
+                  <% @user = User.find(params[:user_id]) %>
+                  <% if @user.photo.attached? %>
+                    <%= cl_image_tag @user.photo.key, class: "avatar-book" %>
+                  <% else %>
+                    <%= image_tag "avatar.png", class: "avatar-book" %>
+                  <% end %>
+                </div>
+                <div class="col-sm">
+                  <div class="user-name">
+                    <%= @user.first_name %> <%= @user.last_name %><br><br>
+                      <a href="/friends/<%=@user.id%>" class="back text-decoration-none"><i class="fa-solid fa-arrow-left"></i> Back</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="">
+              <div class="row">
+                <div class="col-sm">
+                  <% if @book.cover.attached? %>
+                    <%= cl_image_tag @book.cover.key, crop: :fill %>
+                  <% else %>
+                    <%= image_tag "covers/cover-#{@book.default_cover}.png", id: "book-cover-show" %>
+                  <% end %>
+                </div>
+                <div class="col-sm">
+                  <div class="friend-book-info">
+                    <h2><%= @book.title %></h2>
+                    <h5><%= @book.author.name %><%= @book.published_date ? " (#{@book.published_date})" : ""%></h5>
+                    <p><%= @book.description ? @book.description : "" %></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="col-sm">
+      <div class="container-quotes mb-5">
+        <% @book.highlights.each do |highlight| %>
+          <div class="cards-quotes" data-controller="clip">
+            <i class="quotes fa-solid fa-quote-left"></i>
+            <div class="card-quote-content">
+              <p class="" data-clip-target="item"><%= highlight.quote %> </p>
+              <h5 class="d-flex justify-content-end"> p. <%= highlight.page %> </h5>
+              <i class="fe fe-heart"></i>
+            </div>
+            <div class="cards-quotes-actions d-flex justify-content-between">
+              <div class="tags d-inline-flex">
+              </div>
+              <div class="icons">
+                <i data-action="click->clip#copy" class="icon fa-regular fa-clone"></i>
+              </div>
+            </div>
+          </div>
         <% end %>
       </div>
-      <div class="book-info">
-        <h2><%= @book.title %></h2>
-        <h5><%= @book.author.name %><%= @book.published_date ? " (#{@book.published_date})" : ""%></h5>
-        <p><%= @book.description ? @book.description : "" %></p>
-        <%= link_to "API cover+metadata", parse_cover_path(@book), data: {turbo_method: :patch} %> |
-        <%= link_to "Random cover", random_cover_path(@book), data: {turbo_method: :patch } %>
-        <p><%= @book.cover.attached? %></p>
-      </div>
+    </div>
   </div>
 </div>

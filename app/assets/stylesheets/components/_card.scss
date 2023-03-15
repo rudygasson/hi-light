@@ -500,6 +500,7 @@ svg:hover {
   color: white;
   text-align: right;
   margin-top: 10px;
+  font-size: 12px;
 }
 
 .back:hover {
@@ -522,4 +523,77 @@ svg:hover {
   color: #f65026;
   transition: 0.4s;
   opacity: 0.6;
+}
+
+// #x-icon {
+//   padding-top: 2px;
+//   padding-right: 2px;
+//   position: absolute;
+//   right: 0;
+//   top: 0;
+//   display: none;
+
+// }
+
+// #x-icon:hover {
+//   display: block;
+// }
+
+.x-pic {
+	position: relative;
+	display: inline-block;
+}
+
+.x-pic:hover .editt {
+	display: block;
+  color: $black;
+}
+
+.editt {
+	padding-bottom: 10px;
+	padding-right: 0px;
+  margin-top: -5px;
+	position: absolute;
+	right: 0;
+	top: 0;
+  font-size: 13px;
+	display: none;
+}
+
+.editt a {
+	color: $gray;
+}
+
+.add-tag {
+  background-color: #f65026;
+  border: #e0e0e0 2px solid;
+  border-radius: 12px;
+  padding: 5px 10px;
+  color: white;
+  text-align: right;
+  margin: 17px 10px;
+}
+
+.add-tag:hover {
+  background-color: #f65026;
+  border: #e0e0e0 2px solid;
+  border-radius: 12px;
+  padding: 5px 10px;
+  color: white;
+  opacity: 0.8;
+  transition: 0.5s;
+  text-align: right;
+}
+
+#x-icon:hover {
+  display: block;
+}
+
+.flexbox-class {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  .form-group {
+    width: 50%;
+  }
 }
