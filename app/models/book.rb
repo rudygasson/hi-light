@@ -6,7 +6,7 @@ class Book < ApplicationRecord
   belongs_to :user
   has_many :highlights, dependent: :destroy
   validates :title, presence: true
-  validates :title, uniqueness: { scope: :author }
+  # validates :title, uniqueness: { scope: :author } # TODO add scope user
   has_one_attached :cover
 
   # Set default cover before creation of new book

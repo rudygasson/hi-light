@@ -6,8 +6,11 @@ export default class extends Controller {
     console.log("data-controller booksindex is online")
   }
 
-  metadata() {
-    console.log("CLICK!")
-  }
+  // TODO: implement AJAX book by book fetch with refresh
+  // metadata() {
+  //   console.log("CLICK!")
+  //   fetch("http://localhost:3000/parse")
+
+  // }
 
 }

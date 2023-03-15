@@ -10,8 +10,10 @@ class HighlightsController < ApplicationController
       @highlights = Highlight
         .where(sql_query, query: "%#{params[:query]}%")
         .and(Highlight.where(user: current_user))
+        .limit(100)
+        .order(:page)
     else
-      @highlights = Highlight.includes(:hi_tags).includes(:tags).where(user: current_user)
+      @highlights = Highlight.includes(:hi_tags).includes(:tags).where(user: current_user).limit(100).order(:page)
     end
   end
 
