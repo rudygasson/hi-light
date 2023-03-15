@@ -1,17 +1,23 @@
 .search-by-buttons {
-  padding: 7px;
-  margin-right: 10px;
+  // padding: 7px;
+  // margin-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 10px;
 }
 
 .search-by-buttons i {
-  margin-left: 7px;
   color: $gray;
   border: 1px solid black;
-  border-radius: 25px;
-  padding: 8px;
+  border-radius: 50%;
   opacity: 30%;
-  font-size: 20px;
-  margin-right: 12px;
+  font-size: 24px;
+  margin: 0 8px;
+  width: 48px;
+  height: 48px;
+  padding-top: 10px;
+  text-align: center;
 }
 
 .search-by-buttons .active {
@@ -26,19 +32,26 @@
   margin-top: 50px;
 }
 
+.form-control {
+  color: $gray;
+}
+
 .search-form-control {
   position: relative;
+  margin: 0 10px;
 }
 
 .search-form-control .submit-btn {
   position: absolute;
-  top: 8px;
-  bottom: 8px;
-  right: 8px;
-  border-radius: 25px;
+  top: 6px;
+  // bottom: 8px;
+  right: 9px;
+  border-radius: 50%;
   border: transparent 0px solid;
   background-color: $orange;
   color: white;
+  height: 36px;
+  width: 36px;
 }
 
 .search-form-control .form-control {
@@ -47,5 +60,5 @@
   width: 600px;
   background-color: white;
   font-style: italic;
-  font-size: 12px;
+  font-size: 16px;
 }

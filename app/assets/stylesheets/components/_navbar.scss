@@ -1,3 +1,21 @@
+body {
+  background-color: white;
+  min-height: 100vh;
+}
+
+header {
+  border-bottom: solid 3px $light-gray;
+}
+
+.navbar-container {
+  background-color: white;
+  margin: 0px auto;
+  // margin-bottom: 40px;
+  max-width: 1000px; //
+  // display: flex;
+  // justify-content: space-between;
+}
+
 .navbar-logo {
   justify-content: space-between;
   background: white;
@@ -10,22 +28,21 @@
 
 .navbar-logo .navbar-brand img {
   padding: 10px;
-  width: 180px;
-  margin-left: 200px;
+  width: 170px;
+  // margin-left: 200px;
 }
 
 .navbar-logo .navbar-brand img:hover {
   padding: 10px;
-  width: 180px;
-  margin-left: 200px;
+  width: 170px;
+  // margin-left: 200px;
   transition: 0.3s;
   opacity: 0.7;
 }
 
-
-.navbar-collapse {
-  margin-right: 200px;
-}
+// .navbar-collapse {
+//   margin-right: 200px;
+// }
 
 .nav-item a {
   text-decoration: none;
@@ -35,7 +52,7 @@
 
 .navbar {
   background-color: white;
-  border-bottom: solid 3px $light-gray;
+  padding: 0 15px;
 }
 
 .navbar i {

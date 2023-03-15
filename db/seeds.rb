@@ -102,6 +102,7 @@ tags = [
   "project management", "self-development", "manifesting", "meditation", "agriculture", "homesteading", "best friends",
   "animals", "cooking", "mergers & acquisitions", "best horror", "favourite", "research", "novel", "movie"
 ].select { |tag| tag.length <= 16 }
+
 colors = [
   "purple", #"#B6ACC3", "#67597A"
   "blue", #"#A1F7F7", "#9CF6F6"

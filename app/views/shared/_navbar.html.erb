@@ -1,5 +1,5 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-logo">
-  <div class="container-fluid">
+<div class="navbar-container">
+  <div class="navbar navbar-expand-sm navbar-light navbar-logo">
     <%= link_to user_signed_in? ? "/books" : "/", class: "navbar-brand" do %>
       <%= image_tag "logo-clipart.png" %>
     <% end %>
@@ -17,9 +17,9 @@
           <li class="nav-item active">
             <a href="/import"><i class="fa-solid fa-upload"></i> Import</a>
           </li>
-          <li class="nav-item active">
+          <%# <li class="nav-item active">
             <a href="#"><i class="fa-solid fa-wand-magic-sparkles"></i> Rediscover</a>
-          </li>
+          </li> %>
           <li class="nav-item active">
             <a href="/users"><i class="fa-regular fa-face-smile-beam"></i></i> Friends</a>
           </li>

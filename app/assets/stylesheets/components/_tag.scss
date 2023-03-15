@@ -1,3 +1,8 @@
+.tags-container {
+  display: flex;
+  justify-content: center;
+}
+
 .tag-card {
   margin-left: 16px;
   text-decoration: none !important;
@@ -19,10 +24,9 @@
 .tag-index button {
   font-size: 16px;
   text-align: center;
-  padding-left: 15px;
-  padding-right: 15px;
-  margin: 3px;
-  line-height: 20px;
+  padding: 10px 15px;
+  margin: 5px 10px;
+  line-height: 17px;
   border: transparent 0px solid;
 }
 
@@ -36,38 +40,35 @@
 
 .blue {
   background-color: $tag-blue;
-  border-radius: 10px;
 }
 
 .purple {
   background-color: $tag-purple;
-  border-radius: 10px;
 }
 
 .orange {
   background-color: $tag-orange;
-  border-radius: 10px;
 }
 
 .yellow {
   background-color: $tag-yellow;
-  border-radius: 10px;
 }
 
 .red {
   background-color: $tag-red;
-  border-radius: 10px;
 }
 
 .green {
   background-color: $tag-green;
-  border-radius: 10px;
 }
 
 .none {
   background-color: $tag-none;
   opacity: 40%;
-  border-radius: 10px;
+}
+
+.blue,.purple,.orange,.yellow,.red,.green,.none {
+  border-radius: 20px;
 }
 
 .blue,.purple,.orange,.yellow,.red,.green p {
@@ -75,7 +76,7 @@
 }
 
 .form-control {
-  font-size: 14px;
+  font-size: 16px;
   padding-right: 14px;
   padding-left: 14px;
   color: $orange;
