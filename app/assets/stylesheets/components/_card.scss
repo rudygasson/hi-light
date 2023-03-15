@@ -342,12 +342,9 @@ svg:hover {
 .cards-social {
   background-position: center;
   border-radius: 10px;
-  background-color: $light-gray;
-  height: 187px;
-  margin-top: 15px;
-  padding-top: 10px;
-  padding-bottom: 1px;
-  background: #f1f1f1;
+  background: #ffeae5;
+  margin-top: 17px;
+  width: 740px;
 }
 
 .cards-social-content {
@@ -378,9 +375,24 @@ svg:hover {
   color: black;
 }
 
+
+.friend-follow input {
+  background-color: #f65026;
+  border: #e0e0e0 2px solid;
+  border-radius: 12px;
+  padding: 4px 12px;
+  color: white;
+  text-align: right;
+}
+
+.friend-follow input:hover {
+  opacity: 0.8;
+}
+
 .user-books {
   display: inline-block;
   font-size: 12px;
+  font-style: italic;
 }
 
 .cards-social-avatar {
