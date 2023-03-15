@@ -9,9 +9,10 @@ class BooksController < ApplicationController
       OR authors.name @@ :query
       SQL
       @books = Book.joins(:author)
-        .where(sql_query, query: "%#{params[:query]}%") # TODO: REWORK AND current user
+        .where(sql_query, query: "%#{params[:query]}%")
+        .and(Book.where(user: current_user)).order(:title)
     else
-      @books = Book.includes(:author).where(user: current_user)
+      @books = Book.includes(:author).where(user: current_user).order(:title)
       # flash.now[:notice] = "You have exactly #{@books.size} books in your library."
     end
   end
@@ -49,6 +50,19 @@ class BooksController < ApplicationController
     @book.parse_cover
     @book.save
     redirect_to book_path(@book)
+  end
+
+  def set_parsed_cover_for_all
+    counter = 0
+    current_user.books.each do |book|
+      unless book.cover.attached?
+        book.parse_cover
+        book.save
+        counter += 1
+      end
+      break if counter >= 3
+    end
+    redirect_to books_path
   end
 
   def random_cover
