@@ -10,11 +10,20 @@
     <link rel="stylesheet" href="path/to/css/feathericon.min.css">
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
-
-  <div class="page-container">
-    <div class="navbar-container"><%= render "shared/navbar" %></div>
-    <div class="content-container"><%= yield %></div>
-    <div class="footer-container"><%= render "shared/footer" %></div>
-  </div>
-    <%= render "shared/flashes"%>
+  <body>
+    <header>
+      <%= render "shared/navbar" %>
+    </header>
+    <main>
+      <div class="page-container">
+        <div class="content-container">
+          <%= yield %>
+        </div>
+      </div>
+      <div class="footer-container">
+        <%= render "shared/footer" %>
+      </div>
+      <%= render "shared/flashes"%>
+    </main>
+  </body>
 </html>

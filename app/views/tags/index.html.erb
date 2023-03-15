@@ -1,14 +1,15 @@
 <div class="container">
   <%= render "shared/searchtags" %><br>
   <div class="container-tags">
-    <div class="container">
+    <div class="tags-container">
         <% current_user.tags.each do |tag| %>
-            <span class="tag-index">
+          <div class="tag-index">
             <a href="?query=<%=tag.name %>">
               <button class="<%= tag.highlights.empty? ? 'none' : tag.color %>">
-                <%= tag.name %></span>
+                <%= tag.name %>
               </button>
             </a>
+          </div>
         <% end %>
     </div>
   </div>

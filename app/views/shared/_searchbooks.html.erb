@@ -5,17 +5,20 @@
     <a href="/highlights"><i class="fa-solid fa-quote-left"></i></a>
   </div>
   <div class="d-row">
-      <div class="search">
-        <%= form_with url: books_path, method: :get, class: "d-flex" do %>
-          <div class="search-form-control form-group">
-            <%= text_field_tag :query,
-              params[:query],
-              class: "form-control",
-              placeholder: "Search by book"
-            %>
-            <button type="submit" class= "submit-btn"><i class="fas fa-search"></i></button>
-          </div>
-        <% end %>
-      </div>
+    <div class="search">
+      <%= form_with url: books_path, method: :get, class: "d-flex" do %>
+        <div class="search-form-control form-group">
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Search by book"
+          %>
+          <button type="submit" class= "submit-btn"><i class="fas fa-search"></i></button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="search-by-buttons">
+    <i data-action="click->booksindex#metadata" class="fa-regular fa-image"></i>
   </div>
 </div>

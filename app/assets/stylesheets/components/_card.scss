@@ -2,38 +2,41 @@
   margin-top: 50px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-gap: 33px;
+  // grid-gap: min(10px);
   padding: 0px;
-  border-radius: 10%;
+  // border-radius: 10%;
 }
 
 .card-book {
-  overflow: hidden;
+  // overflow: hidden;
   // box-shadow: 0 0 15px $hi-light-light;
-  height: 251px;
-  background-position: center;
-  justify-content: space-around;
-  border-radius: 10%;
-  width: 80%;
+  height: 240px;
+  margin: 16px 0;
+  // background-position: center;
+  // justify-content: space-around;
+  // border-radius: 10%;
+  // width: 80%;
   text-align: center;
   background-color: white;
 }
 
 .card-book:hover {
-  transition: 0.7s;
+  transition: 0.2s;
   transform: translate3D(0,-2px,0) scale(1.02);
-  overflow: hidden;
-  background-position: center;
-  justify-content: space-around;
-  border-radius: 10%;
+  // overflow: hidden;
+  // background-position: center;
+  // justify-content: space-around;
+  // border-radius: 10%;
 }
 
 .card-book > img {
-  height: 205px;
-  width: 100%;
-  border-radius: 10%;
-  object-fit: cover;
-  background-position: center;
+  height: 200px;
+  min-width: 120px;
+  max-width: 145px;
+  // width: 100%;
+  border-radius: 8%;
+  // object-fit: cover;
+  // background-position: center;
 }
 
 .card-book h4 {
@@ -62,13 +65,13 @@
 
 .cards-clickable:hover {
   color: $gray;
-  transition: 0.6s;
+  // transition: 0.6s;
 }
 
 #book-cover-show {
   height: 205px;
   width: 155px;
-  border-radius: 10px;
+  border-radius: 5%;
   object-fit: cover;
   background-position: center;
 }
