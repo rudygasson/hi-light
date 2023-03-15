@@ -4,7 +4,7 @@
   box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
   border-radius: 25px;
   padding: 30px 0px;
-  width: 94%;
+  width: 74%;
 }
 
 .asset-count {
@@ -46,6 +46,7 @@
   color: $orange;
 }
 
+
 .manage {
   font-size: 13px;
 }
@@ -66,15 +67,20 @@
 .recent-activity a {
   font-size: 15px;
   text-decoration: none;
-  color: black;
+  color: $orange;
   line-height: 50px;
 }
 
 .recent-activity a:hover {
   color: $orange;
   font-weight: bold;
+  opacity: 0.6;
 }
 
 .social {
   padding: 30px 100px 0px 30px;
+}
+
+.recent-activity-spacing{
+  margin: 11px;
 }
