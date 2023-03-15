@@ -1,6 +1,6 @@
-<%= render "shared/banner" %>
+
   <div class="container">
-    <div class="dashboard d-flex">
+    <div class="header d-flex">
         <div class="avatar-img">
           <% if @user.photo.attached? %>
             <%= cl_image_tag @user.photo.key, class: "avatar-profile" %>
@@ -10,18 +10,17 @@
         </div>
         <div class="profile-information">
           <h4><%= @user.first_name %> <%= @user.last_name %></h4>
-          <p><a href="/books" class="text-decoration-none">Books in <span class="bolded">Library </span>: <%= @user.books.count %></a> <br>
-          <a href="/highlights" class="text-decoration-none">Highlights: <%= @user.highlights.count %></a><br>
-          <a href="#" class="text-decoration-none">Favourite Highlights: <%= @user.all_favorites.count %></a></p>
+          <p>Books in Library: <%= @user.books.count %><br>
+          Highlights: <%= @user.highlights.count %><br>
+          Following : <%= Favorite.for_favoritor(@user).where(favoritable_type: "User").count%>&nbsp;&nbsp; | &nbsp;
+          Followers : <%= Favorite.for_favoritable(@user).where(favoritable_type: "User").count%><br></p>
         </div>
         <hr class="hr m-4" />
         <div class="profile-information-actions">
         </div>
     </div>
     <div class="recently-added">
-    <hr class="hr m-4" />
-      <h5>Books recently added to my library: </h5>
-      <div class="cards added">
+      <div class="cards-added">
         <% @user.books.each do |my_book| %>
           <%= link_to friend_books_path(@user, my_book), class:"text-decoration-none cards-clickable d-flex justify-content-center" do %>
             <div class="card-book recent">
@@ -39,4 +38,4 @@
         <% end %>
       </div>
     </div>
-</div>
+  </div>

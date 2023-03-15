@@ -339,35 +339,6 @@ svg:hover {
 
 .bolded { font-weight: bold; }
 
-.cards-added {
-  width: 1021px;
-  background-position: center;
-  text-align: center;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-gap: 5px;
-  padding: 0px;
-  border-radius: 10%;
-}
-
-.recently-added h5 {
-  font-size: 18px;
-}
-
-.recently-added {
-  margin-top: 16px;
-  padding-left: 23px;
-  margin-bottom: 10px;
-  width: 1021px;
-}
-
-.card-book-recently-added {
-}
-
-.recent {
-  margin-top: -15px;
-}
-
 .cards-social {
   background-position: center;
   border-radius: 10px;
