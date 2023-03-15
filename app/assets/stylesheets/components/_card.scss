@@ -345,6 +345,7 @@ svg:hover {
   background: #ffeae5;
   margin-top: 17px;
   width: 740px;
+  box-shadow: rgba(51, 51, 51, 0.16) 0px 3px 6px, rgba(56, 56, 56, 0.23) 0px 3px 6px;  border-radius: 25px;
 }
 
 .cards-social-content {
@@ -359,10 +360,18 @@ svg:hover {
   padding-bottom: 20px;
   padding-right: 30px;
   padding-left: 20px;
-  border-radius: 10px;
+  border-radius: 25px;
   background-position: center;
-  font-size: 15px;
-  line-height: 14px;
+  font-size: 14px;
+}
+
+.cards-social-content h4 {
+  line-height: 2.0;
+  font-size: 23px;
+}
+
+.cards-social-content p {
+  line-height: 0;
 }
 
 .cards-social-user-info {
