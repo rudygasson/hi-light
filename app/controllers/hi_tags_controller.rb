@@ -10,16 +10,16 @@ class HiTagsController < ApplicationController
     @tag = Tag.find(params[:hi_tag][:tag])
     @highlight = Highlight.find(params[:highlight_id])
     @hi_tag = HiTag.new(tag: @tag, highlight: @highlight)
-    @hi_tag.save
-    redirect_to highlights_path
-    # else
-    #   render :new, status: :unprocessable_entity
-    # end
+    if @hi_tag.save
+      redirect_back_or_to highlights_path
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def destroy
-    @tag = Tag.find(params[:hi_tag][:tag])
-    @hi_tag = Highlight.find(params[:id])
+    @hi_tag = HiTag.find(params[:id])
     @hi_tag.destroy
+    redirect_back_or_to highlights_path
   end
 end

@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   root to: "pages#home"
   resources :books
   resources :highlights, only: ['index', 'destroy', 'update'] do
-    resources :hi_tags, only: ['new', 'create', 'destroy']
+    resources :hi_tags, only: ['new', 'create']
   end
+  resources :hi_tags, only: ['destroy']
   resources :tags, only: ['index', 'new', 'create', 'edit', 'update', 'destroy', 'destroy_all']
   resources :users, only: ['show', 'index'] do
     resources :books, only: ['show'], as: "friend_books"
