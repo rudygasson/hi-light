@@ -21,7 +21,7 @@
                   <p class="user-books"> <%= book.title %> -  </p>
                 <% end %>
             </div>
-            <div class="cards-social-follow d-flex justify-content-end">
+            <div class="friend-follow">
               <%= link_to follow_path(user), data: {turbo_method: :patch } do %>
                 <% if current_user.favorited?(user) %>
                   <input type="submit" name="commit" value="Unfollow">
