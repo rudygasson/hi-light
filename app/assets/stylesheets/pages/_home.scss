@@ -1,26 +1,22 @@
-// Specific CSS for your home-page
-.call-to-action button {
-  border: $orange solid 1px;
-  border-radius: 25px;
-  background-color: white;
-}
-
 .call-to-action a {
+  background-color: $light-gray;
+  color: white;
+  border-radius: 25px;
   text-decoration: none;
   font-size: 20px;
-  color: $orange;
   font-style: bold;
+  padding: 10px 20px;
 }
 
 .call-to-action {
+  margin: 80px 0;
   text-align: center;
-  align-items: center;
 }
 
-.call-to-action button:hover {
-  background-color: $light-gray;
-  transition: 1s;
-  transform: translate3D(0,-1px,0) scale(1.02);
+.call-to-action a:hover {
+  background-color: $orange;
+  color: white;
+  transition: 0.2s;
 }
 
 #landing-img {

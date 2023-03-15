@@ -25,4 +25,7 @@ Rails.application.routes.draw do
   patch "book/:id/random-cover", to: "books#random_cover", as: "random_cover"
 
   get "parse", to: "books#set_parsed_cover_for_all"
+
+  # Redirects user after succesful login
+  get '/user' => "books#index", :as => :user_root
 end
