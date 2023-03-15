@@ -54,7 +54,7 @@ class BooksController < ApplicationController
 
   def set_parsed_cover_for_all
     counter = 0
-    current_user.books.each do |book|
+    current_user.books.order(:title).each do |book|
       unless book.cover.attached?
         book.parse_cover
         book.save
