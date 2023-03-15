@@ -14,6 +14,7 @@
   padding: 100px 0;
   background: radial-gradient(circle, #faf0ef 0%, #f9c0b2 100%);
   border: dashed 1px $orange;
+  box-shadow: rgba(51, 51, 51, 0.16) 0px 3px 6px, rgba(56, 56, 56, 0.23) 0px 3px 6px;
 }
 
 .import-label {
@@ -24,6 +25,7 @@
 .import-submit {
   display: flex;
   justify-content: center;
+
 }
 
 .import-form .import-submit input {
@@ -37,4 +39,12 @@
 
 .import-form .import-submit input:hover {
   background-color: #dd4822;
+}
+
+#instructions {
+  width: 700px;
+  border-radius: 20px;
+  border: #e0e0e0 2px solid;
+  box-shadow: rgba(51, 51, 51, 0.16) 0px 3px 6px, rgba(56, 56, 56, 0.23) 0px 3px 6px;
+  object-fit: cover;
 }
