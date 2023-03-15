@@ -35,6 +35,11 @@ class TagsController < ApplicationController
 
   def update
     @tag.update(tag_params)
+
+    respond_to do |format|
+      format.html { redirect_to tags_manage_path }
+      format.text { render partial: "tags/tag-infos", locals: {tag: @tag}, formats: [:html] }
+    end
   end
 
   def destroy
