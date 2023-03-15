@@ -14,6 +14,7 @@
           Highlights: <%= current_user.highlights.count %><br>
           Following : <%= Favorite.for_favoritor(current_user).where(favoritable_type: "User").count%>&nbsp;&nbsp; | &nbsp;
           Followers : <%= Favorite.for_favoritable(current_user).where(favoritable_type: "User").count%><br></p>
+          
         </div>
         <hr class="hr m-4" />
         <div class="profile-information-actions">

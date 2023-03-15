@@ -13,8 +13,15 @@
           <p>Books in Library: <%= @user.books.count %><br>
           Highlights: <%= @user.highlights.count %><br>
           Following : <%= Favorite.for_favoritor(@user).where(favoritable_type: "User").count%>&nbsp;&nbsp; | &nbsp;
-          Followers : <%= Favorite.for_favoritable(@user).where(favoritable_type: "User").count%><br></p>
-        </div>
+          Followers : <%= Favorite.for_favoritable(@user).where(favoritable_type: "User").count%> &nbsp;&nbsp; | &nbsp;
+          <%= link_to follow_path(@user), data: {turbo_method: :patch } do %>
+                <% if current_user.favorited?(@user) %>
+                  <input type="submit" name="commit" value="Unfollow">
+                <% else %>
+                  <input type="submit" name="commit" value="+ Follow">
+                <% end %>
+              <% end %>
+        </div><br></p>
         <hr class="hr m-4" />
         <div class="profile-information-actions">
         </div>
