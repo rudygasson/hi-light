@@ -44,7 +44,7 @@ class TagsController < ApplicationController
 
   def destroy
     @tag.destroy
-    redirect_to tags_path, status: :see_other
+    redirect_back(fallback_location: root_path)
   end
 
   private

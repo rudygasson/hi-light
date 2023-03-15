@@ -12,7 +12,7 @@
       <%= current_user.email %><br><br>
 
       <br><br>
-      User since: <%= current_user.created_at.strftime("%m/%d/%Y") %><br>
+      User since: <%= current_user.created_at.strftime("%b.%d.%Y") %><br>
       <a href="/users/edit">Update Profile Information</a>
     </div>
   </div>
@@ -48,8 +48,8 @@
         <div class="recent-activity">
           <h4>Your Recent Activity</h4>
           <ul><% current_user.books.last(5).each do |book| %>
-            <li class="recent-activity-spacing"><strong><%= book.title %></strong>, <%= book.author.name %><br>
-            Updated: <em><%=book.updated_at.strftime("%m/%d/%Y")%> at <%= book.updated_at.strftime("%I:%M%p")%></em></li>
+            <li class="recent-activity-spacing"><strong><%= link_to book.title, book_path(book) %></strong>, <%= book.author.name %><br>
+            Updated: <em><%=book.updated_at.strftime("%b.%d.%Y")%> at <%= book.updated_at.strftime("%I:%M%P")%></em></li>
           <% end %></ul>
         </div>
       </div>

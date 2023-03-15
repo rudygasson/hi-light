@@ -1,27 +1,21 @@
-.user-name {
-  font-size: 20px;
-  font-weight: bolder;
-  padding-top: 20px;
-}
-
 .wrapper {
   display: flex;
   justify-content: center;
 }
 
 .main {
-  width: 60%;
+  // width: 60%;
 }
 
 .sidebar {
-  width: 40%;
+  // width: 40%;
   height: 60vh;
   position: -webkit-sticky;
   position: sticky;
   top: 60px;
   margin-top: 45px;
-  margin-right: 30px;
-  padding: 15px;
+  margin-right: 10px;
+  padding: 10px;
 }
 
 .friend-profile-link {
@@ -30,6 +24,13 @@
   border-radius: 15px;
   margin-bottom: 20px;
   width: 100%;
+}
+
+.user-name {
+  font-size: 18px;
+  font-weight: bolder;
+  padding-top: 15px;
+  padding-left: 10px;
 }
 
 .user-name button {
