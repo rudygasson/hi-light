@@ -1,6 +1,6 @@
-<%= render "shared/banner" %>
+
   <div class="container">
-    <div class="dashboard d-flex">
+    <div class="header d-flex">
         <div class="avatar-img">
           <% if current_user.photo.attached? %>
             <%= cl_image_tag current_user.photo.key, class: "avatar-profile" %>
@@ -10,20 +10,19 @@
         </div>
         <div class="profile-information">
           <h4><%= current_user.first_name %> <%= current_user.last_name %></h4>
-          <p><a href="/books" class="text-decoration-none">Books in <span class="bolded">My Library </span>: <%= current_user.books.count %></a> <br>
-          <a href="/highlights" class="text-decoration-none">My Highlights: <%= current_user.highlights.count %></a><br>
-          <a href="" class="">My Favourite Highlights: <%= current_user.all_favorites.count %></a>
+          <p>Books in Library: <%= current_user.books.count %><br>
+          Highlights: <%= current_user.highlights.count %><br>
+          Following : <%= Favorite.for_favoritor(current_user).where(favoritable_type: "User").count%>&nbsp;&nbsp; | &nbsp;
+          Followers : <%= Favorite.for_favoritable(current_user).where(favoritable_type: "User").count%><br></p>
         </div>
         <hr class="hr m-4" />
         <div class="profile-information-actions">
         </div>
     </div>
     <div class="recently-added">
-    <hr class="hr m-4" />
-      <h5>Books recently added to my library: </h5>
-      <div class="cards added">
+      <div class="cards-added">
         <% current_user.books.each do |my_book| %>
-          <%= link_to book_path(my_book), class:"text-decoration-none cards-clickable d-flex justify-content-center" do  %>
+          <%= link_to friend_books_path(current_user, my_book), class:"text-decoration-none cards-clickable d-flex justify-content-center" do %>
             <div class="card-book recent">
               <% if my_book.cover.attached? %>
                 <%= cl_image_tag my_book.cover.key, crop: :fill %>
@@ -39,4 +38,4 @@
         <% end %>
       </div>
     </div>
-</div>
+  </div>

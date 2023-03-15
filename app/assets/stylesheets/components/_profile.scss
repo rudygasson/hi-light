@@ -1,0 +1,75 @@
+.header {
+  align-items: center;
+  margin-bottom: 0px;
+  background-color: $light-orange;
+  padding: 35px 0px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;  border-radius: 25px;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.header .avatar-profile {
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;  border: white 2px solid;
+  margin-left: 30px;
+}
+
+.header h4 {
+  color: white;
+  text-transform: uppercase;
+  font-weight: 400px;
+  font-size: 35px;
+  padding-bottom: 8px;
+  border-bottom: 4px white solid;
+}
+
+.header p {
+  color: white;
+  font-weight: 400px;
+  font-size: 17px;
+}
+
+.recent-activity {
+  border-radius: 25px;
+  text-align: left;
+  // padding: 30px 100px 10px 30px;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
+}
+
+.profile-information {
+  padding: 10px 150px 0px 10px;
+}
+
+.profile-information a {
+  text-decoration: none;
+  font-size: 13px;
+  color: black;
+}
+
+.profile-information a:hover {
+  color: $orange;
+  transition: none;
+}
+
+.cards-added {
+  background-position: center;
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 10px;
+  border-radius: 10%;
+  padding: 10px
+}
+
+.recently-added h5 {
+  font-size: 18px;
+}
+
+.recently-added {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  // padding: 5px 15px;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
+}
