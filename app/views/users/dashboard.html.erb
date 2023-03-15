@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="container d-flex justify-content-center">
+  <div class="container d-flex justify-content-center" id="dashboard-user-info">
     <div class="avatar-img">
       <% if current_user.photo.attached? %>
         <%= cl_image_tag current_user.photo.key, class: "avatar-profile" %>
@@ -10,29 +10,32 @@
     <div class="profile-information">
       <div id="dashboard-name"><%= current_user.first_name %> <%= current_user.last_name %></div>
       <%= current_user.email %><br><br>
-      Following : <%= Favorite.for_favoritor(current_user).count%><br>
-      Followers : <%= Favorite.for_favoritable(current_user).count%>
-      <br><br>
+      Following : <%= Favorite.for_favoritor(current_user).where(favoritable_type: "User").count%><br>
+      Followers : <%= Favorite.for_favoritable(current_user).where(favoritable_type: "User").count%>
+      <br>
       <a href="/users/edit">Update Profile Information</a>
+      <br>
     </div>
   </div>
   <div class="container d-flex justify-content-center">
     <div class="other-information">
         <div class="asset-count" id="book">
           <i class="fa-solid fa-book"></i>
-          <h4>Number of books:</h4>
+          <h4>Books:</h4>
           <p><%= current_user.books.count %></p>
           <a href="/manage">Manage Books</a>
         </div>
         <div class="asset-count" id="highlight">
           <i class="fa-regular fa-bookmark"></i>
-          <h4>Number of highlights:</h4>
+          <h4>Highlights:</h4>
           <p><%= current_user.highlights.count %></p>
-          <a href="/tags/highlights">Manage Highlights</a>
+          <h4>Favorited:</h4>
+          <p><%= Favorite.for_favoritor(current_user).where(favoritable_type: "Highlight").count %></p>
+          <a href="/tags/highlights">See favorites</a>
         </div>
         <div class="asset-count" id="tag">
           <i class="fa-solid fa-tag"></i>
-          <h4>Number of tags:</h4>
+          <h4>Tags:</h4>
           <p><%= current_user.tags.count %></p>
           <a href="/tags/manage">Manage Tags</a>
         </div>
