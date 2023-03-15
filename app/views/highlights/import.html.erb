@@ -1,18 +1,17 @@
-<div class="container">
-  <div class="import-form">
-    <%= form_with url: "/upload", multipart: true do |form| %>
-    <div class="import-drag-drop">
-      <div class="">
-        <%= file_field_tag :file, class: "form-control" %>
-      </div>
+<div class="import-form">
+<div>
+  <%= form_with url: "/upload", multipart: true do |form| %>
+  <div class="import-drag-drop">
+    <div class="">
+      <%= file_field_tag :file, class: "form-control" %>
     </div>
-      <div class="import-submit">
-        <%= form.submit "Import highlights" %>
-      </div>
-    <% end %>
-
-    <h3>Instructions</h3>
-    <p>Plug in your Kindle, and find the My Clippings.txt file:</p>
-    <%= image_tag "instructions.png", id: "instructions" %>
   </div>
+  <div class="import-submit">
+    <%= form.submit "Import highlights" %>
+  </div>
+  <% end %>
+  <h3>Instructions</h3>
+  <p>Plug in your Kindle, and find the My Clippings.txt file:</p>
+  <%= image_tag "instructions.png", id: "instructions" %>
+</div>
 </div>
