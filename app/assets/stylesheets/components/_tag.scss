@@ -110,3 +110,16 @@
   margin-top: 70px;
   text-align: center;
 }
+
+.new-tag-button {
+  text-decoration: none;
+  color: white;
+  border: 2px $light-gray solid;
+  border-radius: 25px;
+  background-color: $orange;
+}
+
+#new-tag-text {
+  text-decoration: none;
+  color: white;
+}

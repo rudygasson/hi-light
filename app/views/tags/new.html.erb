@@ -1,5 +1,10 @@
-<%= simple_form_for(@tag) do |f| %>
-  <%= f.input :name %>
-  <%= f.input :color, collection: %w[blue purple orange yellow red green] %>
-  <%= f.submit %>
-<% end %>
+<div class="container">
+<br><br>
+<h4>Create a new tag:</h4>
+<br><br>
+  <%= simple_form_for(@tag) do |f| %>
+    <%= f.input :name %>
+    <%= f.input :color, collection: %w[blue purple orange yellow red green] %>
+    <%= f.submit %>
+  <% end %>
+</div>
