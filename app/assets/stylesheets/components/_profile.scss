@@ -5,7 +5,7 @@
   padding: 35px 0px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;  border-radius: 25px;
   justify-content: center;
-  margin-top: 50px;
+  margin-top: 10px;
 }
 
 .header .avatar-profile {
@@ -87,4 +87,14 @@
 
 .profile-information input:hover {
   opacity: 0.8;
+}
+
+.back-friend-index {
+  text-decoration: none;
+  color: $orange
+}
+
+.container-profile a:hover {
+  color: $orange;
+  opacity: 80%;
 }

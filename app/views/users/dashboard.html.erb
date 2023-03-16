@@ -29,7 +29,7 @@
           <h4>Highlights</h4>
           <p><%= current_user.highlights.count %></p>
           <h4 id="fav-highlights">Favorited: <%= Favorite.for_favoritor(current_user).where(favoritable_type: "Highlight").count %></h4>
-          <a href="/tags/highlights" class="manage">See favorites</a>
+          <%# <a href="/tags/highlights" class="manage">See favorites</a> %>
         </div>
         <div class="asset-count" id="tag">
           <i class="fa-solid fa-tag"></i>
