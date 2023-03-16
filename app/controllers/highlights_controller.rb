@@ -72,9 +72,9 @@ class HighlightsController < ApplicationController
           highlight_date: highlight[:highlight_date]
         )
       end
+      redirect_to books_path, flash: {notice: "You have imported #{@highlights.count} highlights to your library."}
+      # flash.now[:notice] = "You have imported #{@highlights.count} to your library."
     end
-    redirect_to books_path, flash: {notice: "You have imported #{@highlights.count} highlights to your library."}
-    # flash.now[:notice] = "You have imported #{@highlights.count} to your library."
   end
 
   private

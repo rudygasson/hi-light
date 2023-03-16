@@ -2,6 +2,12 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  width: 704px;
+}
+
+.container-tags {
+  display: flex;
+  justify-content: center;
 }
 
 .tag-card {
@@ -111,6 +117,7 @@
   text-align: center;
 }
 
+
 .new-tag-button {
   text-decoration: none;
   color: white;
@@ -122,4 +129,8 @@
 #new-tag-text {
   text-decoration: none;
   color: white;
+}
+
+.tag-no-hover:hover * {
+  color: #140501;
 }
