@@ -22,10 +22,10 @@
             <% end %>
           </div>
           <%= simple_form_for [highlight, HiTag.new], class: "form", html: {class: "d-none form-inline", data: {edit_tag_target:"form"}} do |f| %>
-              <div class="flexbox-class">
-                <%= f.input :tag, label: false, collection: current_user.tags, include_hidden: false, input_html: {style: 'width: 80px'}  %>
-                <%= f.submit "Add tag", class: 'add-tag' %>
-              </div>
+            <div class="flexbox-class">
+              <%= f.input :tag, label: false, collection: current_user.tags, include_hidden: false, wrapper_html: {class: "mb-0"}  %>
+              <%= f.submit "+", class: 'add-tag' %>
+            </div>
           <% end %>
           <div class="icons">
             <i class="icon fa-solid fa-tag" data-action="click->edit-tag#displayForm"></i>

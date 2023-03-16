@@ -555,23 +555,17 @@ svg:hover {
 
 .add-tag {
   background-color: #f65026;
-  border: #e0e0e0 2px solid;
-  border-radius: 12px;
-  padding: 5px 10px;
+  border: #e0e0e0 1px solid;
+  border-radius: 50%;
+  padding: 0px 6px;
   color: white;
   text-align: right;
-  margin: 17px 10px;
+  margin-left: 4px;
 }
 
 .add-tag:hover {
-  background-color: #f65026;
-  border: #e0e0e0 2px solid;
-  border-radius: 12px;
-  padding: 5px 10px;
-  color: white;
   opacity: 0.8;
-  transition: 0.5s;
-  text-align: right;
+  transition: 0.4s;
 }
 
 #x-icon:hover {
@@ -584,6 +578,11 @@ svg:hover {
   align-items: flex-end;
   .form-group {
     width: 50%;
+  }
+  .select {
+    margin-bottom: 0px !important;
+    font-size: 13px;
+    padding: 0px 0px 0px 15px !important;
   }
 }
 
