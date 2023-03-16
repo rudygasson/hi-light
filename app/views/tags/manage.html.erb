@@ -9,12 +9,13 @@
     <% end %>
   </div>
 </div>
+<button><%= link_to  '<i class="fa-solid fa-plus"></i> Create New Tag'.html_safe, new_tag_path %></button>
 
 <div class="container justify-content-center">
   <div class="tags-table" data-edit-tag-target="infos">
     <table>
       <tr>
-        <th>Tag</th>
+        <th class="table-number">Tag</th>
         <th class="table-number">Highlight Count</th>
         <th class="table-number">Delete</th>
         <th colspan="2" class="table-number">Edit</th>

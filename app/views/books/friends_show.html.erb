@@ -25,7 +25,7 @@
       <div class="friend-book-info">
         <h2><%= @book.title %></h2>
         <h5><%= @book.author.name %><%= @book.published_date ? " (#{@book.published_date})" : ""%></h5>
-        <p><%= @book.description ? @book.description.first(200)... : "" %></p>
+        <p><%= @book.description ? @book.description.first(150)... : "" %></p>
       </div>
     </div>
   </div>
