@@ -65,14 +65,14 @@
 
 .friend-book-cover #book-cover-show {
   height: 175px;
-  width: auto;
   object-fit: cover;
-  margin: 10px;
+  // margin: 10px;
 }
 
 .friend-book-cover {
   display: flex;
   justify-content: center;
+  margin: 10px;
 }
 
 #friend-box {
