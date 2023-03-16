@@ -2,6 +2,12 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  width: 704px;
+}
+
+.container-tags {
+  display: flex;
+  justify-content: center;
 }
 
 .tag-card {
@@ -109,4 +115,8 @@
   margin-bottom: 20px;
   margin-top: 70px;
   text-align: center;
+}
+
+.tag-no-hover:hover * {
+  color: #140501;
 }
