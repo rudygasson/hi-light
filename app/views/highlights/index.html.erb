@@ -10,13 +10,13 @@
         </div>
         <div class="cards-quotes-actions d-flex justify-content-between" data-controller="edit-tag">
           <div class="tags d-inline-flex">
-            <% highlight.tags.each do |tag| %>
+            <% highlight.hi_tags.each do |hi_tag| %>
               <div class="tag-card text-decoration-none">
-                <div class="<%=tag.color%> x-pic">
-                    <%= link_to hi_tag_path(highlight.hi_tags.where(tag: tag).pluck(:id)), data: {turbo_method: :delete, turbo_confirm: "Do you want to delete it?", id:"delete", class:"text-decoration-none"} do %>
+                <div class="<%= hi_tag.tag.color %> x-pic">
+                    <%= link_to hi_tag_path(hi_tag), data: {turbo_method: :delete, turbo_confirm: "Do you want to delete it?", id:"delete", class:"text-decoration-none"} do %>
                       <div class="editt"><i class="fa-regular fa-circle-xmark"></i></div>
                     <% end %>
-                  <p><%= tag.name %></p>
+                  <p><%= hi_tag.tag.name %></p>
                 </div>
               </div>
             <% end %>
