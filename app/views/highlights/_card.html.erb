@@ -1,0 +1,11 @@
+<div class="quote-card" data-controller="clip">
+  <i class="quote-symbol fa-solid fa-quote-left"></i>
+  <div class="quote-card-content">
+    <p class="" data-clip-target="item"><%= highlight.quote %> </p>
+    <h5 class="d-flex justify-content-end"><%= highlight.book.title %> -  p. <%= highlight.page %> </h5>
+  </div>
+  <div class="quote-card-actions d-flex justify-content-between" data-controller="edit-tag">
+    <%= render "tags", highlight: highlight %>
+    <%= render "actions", highlight: highlight %>
+  </div>
+</div>

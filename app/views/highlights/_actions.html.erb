@@ -1,0 +1,14 @@
+<div class="icons">
+  <i class="icon fa-solid fa-tag" data-action="click->edit-tag#displayForm"></i>
+  <%= link_to highlight_path(highlight), data: { turbo_method: :patch } do %>
+    <% if current_user.favorited?(highlight) %>
+      <i class="icon fa-solid fa-heart" id="favorite-heart"></i>
+    <% else %>
+      <i class="icon fa-regular fa-heart"></i>
+    <% end %>
+  <% end %>
+  <%= link_to highlight_path(highlight), data: { turbo_method: :delete, turbo_confirm: "Are you sure?", id:"delete" } do %>
+    <i class="icon fa-regular fa-trash-can"> </i>
+  <% end %>
+  <i data-action="click->clip#copy" class="icon fa-regular fa-clone"></i>
+</div>

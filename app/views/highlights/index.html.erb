@@ -1,91 +1,49 @@
-<div class="container">
-  <%= render "shared/searchquotes" %>
-  <div class="container-quotes">
-    <% @highlights.each do |highlight| %>
-      <div class="cards-quotes" data-controller="clip">
-        <i class="quotes fa-solid fa-quote-left"></i>
-        <div class="card-quote-content">
-          <p class="" data-clip-target="item"><%= highlight.quote %> </p>
-          <h5 class="d-flex justify-content-end"><%= highlight.book.title %> -  p. <%= highlight.page %> </h5>
-        </div>
-        <div class="cards-quotes-actions d-flex justify-content-between" data-controller="edit-tag">
-          <div class="tags d-inline-flex">
-            <% highlight.hi_tags.each do |hi_tag| %>
-              <div class="tag-card text-decoration-none">
-                <div class="<%= hi_tag.tag.color %> x-pic">
-                    <%= link_to hi_tag_path(hi_tag), data: {turbo_method: :delete, turbo_confirm: "Do you want to delete it?", id:"delete", class:"text-decoration-none"} do %>
-                      <div class="editt"><i class="fa-regular fa-circle-xmark"></i></div>
-                    <% end %>
-                  <p><%= hi_tag.tag.name %></p>
-                </div>
-              </div>
-            <% end %>
-          </div>
-          <%= simple_form_for [highlight, HiTag.new], class: "form", html: {class: "d-none form-inline", data: {edit_tag_target:"form"}} do |f| %>
-            <div class="flexbox-class">
-              <%= f.input :tag, label: false, collection: current_user.tags, include_hidden: false, wrapper_html: {class: "mb-0"}  %>
-              <%= f.submit "+", class: 'add-tag' %>
-            </div>
-          <% end %>
-          <div class="icons">
-            <i class="icon fa-solid fa-tag" data-action="click->edit-tag#displayForm"></i>
-            <%= link_to highlight_path(highlight), data: { turbo_method: :patch } do %>
-              <% if current_user.favorited?(highlight) %>
-                <i class="icon fa-solid fa-heart" id="favorite-heart"></i>
-              <% else %>
-                <i class="icon fa-regular fa-heart"></i>
-              <% end %>
-            <% end %>
-            <%= link_to highlight_path(highlight), data: { turbo_method: :delete, turbo_confirm: "Are you sure?", id:"delete" } do %>
-              <i class="icon fa-regular fa-trash-can"> </i>
-            <% end %>
-            <i data-action="click->clip#copy" class="icon fa-regular fa-clone"></i>
-          </div>
-        </div>
-      </div>
-    <% end %>
-    <a class="top-link hide" href="" id="js-top">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6"><path d="M12 6H0l6-6z"/></svg>
-      <span class="screen-reader-text">Back to top</span>
-    </a>
-  </div>
+<%= render "shared/searchquotes" %>
+<div class="container-quotes">
+  <% @highlights.each do |highlight| %>
+    <%= render "card", highlight: highlight %>
+  <% end %>
 </div>
 
+<a class="top-link hide" href="" id="js-top">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6"><path d="M12 6H0l6-6z"/></svg>
+  <span class="screen-reader-text">Back to top</span>
+</a>
 
 <script>
-const scrollToTopButton = document.getElementById('js-top');
-const scrollFunc = () => {
-  // Get the current scroll value
-  let y = window.scrollY;
+  const scrollToTopButton = document.getElementById('js-top');
+  const scrollFunc = () => {
+    // Get the current scroll value
+    let y = window.scrollY;
 
-  // If the scroll value is greater than the window height, let's add a class to the scroll-to-top button to show it!
-  if (y > 0) {
-    scrollToTopButton.className = "top-link show";
-  } else {
-    scrollToTopButton.className = "top-link hide";
+    // If the scroll value is greater than the window height, let's add a class to the scroll-to-top button to show it!
+    if (y > 0) {
+      scrollToTopButton.className = "top-link show";
+    } else {
+      scrollToTopButton.className = "top-link hide";
+    }
+  };
+
+  window.addEventListener("scroll", scrollFunc);
+
+  const scrollToTop = () => {
+    // Let's set a variable for the number of pixels we are from the top of the document.
+    const c = document.documentElement.scrollTop || document.body.scrollTop;
+
+    // If that number is greater than 0, we'll scroll back to 0, or the top of the document.
+    // We'll also animate that scroll with requestAnimationFrame:
+    // https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame
+    if (c > 0) {
+      // window.requestAnimationFrame(scrollToTop);
+      // ScrollTo takes an x and a y coordinate.
+      // Increase the '10' value to get a smoother/slower scroll!
+      window.scrollTo(0, c - c / 1);
+    }
+  };
+
+  // When the button is clicked, run our ScrolltoTop function above!
+  scrollToTopButton.onclick = function(e) {
+    e.preventDefault();
+    scrollToTop();
   }
-};
-
-window.addEventListener("scroll", scrollFunc);
-
-const scrollToTop = () => {
-  // Let's set a variable for the number of pixels we are from the top of the document.
-  const c = document.documentElement.scrollTop || document.body.scrollTop;
-
-  // If that number is greater than 0, we'll scroll back to 0, or the top of the document.
-  // We'll also animate that scroll with requestAnimationFrame:
-  // https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame
-  if (c > 0) {
-    // window.requestAnimationFrame(scrollToTop);
-    // ScrollTo takes an x and a y coordinate.
-    // Increase the '10' value to get a smoother/slower scroll!
-    window.scrollTo(0, c - c / 1);
-  }
-};
-
-// When the button is clicked, run our ScrolltoTop function above!
-scrollToTopButton.onclick = function(e) {
-  e.preventDefault();
-  scrollToTop();
-}
 </script>

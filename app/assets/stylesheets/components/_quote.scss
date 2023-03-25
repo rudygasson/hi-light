@@ -1,0 +1,63 @@
+.quote-card {
+  width: 704px;
+  background-position: center;
+  border-radius: 10px;
+  background-color: $light-gray;
+
+  margin-top: 18px;
+  padding-top: 10px;
+  padding-bottom: 1px;
+  background: #f1f1f1;
+  box-shadow:  7px 7px 5px #e7e7e7,
+              //  -20px -20px 40px #f4f3f3;
+}
+
+.quote-card-content {
+  width: 674px;
+  background-color: white;
+  margin-right: 15px;
+  margin-left: 15px;
+  margin-top: 0px;
+  padding-top: 25px;
+  padding-bottom: 5px;
+  padding-right: 40px;
+  padding-left: 60px;
+  border-radius: 15px;
+  font-size: 17px;
+}
+
+.quote-card-content h5 {
+  text-align: right;
+  align-items: right;
+  font-size: 11px;
+  display: inline;
+  justify-content: flex-end;
+  font-style: italic;
+}
+
+.quote-card .fa-quote-left {
+  color: $light-gray;
+}
+
+
+.quote-card-actions {
+  line-height: 20px;
+  background-color: transparent;
+  margin-top: 8px;
+  margin-bottom: 7px;
+}
+
+// .quote-card-location p {
+//   font-size: 10px;
+//   display: inline;
+//   text-align: center;
+//   align-items: center;
+// }
+
+.quote-symbol {
+  font-size: 30px;
+  color: $gray;
+  position: absolute;
+  padding-left: 30px;
+  padding-top: 20px;
+}
