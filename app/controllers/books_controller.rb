@@ -8,11 +8,11 @@ class BooksController < ApplicationController
       books.title @@ :query
       OR authors.name @@ :query
       SQL
-      @books = Book.joins(:author)
+      @books = Book.includes(:author)
         .where(sql_query, query: "%#{params[:query]}%")
-        .and(Book.where(user: current_user)).order(:title)
+        .and(Book.where(user: current_user)).order(:title).with_attached_cover
     else
-      @books = Book.includes(:author).where(user: current_user).order(:title)
+      @books = Book.includes(:author).where(user: current_user).order(:title).with_attached_cover
       # flash.now[:notice] = "You have exactly #{@books.size} books in your library."
     end
   end

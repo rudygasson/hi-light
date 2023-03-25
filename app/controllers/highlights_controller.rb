@@ -8,12 +8,15 @@ class HighlightsController < ApplicationController
         OR highlights.quote ILIKE :query
       SQL
       @highlights = Highlight
-        .where(sql_query, query: "%#{params[:query]}%")
-        .and(Highlight.where(user: current_user))
-        .limit(100)
-        .order(:page)
+                    .includes(:hi_tags, :tags, :book)
+                    .where(sql_query, query: "%#{params[:query]}%")
+                    .and(Highlight.where(user: current_user))
+                    .limit(100)
+                    .order(:page)
     else
-      @highlights = Highlight.includes(:hi_tags).includes(:tags).where(user: current_user).limit(100).order(:page)
+      @highlights = Highlight
+                    .includes(:hi_tags, :tags, :book)
+                    .where(user: current_user).limit(100).order(:page)
     end
   end
 
@@ -23,7 +26,7 @@ class HighlightsController < ApplicationController
   end
 
   def update
-    if current_user.favorited?(@highlight)
+    if @highlight.favorited_by?(current_user)
       current_user.unfavorite(@highlight)
     else
       current_user.favorite(@highlight)
@@ -47,24 +50,23 @@ class HighlightsController < ApplicationController
       # Generate highlights from source
       @highlights = generate_highlights(source)
       @highlights.each do |highlight|
-
         # Check if author exists, otherwise create
         author = Author.find_by(name: highlight[:author])
         author = Author.create(name: highlight[:author]) if author.blank?
 
         # Check if book exists, otherwise create
-        book = Book.find_by(title: highlight[:title], author: author, user: current_user)
-        book = Book.create(title: highlight[:title], author: author, user: current_user) if book.blank?
+        book = Book.find_by(title: highlight[:title], author:, user: current_user)
+        book = Book.create(title: highlight[:title], author:, user: current_user) if book.blank?
 
         # Check if highlight exists, otherwise create, track duplicates
-        if Highlight.exists?(user: current_user, book: book, quote: highlight[:quote])
+        if Highlight.exists?(user: current_user, book:, quote: highlight[:quote])
           @duplicates << highlight
           next
         end
 
         Highlight.create(
           user: current_user,
-          book: book,
+          book:,
           quote: highlight[:quote],
           page: highlight[:page],
           location_start: highlight[:location_start],
@@ -72,7 +74,7 @@ class HighlightsController < ApplicationController
           highlight_date: highlight[:highlight_date]
         )
       end
-      redirect_to books_path, flash: {notice: "You have imported #{@highlights.count} highlights to your library."}
+      redirect_to books_path, flash: { notice: "You have imported #{@highlights.count} highlights to your library." }
       # flash.now[:notice] = "You have imported #{@highlights.count} to your library."
     end
   end
@@ -120,7 +122,7 @@ class HighlightsController < ApplicationController
     # Return a hash representing the highlight
     {
       title: title_author[:title]&.strip,
-      author: (title_author[:author]||title_author[:author_alt])&.strip,
+      author: (title_author[:author] || title_author[:author_alt])&.strip,
       type: metadata[:type]&.strip,
       page: metadata[:page]&.strip,
       location_start: metadata[:location_start]&.strip,
